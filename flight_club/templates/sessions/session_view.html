@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}FC {{session_id}}{% endblock %}</h1>
+  <h1>Date: {{date}}</h1>
+{% endblock %}
+
+{% block content %}
+  {% for beer in beers %}
+    <p class="body">{{beer['username']}}: {{ beer['beer_name'] }}, {{ beer['brewery'] }} ,{{ beer['votes'] }}, {{ beer['win'] }}</p>
+    {% if not loop.last %}
+      <hr>
+    {% endif %}
+  {% endfor %}
+{% endblock %}

@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Add Session{% endblock %}</h1>
+  <script type='text/javascript'>
+  // I basically stole this script from stackoverflow
+  // What's front end development anyway..
+    function addFields(){
+        // Number of inputs to create
+        var number = document.getElementById("beers").value;
+        // Container <div> where dynamic content will be placed
+        var container = document.getElementById("container");
+        // Clear previous contents of the container
+        while (container.hasChildNodes()) {
+            container.removeChild(container.lastChild);
+        }
+        for (i=0;i<number;i++){
+            // Append a node with a random text
+            container.appendChild(document.createTextNode("Beer " + (i+1) + ":"));
+            // Create an <input> element, set its type and name attributes
+            var input = document.createElement("input");
+            input.type = "text";
+            input.name = "beer_name" + i;
+            container.appendChild(input);
+            
+            container.appendChild(document.createTextNode("Brewery:"))
+            var input = document.createElement("input");
+            input.type = "text";
+            input.name = "brewery" + i;
+            container.appendChild(input);
+
+            container.appendChild(document.createTextNode("Style:"))
+            var input = document.createElement("input");
+            input.type = "text";
+            input.name = "style" + i;
+            container.appendChild(input);
+
+            container.appendChild(document.createTextNode("Votes:"))
+            var input = document.createElement("input");
+            input.type = "number";
+            input.name = "votes" + i;
+            container.appendChild(input);
+
+            container.appendChild(document.createTextNode("Win:"))
+            var input = document.createElement("input");
+            input.type = "number";
+            input.name = "win" + i;
+            container.appendChild(input);
+
+            container.appendChild(document.createTextNode("Bringer:"))
+            var input = document.createElement("input");
+            input.type = "text";
+            input.name = "username" + i;
+            container.appendChild(input);
+
+            // Append a line break 
+            container.appendChild(document.createElement("br"));
+        }
+        container.appendChild(document.create)
+    }
+</script>  
+{% endblock %}
+
+
+{% block content %}
+<form method="post">
+    <label for="session_id">FC Session #:</label>
+    <input type="Number" id="session_id" name="session_id" required><br />
+
+    <label for="date">Date:</label>
+    <input type="Number" id="date" name="date" required><br />
+
+    <label for="beers">Number of Beers:</label>
+    <input type="text" id="beers" name="beers" value=""><br />
+
+    <a href="#" id="filldetails" onclick="addFields()">Fill Details</a>
+    <div id="container"/></div>
+
+    <input type="submit" value="submit">
+</form>
+{% endblock %}

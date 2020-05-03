@@ -1,0 +1,39 @@
+Features that I want
+- Admin Panel (login access restricted for manual edit of the databse)
+
+
+(Minimial valuable product)
+login required
+- Profile View
+(python code needs to know route name)
+-- Gives User overview
+-- Lists beers they've brought
+-- Breaks down beers by style
+-- Gives overall win count
+-- Gives overall score count
+
+login required
+- Session Info View
+(python code needs to know route name)
+-- Gives session date
+-- List session winner
+-- Lists who was in attendance
+-- Lists beers brought in order w/ votes
+
+login required
+- Session Add View
+-- Asks for basic info first
+--- Session Number
+--- Date of session
+--- Host of session
+--- How many people in attendance
+--- Check if session exists if not continue
+-- Second window prompts
+--- Beer info for all beers
+---- How will I handle blind?
+
+- Full List View 
+-- Blargh this will just fully list everything (filtering? this just is a shittier google sheet)
+
+- Beer search
+-- search to see if a beer has been brought?

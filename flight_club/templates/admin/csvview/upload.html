@@ -1,0 +1,8 @@
+{% extends 'admin/master.html' %}
+
+{% block body %}
+<form method="post" enctype="multipart/form-data">
+    <input type="file" name="fileupload" id="fileToUpload">
+    <input type="submit" value="Upload File" name="submit">
+</form>
+{% endblock %}

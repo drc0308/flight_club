@@ -1,0 +1,7 @@
+venv/
+.vscode/
+instance/
+
+*.pyc
+__pycache__/
+todo.txt
