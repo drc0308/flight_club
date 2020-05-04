@@ -48,14 +48,6 @@ def test_beer():
 
     return render_template('sessions/test_beer.html')
 
-# TODO (dan) move this to a profile view
-@bp.route('/beer_list', methods=['GET'])
-def beer_list():
-    if request.method == 'GET':
-        beers = g.user.beers
-        return render_template('sessions/beer_view.html', beers=beers)
-
-
 @bp.route('/add_session', methods=['GET', 'POST'])
 @login_required
 def add_session():

@@ -63,8 +63,10 @@ def create_app(test_config=None):
     # Import blueprints
     from flight_club import auth
     from flight_club import sessions
+    from flight_club import users
     app.register_blueprint(auth.bp)
     app.register_blueprint(sessions.bp)
+    app.register_blueprint(users.bp)
     app.add_url_rule('/hello', endpoint='index')
 
     return app
