@@ -95,7 +95,7 @@ def add_session():
                     ))
 
                     db.session.commit()
-                return render_template('sessions/add_session.html')
+                return render_template('sessions/fc{}'.format(int(session_id)))
 
         flash(error)
         return render_template('sessions/add_session.html')
