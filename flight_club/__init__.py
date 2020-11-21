@@ -1,5 +1,5 @@
 import os
-from flask import Flask
+from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask.cli import with_appcontext
 from flask_admin import Admin
@@ -45,7 +45,7 @@ def create_app(test_config=None):
     # a simple page that says hello
     @app.route('/')
     def hello():
-        return 'Hello World!'
+        return render_template('index.html')
     
     # initialize Flask-SQLAlchemy and the init-db command
     db.init_app(app)
