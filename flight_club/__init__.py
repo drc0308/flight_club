@@ -43,7 +43,7 @@ def create_app(test_config=None):
         pass
     
     # a simple page that says hello
-    @app.route('/hello')
+    @app.route('/')
     def hello():
         return 'Hello World!'
     
@@ -67,7 +67,7 @@ def create_app(test_config=None):
     app.register_blueprint(auth.bp)
     app.register_blueprint(sessions.bp)
     app.register_blueprint(users.bp)
-    app.add_url_rule('/hello', endpoint='index')
+    app.add_url_rule('/', endpoint='index')
 
     return app
 
