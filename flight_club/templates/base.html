@@ -3,42 +3,45 @@
 <title>{% block title %}{% endblock %} - Flight Club</title>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <title>Piksell HTML5 Template</title>
-    <meta charset="utf-8">
-    <meta name="description" content="Piksell Responsive Multipurpose Template">
-    <meta name="author" content="Diamant Gjota" />
-    <meta name="keywords" content="piksell, html5, css3, template, bootstrap" />
-    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
-    
-    <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" />
-    <!-- Icons/FontAwesome -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome.min.css') }}" />
-    <!-- owl carusol -->
-    <link rel="stylesheet" href="{{ url_for ('static', filename='css/owl.carousel.css') }}" />
-    <!-- zetta menu -->
-    <link rel="stylesheet" href="{{ url_for ('static', filename='css/zetta-menu.min.css') }}" />
-    <!-- layerSlider -->
-    <link rel="stylesheet" href="{{ url_for ('static', filename='css/layerslider.css') }}" />
-    <!-- Animation -->
-    <link rel="stylesheet" href="{{ url_for ('static', filename='css/animate.css') }}" />
-    <!-- Customizable CSS -->
-    <link rel="stylesheet" href="{{ url_for ('static', filename='css/style.css') }}" />
-    
-    <!-- FONTS -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
-    
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="{{ url_for ('static', filename='img/favicon.ico') }}">
-    
-    <!-- HTML5 elements and media queries Support for IE8 : HTML5 shim and Respond.js -->
-    <!--[if lt IE 9]>
+  <title>Piksell HTML5 Template</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Piksell Responsive Multipurpose Template">
+  <meta name="author" content="Diamant Gjota" />
+  <meta name="keywords" content="piksell, html5, css3, template, bootstrap" />
+  <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+
+  <!-- Bootstrap Core CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" />
+  <!-- Icons/FontAwesome -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome.min.css') }}" />
+  <!-- owl carusol -->
+  <link rel="stylesheet" href="{{ url_for ('static', filename='css/owl.carousel.css') }}" />
+  <!-- zetta menu -->
+  <link rel="stylesheet" href="{{ url_for ('static', filename='css/zetta-menu.min.css') }}" />
+  <!-- layerSlider -->
+  <link rel="stylesheet" href="{{ url_for ('static', filename='css/layerslider.css') }}" />
+  <!-- Animation -->
+  <link rel="stylesheet" href="{{ url_for ('static', filename='css/animate.css') }}" />
+  <!-- Customizable CSS -->
+  <link rel="stylesheet" href="{{ url_for ('static', filename='css/style.css') }}" />
+
+  <!-- FONTS -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="{{ url_for ('static', filename='img/favicon.ico') }}">
+
+  <!-- HTML5 elements and media queries Support for IE8 : HTML5 shim and Respond.js -->
+  <!--[if lt IE 9]>
         <script src="js/html5shiv.js"></script>
         <script src="js/respond.min.js"></script>
     <![endif]-->
-    
+
 </head>
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -47,54 +50,55 @@
 <!-- top header -->
 <div id="top-header" class="light">
   <div class="container top-header">
-      <div class="row">
-          
-          <div class="col-md-6 col-sm-7">
-          </div>
-          
-          <div class="col-md-6 col-sm-5">
-              <ul class="top-navigation inline-block pull-right">
-                  {% if g.user %}
-                    <li><span><a href="{{ url_for('users.profile') }}">{{ g.user['username'] }}</span></a>
-                    <li><a href="{{ url_for('auth.logout') }}">Log Out</a>
-                  {% else %}
-                    <li><a href="{{ url_for('auth.register') }}">Register</a>
-                    <li><a href="{{ url_for('auth.login') }}">Log In</a>
-                  {% endif %}
-              </ul>   
-          </div>
-      
-      </div><!-- end row -->
+    <div class="row">
+
+      <div class="col-md-6 col-sm-7">
+      </div>
+
+      <div class="col-md-6 col-sm-5">
+        <ul class="top-navigation inline-block pull-right">
+          {% if g.user %}
+          <li><span><a href="{{ url_for('users.profile') }}">{{ g.user['username'] }}</span></a>
+          <li><a href="{{ url_for('auth.logout') }}">Log Out</a>
+            {% else %}
+          <li><a href="{{ url_for('auth.register') }}">Register</a>
+          <li><a href="{{ url_for('auth.login') }}">Log In</a>
+            {% endif %}
+        </ul>
+      </div>
+
+    </div><!-- end row -->
   </div><!-- end container -->
 </div>
 <!-- end top header -->
 
 <!-- start Nav -->
 <nav class="navbar navbar-default" role="navigation">
-<div class="container">
-  <!-- Zetta Menu 1 -->
-  <ul onClick="" class="zetta-menu zm-response-switch zm-full-width zm-effect-slide-top">
+  <div class="container">
+    <!-- Zetta Menu 1 -->
+    <ul onClick="" class="zetta-menu zm-response-switch zm-full-width zm-effect-slide-top">
       <!-- LOGO -->
       <li class="zm-logo">
-          <a href="#"><img src="{{ url_for('static', filename='img/Draper_FC-Logo.svg') }}" alt="Draper Flight Club" /></a>
+        <a href="#"><img src="{{ url_for('static', filename='img/Draper_FC-Logo.svg') }}"
+            alt="Draper Flight Club" /></a>
       </li>
       <!-- end LOGO -->
-      
+
       <li class="zm-right-item"><a>Beers</a>
       </li>
-      
+
       <li class="zm-right-item"><a>Sessions</a>
-          <ul class="w-150">
-              <li><a href="#">Add</a></li>
-              <li><a href="#">Listings</a></li>
-          </ul>
+        <ul class="w-150">
+          <li><a href="#">Add</a></li>
+          <li><a href="#">Listings</a></li>
+        </ul>
       </li>
 
       <li class="zm-right-item"><a>Users</a>
       </li>
-  </ul>
-  <!-- /Zetta Menu 1 -->
-</div><!-- /.container-fluid -->
+    </ul>
+    <!-- /Zetta Menu 1 -->
+  </div><!-- /.container-fluid -->
 </nav>
 <!-- end Nav -->
 
@@ -103,7 +107,7 @@
     {% block header %}{% endblock %}
   </header>
   {% for message in get_flashed_messages() %}
-    <div class="flash">{{ message }}</div>
+  <div class="flash">{{ message }}</div>
   {% endfor %}
   {% block content %}{% endblock %}
 </section>
@@ -112,29 +116,31 @@
 <!-- footer -->
 <footer id="footer">
   <div class="container footer">
-      <div class="row">
-          
-          <div class="col-sm-12">
-              <h2 class="pull-right">MAMA'S</h2>
-          </div>
-      
-      </div><!-- end row -->
+    <div class="row">
+
+      <div class="col-sm-12">
+        <h2 class="pull-right">MAMA'S</h2>
+      </div>
+
+    </div><!-- end row -->
   </div><!-- end container -->
-  
+
   <div class="copyrights">
-      <div class="container">
-          <div class="row">
-              
-              <div class="col-sm-12">
-                  <h2 class="inline-block pull-right">THIRSTY</h2>
-                  <p class="pull-left">&copy; 2020 <a href="http://www.oliviaecruz.com">Olivia Cruz</a> & Daniel Cuomo. All Rights Reserved.</p>
-              </div>
-              
-          </div><!-- end row -->
-      </div><!-- end container -->
+    <div class="container">
+      <div class="row">
+
+        <div class="col-sm-12">
+          <h2 class="inline-block pull-right">THIRSTY</h2>
+          <p class="pull-left">&copy; 2020 <a href="http://www.oliviaecruz.com">Olivia Cruz</a> & Daniel Cuomo. All
+            Rights Reserved.</p>
+        </div>
+
+      </div><!-- end row -->
+    </div><!-- end container -->
   </div><!-- end copyrights -->
 </footer>
 <!-- end footer -->
-  
+
 </body>
+
 </html>

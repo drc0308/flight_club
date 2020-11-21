@@ -48,6 +48,7 @@ def test_beer():
 
     return render_template('sessions/test_beer.html')
 
+
 @bp.route('/add_session', methods=['GET', 'POST'])
 @login_required
 def add_session():
