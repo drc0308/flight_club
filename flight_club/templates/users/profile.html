@@ -1,14 +1,47 @@
 {% extends 'base.html' %}
 
 {% block header %}
-  <h1>{% block title %}Profile{% endblock %}</h1>
+<section class="content">
+  <div class="container">
+      <div class="row">
+          <h1 class="text-center">Profile</h1></h1>
+        </div><!-- end row -->        
+    </div><!-- end container -->            
+</section> 
 {% endblock %}
 
 {% block content %}
-  {% for beer in beers %}
-    <p class="body">{{ beer['beer_name'] }}, {{ beer['brewery'] }} ,{{ beer['votes'] }}, {{ beer['win'] }}</p>
-    {% if not loop.last %}
-      <hr>
-    {% endif %}
-  {% endfor %}
+<!-- table -->            
+<section class="content">
+  <div class="container">
+      <div class="row">
+          <div class="col-sm-12 padd">
+            <h3>Your Beers</h3>
+
+              <table class="table table-striped table-hover">
+                  <thead>
+                      <tr>
+                          <th>Beer</th>
+                          <th>Brewery</th>
+                          <th>Votes</th>
+                          <th>Win</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                    {% for beer in beers %}
+                      <tr>
+                          <td>{{ beer['beer_name'] }}</td>
+                          <td>{{ beer['brewery'] }}</td>
+                          <td>{{ beer['votes'] }}</td>
+                          <td>{{ beer['win'] }}</td>
+                      </tr>
+                      {% endfor %}
+                  </tbody>
+              </table>
+          </div>                
+      
+      </div><!-- end row -->        
+    </div><!-- end container -->            
+</section>            
+<!-- end tables -->
 {% endblock %}
