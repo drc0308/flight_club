@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 
 {% block header %}
-  <h1>{% block title %}Add Session{% endblock %}</h1>
-  <script type='text/javascript'>
-  // I basically stole this script from stackoverflow
-  // What's front end development anyway..
-    function addFields(){
+<h1>{% block title %}Add Session{% endblock %}</h1>
+<script type='text/javascript'>
+    // I basically stole this script from stackoverflow
+    // What's front end development anyway..
+    function addFields() {
         // Number of inputs to create
         var number = document.getElementById("beers").value;
         // Container <div> where dynamic content will be placed
@@ -14,15 +14,15 @@
         while (container.hasChildNodes()) {
             container.removeChild(container.lastChild);
         }
-        for (i=0;i<number;i++){
+        for (i = 0; i < number; i++) {
             // Append a node with a random text
-            container.appendChild(document.createTextNode("Beer " + (i+1) + ":"));
+            container.appendChild(document.createTextNode("Beer " + (i + 1) + ":"));
             // Create an <input> element, set its type and name attributes
             var input = document.createElement("input");
             input.type = "text";
             input.name = "beer_name" + i;
             container.appendChild(input);
-            
+
             container.appendChild(document.createTextNode("Brewery:"))
             var input = document.createElement("input");
             input.type = "text";
@@ -58,7 +58,7 @@
         }
         container.appendChild(document.create)
     }
-</script>  
+</script>
 {% endblock %}
 
 
@@ -74,7 +74,8 @@
     <input type="text" id="beers" name="beers" value=""><br />
 
     <a href="#" id="filldetails" onclick="addFields()">Fill Details</a>
-    <div id="container"/></div>
+    <div id="container" />
+    </div>
 
     <input type="submit" value="submit">
 </form>

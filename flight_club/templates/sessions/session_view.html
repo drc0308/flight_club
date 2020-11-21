@@ -1,15 +1,118 @@
 {% extends 'base.html' %}
 
 {% block header %}
-  <h1>{% block title %}FC {{session_id}}{% endblock %}</h1>
-  <h1>Date: {{date}}</h1>
+<!-- header -->
+<section class="content">
+  <div class="container">
+    <div class="row">
+      <h1 class="text-center">{% block title %}FC Session {{session_id}}{% endblock %}</h1>
+    </div><!-- end row -->
+  </div><!-- end container -->
+</section>
+
+<!-- portfolio section -->
+<section class="content">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-md-7 padd">
+        <img src="img/portfolio/technology/image_02.jpg" alt="" width="300" height="auto" />
+        <div class="owl-carousel owl-item-1">
+
+          <div class="item">
+            <img src="img/image_02.jpg" alt="" />
+          </div>
+          <div class="item">
+            <img src="img/image_01.jpg" alt="" />
+          </div>
+          <div class="item">
+            <img src="img/image_03.jpg" alt="" />
+          </div>
+
+        </div><!-- end carousel-v3 -->
+
+      </div><!-- end col-md-7 -->
+      <div class="col-md-5 padd">
+        <h6><i class="fa fa-calendar margin-right-10"></i>Date</h6>
+        <p>{{date}}</p>
+        <h6><i class="fa fa-home margin-right-10"></i>Host</h6>
+        <p>Host Name</p>
+        <h6><i class="fa fa-trophy margin-right-10"></i>Winner</h6>
+        <p>Winner Name</p>
+      </div><!-- end col-md-7 -->
+
+    </div><!-- end row -->
+  </div><!-- end container -->
+</section>
+<!-- end portfolio section -->
 {% endblock %}
 
 {% block content %}
-  {% for beer in beers %}
-    <p class="body">{{beer['username']}}: {{ beer['beer_name'] }}, {{ beer['brewery'] }} ,{{ beer['votes'] }}, {{ beer['win'] }}</p>
-    {% if not loop.last %}
-      <hr>
-    {% endif %}
-  {% endfor %}
+
+<!-- table -->
+<section class="content">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 padd">
+        <h3>Beer</h3>
+
+        <table class="table table-striped table-hover">
+          <thead>
+            <tr>
+              <th>Member</th>
+              <th>Beer</th>
+              <th>Brewery</th>
+              <th>Votes</th>
+              <th>Win</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for beer in beers %}
+            <tr>
+              <td>{{beer['username']}}</td>
+              <td>{{ beer['beer_name'] }}</td>
+              <td>{{ beer['brewery'] }}</td>
+              <td>{{ beer['votes'] }}</td>
+              <td>{{ beer['win'] }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+    </div><!-- end row -->
+  </div><!-- end container -->
+</section>
+<!-- end tables -->
+
+<!-- thumbnail -->
+<section class="content">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 padd">
+        <h3>Photos</h3>
+
+        <div class="col-sm-6 col-md-4 padd">
+          <div class="thumbnail style1">
+            <img src="/img/portfolio/architecture/image_02.jpg">
+          </div>
+        </div><!-- end col-md-4 -->
+
+        <div class="col-sm-6 col-md-4 padd">
+          <div class="thumbnail style1">
+            <img src="/img/portfolio/nature/image_04.jpg">
+          </div>
+        </div><!-- end col-md-4 -->
+
+        <div class="col-sm-6 col-md-4 padd">
+          <div class="thumbnail style1">
+            <img src="/img/portfolio/architecture/image_03.jpg">
+          </div>
+        </div><!-- end col-md-4 -->
+
+      </div>
+    </div><!-- end row -->
+  </div><!-- container -->
+</section>
+<!-- end thumbnail -->
 {% endblock %}

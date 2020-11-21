@@ -1,5 +1,5 @@
 import os
-from flask import Flask
+from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask.cli import with_appcontext
 from flask_admin import Admin
@@ -43,9 +43,9 @@ def create_app(test_config=None):
         pass
     
     # a simple page that says hello
-    @app.route('/hello')
+    @app.route('/')
     def hello():
-        return 'Hello World!'
+        return render_template('index.html')
     
     # initialize Flask-SQLAlchemy and the init-db command
     db.init_app(app)
@@ -67,7 +67,7 @@ def create_app(test_config=None):
     app.register_blueprint(auth.bp)
     app.register_blueprint(sessions.bp)
     app.register_blueprint(users.bp)
-    app.add_url_rule('/hello', endpoint='index')
+    app.add_url_rule('/', endpoint='index')
 
     return app
 

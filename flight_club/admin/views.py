@@ -11,14 +11,14 @@ from flight_club import db
 
 
 class CsvView(BaseView):
-    @expose('/', methods=('GET','POST'))
+    @expose('/', methods=('GET', 'POST'))
     def index(self):
         if request.method == 'POST':
             print('here')
             # Create variable for uploaded file
-            f = request.files['fileupload']  
+            f = request.files['fileupload']
 
-            #store the file contents as a string
+            # store the file contents as a string
             stream = io.StringIO(f.stream.read().decode("UTF8"), newline=None)
             csv_input = csv.reader(stream)
 
@@ -31,7 +31,7 @@ class CsvView(BaseView):
                 if not self._check_if_session_exists(row[0]):
                     self._add_session(row[0], row[1])
                 self._add_beer(row)
-                
+
             return redirect(url_for('csvview.index'))
         return self.render('admin/csvview/upload.html')
 
@@ -40,21 +40,21 @@ class CsvView(BaseView):
             return True
         else:
             return False
-    
+
     def _add_user(self, username):
         db.session.add(User(username=username, password=generate_password_hash('password')))
         db.session.commit()
-    
+
     def _check_if_session_exists(self, session_id):
         if db.session.query(Session.query.filter_by(id=session_id).exists()).scalar():
             return True
         else:
             return False
-    
+
     def _add_session(self, session_id, date):
         db.session.add(Session(id=session_id, date=date))
         db.session.commit()
-    
+
     def _add_beer(self, row):
 
         # CSV Format
