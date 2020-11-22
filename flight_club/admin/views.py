@@ -14,26 +14,28 @@ class CsvView(BaseView):
     @expose('/', methods=('GET', 'POST'))
     def index(self):
         if request.method == 'POST':
-            print('here')
             # Create variable for uploaded file
             f = request.files['fileupload']
-
-            # store the file contents as a string
-            stream = io.StringIO(f.stream.read().decode("UTF8"), newline=None)
-            csv_input = csv.reader(stream)
-
-            # Skip first row
-            next(csv_input)
-
-            for row in csv_input:
-                if not self._check_if_user_exists(row[2]):
-                    self._add_user(row[2])
-                if not self._check_if_session_exists(row[0]):
-                    self._add_session(row[0], row[1])
-                self._add_beer(row)
+            self.csv_add(f)
 
             return redirect(url_for('csvview.index'))
         return self.render('admin/csvview/upload.html')
+
+    # TODO (dan) make this less of a hackjob...
+    def csv_add(self, filename):
+        # store the file contents as a string
+        stream = io.StringIO(filename.stream.read().decode("UTF8"), newline=None)
+        csv_input = csv.reader(stream)
+
+        # Skip first row
+        next(csv_input)
+
+        for row in csv_input:
+            if not self._check_if_user_exists(row[2]):
+                self._add_user(row[2])
+            if not self._check_if_session_exists(row[0]):
+                self._add_session(row[0], row[1])
+            self._add_beer(row)
 
     def _check_if_user_exists(self, username):
         if db.session.query(User.query.filter_by(username=username).exists()).scalar():

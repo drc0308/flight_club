@@ -79,7 +79,7 @@
     <ul onClick="" class="zetta-menu zm-response-switch zm-full-width zm-effect-slide-top">
       <!-- LOGO -->
       <li class="zm-logo">
-        <a href="#"><img src="{{ url_for('static', filename='img/Draper_FC-Logo.svg') }}"
+        <a href="/"><img src="{{ url_for('static', filename='img/Draper_FC-Logo.svg') }}"
             alt="Draper Flight Club" /></a>
       </li>
       <!-- end LOGO -->
@@ -89,12 +89,12 @@
 
       <li class="zm-right-item"><a>Sessions</a>
         <ul class="w-150">
-          <li><a href="#">Add</a></li>
-          <li><a href="#">Listings</a></li>
+          <li><a href="/sessions/add_session">Add</a></li>
+          <li><a href="/sessions/list">Listings</a></li>
         </ul>
       </li>
 
-      <li class="zm-right-item"><a>Users</a>
+      <li class="zm-right-item"><a href="/users/list">Users</a>
       </li>
     </ul>
     <!-- /Zetta Menu 1 -->

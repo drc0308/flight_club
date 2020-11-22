@@ -12,16 +12,22 @@ bp = Blueprint('users', __name__, url_prefix='/users')
 @bp.route('/<user_id>', methods=['GET'])
 def user_page(user_id):
     if type(user_id) is str:
-        print('here')
         user = User.query.filter_by(username=user_id).first()
     else:
+        # TODO (dan) Why do I have this here? 
+        # I think this should be a real error check...
         user = user_id
 
     beers = user.beers
-    return render_template('users/profile.html', beers=beers)
+    return render_template('users/profile.html', user=user, beers=beers)
 
 @bp.route('/profile', methods=['GET'])
 @login_required
 def profile():
     return user_page(g.user)
-    
+
+@bp.route('/list', methods=['GET'])
+@login_required
+def list_sessions():
+    users = User.query.all()
+    return render_template('users/users_list.html',users=users)  

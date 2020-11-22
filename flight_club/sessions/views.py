@@ -110,3 +110,9 @@ def view_session(id):
     fc_session = Session.query.filter_by(id=int(id)).first()
     return render_template('sessions/session_view.html', session_id=fc_session.id,
                            date=fc_session.date, beers=fc_session.beers)
+
+@bp.route('/list', methods=['GET'])
+@login_required
+def list_sessions():
+    fc_sessions = Session.query.all()
+    return render_template('sessions/session_list.html',sessions=fc_sessions)
