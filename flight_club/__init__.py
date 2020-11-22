@@ -7,6 +7,9 @@ from flask_admin.contrib.sqla import ModelView
 
 import click
 
+#TODO (dan) make a better system for loading in database csv contents on startup
+TEST_CSV = 'fc_test.csv'
+
 db = SQLAlchemy()
 
 def create_app(test_config=None):
