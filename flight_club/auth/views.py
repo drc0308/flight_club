@@ -5,6 +5,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 
 from flight_club import db
 from flight_club.models.models import User
+import flight_club.models.db_helper as db_helper
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
@@ -22,9 +23,7 @@ def register():
             error = 'Username is required.'
         elif not password:
             error = 'Password is required.'
-        elif db.session.query(
-            User.query.filter_by(username=username).exists()
-        ).scalar():
+        elif db_helper.check_if_user_exists(username):
             error = f"User {username} is already registered."
 
         if error is None:

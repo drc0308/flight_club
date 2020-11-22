@@ -78,7 +78,11 @@ def create_app(test_config=None):
         db.drop_all()
         db.create_all()
     
-    return app
+        # TODO (dcuomo) load the test database on startup
+        # Need to learn flask environment controls...
+        import flight_club.models.db_helper as db_helper
+        db_helper.csv_add_filename(TEST_CSV)
+        return app
 
 def init_db():
     db.drop_all()

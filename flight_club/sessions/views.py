@@ -6,6 +6,8 @@ from flight_club import db
 from flight_club.models.models import Beer, Session
 from flight_club.auth.views import login_required
 
+import flight_club.models.db_helper as db_helper
+
 bp = Blueprint('sessions', __name__, url_prefix='/sessions')
 
 
@@ -63,7 +65,7 @@ def add_session():
         else:
             # Check Session isn't duplicate
             session_id = request.form['session_id']
-            if db.session.query(Session.query.filter_by(id=session_id).exists()).scalar():
+            if db_helper.check_if_session_exists(session_id):
                 error = 'This is a duplicate session'
             else:
                 # Add the session
