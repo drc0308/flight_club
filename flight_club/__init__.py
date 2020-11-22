@@ -69,6 +69,12 @@ def create_app(test_config=None):
     app.register_blueprint(users.bp)
     app.add_url_rule('/', endpoint='index')
 
+    # TODO (dcuomo) this starts the database up every time fresh
+    # I'll need to make this better later.
+    with app.app_context():
+        db.drop_all()
+        db.create_all()
+    
     return app
 
 def init_db():
