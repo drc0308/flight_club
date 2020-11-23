@@ -23,29 +23,23 @@ def create_app(test_config=None):
     if db_url is None:
         # default to a sqlite database in the instance folder
         db_url = "sqlite:///" + os.path.join(app.instance_path, "flight_club.sqlite")
-        # ensure the instance folder exists
-        os.makedirs(app.instance_path, exist_ok=True)
-
-    app.config.from_mapping(
-        SECRET_KEY='dev',
-        SQLALCHEMY_DATABASE_URI=db_url,
-        SQLALCHEMY_TRACK_MODIFICATIONS=False,
-    )
-
+        # ensure the instance folder path exists
+        try:
+            os.makedirs(app.instance_path,exist_ok=True)
+        except OSError:
+            pass
+    
     if test_config is None:
         # load instance config
-        app.config.from_pyfile('config.py', silent=True)
+        app.config.from_mapping(
+            SECRET_KEY='dev',
+            SQLALCHEMY_DATABASE_URI=db_url,
+            SQLALCHEMY_TRACK_MODIFICATIONS=False,
+        )
     else:
         # load the test config if passed in
         app.config.from_mapping(test_config)
-    
-    # ensure the instance folder path exists
-    try:
-        os.makedirs(app.instance_path)
-    except OSError:
-        pass
-    
-    # a simple page that says hello
+
     @app.route('/')
     def hello():
         return render_template('index.html')
