@@ -17,28 +17,10 @@ def create_app(test_config=None):
     """
     app = Flask(__name__, instance_relative_config=True)
 
-    # some deploy systems set the database url in the environ
-    db_url = os.environ.get("DATABASE_URL")
-
-    if db_url is None:
-        # default to a sqlite database in the instance folder
-        db_url = "sqlite:///" + os.path.join(app.instance_path, "flight_club.sqlite")
-        # ensure the instance folder path exists
-        try:
-            os.makedirs(app.instance_path,exist_ok=True)
-        except OSError:
-            pass
-    
-    if test_config is None:
-        # load instance config
-        app.config.from_mapping(
-            SECRET_KEY='dev',
-            SQLALCHEMY_DATABASE_URI=db_url,
-            SQLALCHEMY_TRACK_MODIFICATIONS=False,
-        )
-    else:
-        # load the test config if passed in
-        app.config.from_mapping(test_config)
+    # (TODO) figure out how to like use flask config system
+    import flight_club.fc_config as fc_config
+    config_object = fc_config.DevConfig()
+    app.config.from_object(config_object)
 
     @app.route('/')
     def hello():
