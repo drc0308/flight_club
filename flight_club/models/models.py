@@ -17,6 +17,7 @@ class Session(db.Model):
 class Beer(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     beer_name = db.Column(db.String, nullable=False)
+    beer_abv = db.Column(db.Float, nullable=False)
     brewery = db.Column(db.String, nullable=False)
     style = db.Column(db.String, nullable=False)
     votes = db.Column(db.Integer, nullable=False)
