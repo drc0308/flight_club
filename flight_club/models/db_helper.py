@@ -38,7 +38,7 @@ def add_beer(row):
     # session, date, username, order, beer, brewery, score, win, specific type, type, abv
     db.session.add(Beer(
         beer_name=row[4],
-        beer_abv=float(row[11]),
+        beer_abv=float(row[10]),
         brewery=row[5],
         style=row[9],
         votes=int(row[6]),
