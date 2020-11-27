@@ -7,10 +7,11 @@ from flask_admin.contrib.sqla import ModelView
 
 import click
 
-#TODO (dan) make a better system for loading in database csv contents on startup
+# TODO (dan) make a better system for loading in database csv contents on startup
 TEST_CSV = 'fc_test.csv'
 
 db = SQLAlchemy()
+
 
 def create_app(test_config=None):
     """Create and configure the app
@@ -25,7 +26,7 @@ def create_app(test_config=None):
     @app.route('/')
     def hello():
         return render_template('index.html')
-    
+
     # initialize Flask-SQLAlchemy and the init-db command
     db.init_app(app)
     app.cli.add_command(init_db_command)
@@ -53,16 +54,18 @@ def create_app(test_config=None):
     with app.app_context():
         db.drop_all()
         db.create_all()
-    
+
         # TODO (dcuomo) load the test database on startup
         # Need to learn flask environment controls...
         import flight_club.models.db_helper as db_helper
         db_helper.csv_add_filename(TEST_CSV)
         return app
 
+
 def init_db():
     db.drop_all()
     db.create_all()
+
 
 @click.command("init-db")
 @with_appcontext

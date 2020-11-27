@@ -7,15 +7,18 @@ from werkzeug.security import generate_password_hash
 from flight_club.models.models import User, Beer, Session
 from flight_club import db
 
+
 def check_if_user_exists(username):
     if db.session.query(User.query.filter_by(username=username).exists()).scalar():
         return True
     else:
         return False
 
+
 def add_user(username):
     db.session.add(User(username=username, password=generate_password_hash('password')))
     db.session.commit()
+
 
 def check_if_session_exists(session_id):
     if db.session.query(Session.query.filter_by(id=session_id).exists()).scalar():
@@ -23,9 +26,11 @@ def check_if_session_exists(session_id):
     else:
         return False
 
+
 def add_session(session_id, date):
     db.session.add(Session(id=session_id, date=date))
     db.session.commit()
+
 
 def add_beer(row):
 
@@ -42,6 +47,7 @@ def add_beer(row):
     ))
     db.session.commit()
 
+
 def csv_add_request(file):
     # store the file contents as a string
     stream = io.StringIO(file.stream.read().decode("UTF8"), newline=None)
@@ -56,6 +62,7 @@ def csv_add_request(file):
         if not check_if_session_exists(row[0]):
             add_session(row[0], row[1])
         add_beer(row)
+
 
 def csv_add_filename(filename):
     with open(filename) as stream:
