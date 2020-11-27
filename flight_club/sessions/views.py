@@ -1,6 +1,6 @@
 import functools
 
-from flask import Blueprint, flash, g, redirect, render_template, request, session, url_for
+from flask import abort, Blueprint, flash, g, redirect, render_template, request, session, url_for
 
 from flight_club import db
 from flight_club.models.models import Beer, Session
@@ -10,6 +10,7 @@ from flight_club.sessions.fc_sessions import FCSession
 import flight_club.models.db_helper as db_helper
 
 bp = Blueprint('sessions', __name__, url_prefix='/sessions')
+
 
 @bp.route('/add_session', methods=['GET', 'POST'])
 @login_required
@@ -69,15 +70,19 @@ def add_session():
 @bp.route('/fc<id>', methods=['GET'])
 @login_required
 def view_session(id):
+    # If this isn't a valid session, send a 404.
+    if not db_helper.check_if_session_exists(id):
+        abort(404)
     fc_session = FCSession(int(id))
-    return render_template('sessions/session_view.html', 
-                            session_id=fc_session.id,
-                            date=fc_session.date,
-                            winner=fc_session.winner, 
-                            beers=fc_session.beers)
+    return render_template('sessions/session_view.html',
+                           session_id=fc_session.id,
+                           date=fc_session.date,
+                           winner=fc_session.winner,
+                           beers=fc_session.beers)
+
 
 @bp.route('/list', methods=['GET'])
 @login_required
 def list_sessions():
     fc_sessions = Session.query.all()
-    return render_template('sessions/session_list.html',sessions=fc_sessions)
+    return render_template('sessions/session_list.html', sessions=fc_sessions)
