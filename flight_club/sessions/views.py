@@ -74,7 +74,8 @@ def view_session(id):
                             session_id=fc_session.id,
                             date=fc_session.date,
                             winner=fc_session.winner, 
-                            beers=fc_session.beers)
+                            beers=fc_session.beers,
+                            avg_abv=fc_session.session_avg_abv)
 
 @bp.route('/list', methods=['GET'])
 @login_required
