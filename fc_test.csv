@@ -1,17 +1,17 @@
-Session,Date,Member,Order,Beer,Brewery,Score,Win,Specific Type,Type
-1,11/16/2015,Brigid,1,Old Howling Bastard,Blue Point,0,0,American Barleywine,Barleywine
-1,11/16/2015,Dan,2,Imperial Biscotti Break,Evil Twin,3,0,Imperial Stout,Stout
-1,11/16/2015,Goldfarb,3,Matilda,Goose Island,2,0,Belgian Strong Pale Ale,Pale Ale
-1,11/16/2015,Maria,4,Collette,Great Divide,3,0,Farmhouse,Saison/Farmhouse
-1,11/16/2015,Tyler,5,Four Horseman,Idle Hands,0,0,Belgian Quad,Belgian
-1,11/16/2015,Will,6,Kiwi Rising,Jack's Abby,0,0,Double IPL,Lager
-1,11/16/2015,Olive,7,Your Father Smelt of Elderberrys,Stone,0,0,Ancient Ale,Herbed Ale
-1,11/16/2015,Will,8,W3,Transmitter,6,1,American Wild Ale,Wild/Sour
-2,12/9/2015,Dan,6,Holidale,Berkshires,2,0,Barleywine,Barleywine
-2,12/9/2015,Maria,7,Oude Tart w/ Cherries,Bruery Terreux,3,0,Sour Red,Wild/Sour
-2,12/9/2015,Will,2,Kvasir,Dogfish Head,3,0,Gruit/Herbed Ale,Herbed Ale
-2,12/9/2015,Goldfarb,5,Leaning Chimneys,Grey Sail,1,0,Smoked Porter,Porter
-2,12/9/2015,Tyler,3,Punkrauch,Le Trou Du Diable,3,0,Rauchbier,Rauchbier
-2,12/9/2015,Olive,4,Maracuya,Nightshift,4,1,American Wild Ale,Wild/Sour
-2,12/9/2015,Kyle,1,"Voodoo Doughnut Pretzel, Raspberry & Chocolate Ale",Rogue,0,0,American Brown Ale,Brown Ale
-2,12/9/2015,Brigid,L,Blueberry Ale,Wachusett,0,0,Fruit Beer,Fruit Beer
+Session,Date,Member,Order,Beer,Brewery,Score,Win,Specific Type,Type,ABV
+1,11/16/2015,Brigid,1,Old Howling Bastard,Blue Point,0,0,American Barleywine,Barleywine,10
+1,11/16/2015,Dan,2,Imperial Biscotti Break,Evil Twin,3,0,Imperial Stout,Stout,11.5
+1,11/16/2015,Goldfarb,3,Matilda,Goose Island,2,0,Belgian Strong Pale Ale,Pale Ale,7
+1,11/16/2015,Maria,4,Collette,Great Divide,3,0,Farmhouse,Saison/Farmhouse,7.3
+1,11/16/2015,Tyler,5,Four Horseman,Idle Hands,0,0,Belgian Quad,Belgian,11.8
+1,11/16/2015,Will,6,Kiwi Rising,Jack's Abby,0,0,Double IPL,Lager,8.5
+1,11/16/2015,Olive,7,Your Father Smelt of Elderberrys,Stone,0,0,Ancient Ale,Herbed Ale,10.3
+1,11/16/2015,Will,8,W3,Transmitter,6,1,American Wild Ale,Wild/Sour,7.8
+2,12/9/2015,Dan,6,Holidale,Berkshires,2,0,Barleywine,Barleywine,9.8
+2,12/9/2015,Maria,7,Oude Tart w/ Cherries,Bruery Terreux,3,0,Sour Red,Wild/Sour,8.8
+2,12/9/2015,Will,2,Kvasir,Dogfish Head,3,0,Gruit/Herbed Ale,Herbed Ale,10
+2,12/9/2015,Goldfarb,5,Leaning Chimneys,Grey Sail,1,0,Smoked Porter,Porter,6
+2,12/9/2015,Tyler,3,Punkrauch,Le Trou Du Diable,3,0,Rauchbier,Rauchbier,6.5
+2,12/9/2015,Olive,4,Maracuya,Nightshift,4,1,American Wild Ale,Wild/Sour,7.4
+2,12/9/2015,Kyle,1,"Voodoo Doughnut Pretzel, Raspberry & Chocolate Ale",Rogue,0,0,American Brown Ale,Brown Ale,5.4
+2,12/9/2015,Brigid,L,Blueberry Ale,Wachusett,0,0,Fruit Beer,Fruit Beer,4.5
