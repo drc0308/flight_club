@@ -19,7 +19,8 @@ def user_page(user_id):
                             score=user.avg_score, 
                             beers=user.beers,
                             win_total=user._win_count,
-                            wins=user.wins)
+                            wins=user.wins,
+                            avg_abv=user.avg_abv)
 
 @bp.route('/profile', methods=['GET'])
 @login_required
