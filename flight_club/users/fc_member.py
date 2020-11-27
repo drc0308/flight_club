@@ -35,9 +35,9 @@ class FCMember:
             username=self._username).all()[0][0]
 
     def _determine_average_abv(self):
-        self._avg_abv = Beer.query.with_entities(
+        self._avg_abv = round(Beer.query.with_entities(
             func.avg(Beer.beer_abv).label('avg')).filter_by(
-            username=self._username).all()[0][0]
+            username=self._username).all()[0][0], 2)
 
     @property
     def username(self):
