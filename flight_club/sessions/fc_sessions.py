@@ -14,6 +14,7 @@ class FCSession:
         self._id = session_id
         self._get_session_from_db()
         self._get_session_winner()
+        self._determine_avg_session_abv()
 
     def _get_session_from_db(self):
         self._session = Session.query.filter_by(id=self._id).first()
@@ -23,6 +24,11 @@ class FCSession:
     def _get_session_winner(self):
         # This might not need to be it's own query :shrug:
         self._winner = Beer.query.filter_by(session_id=self._id, win=1).first().username
+    
+    def _determine_avg_session_abv(self):
+        self._session_avg_abv = Beer.query.with_entities(
+            func.avg(Beer.beer_abv).label('avg')).filter_by(
+            session_id=self._id).all()[0][0]
 
     @property
     def id(self):
@@ -43,3 +49,7 @@ class FCSession:
     @property
     def winner(self):
         return self._winner
+
+    @property
+    def session_avg_abv(self):
+        return self._session_avg_abv
