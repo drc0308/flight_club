@@ -1,14 +1,48 @@
 {% extends 'base.html' %}
 
 {% block header %}
+
+<section class="content">
+  <div class="container">
+      <div class="row">
+          <h1 class="text-center">Member: {{user}}</h1>
+      </div><!-- end row -->
+  </div><!-- end container -->
+</section>
+
+<!-- portfolio section -->
 <section class="content">
   <div class="container">
     <div class="row">
-      <h1 class="text-center">Profile: {{user['username']}}</h1>
-      </h1>
+
+      <div class="col-md-7 padd">
+        <img src="img/portfolio/technology/image_02.jpg" alt="" width="300" height="auto" />
+        <div class="owl-carousel owl-item-1">
+
+          <div class="item">
+            <img src="img/image_02.jpg" alt="" />
+          </div>
+          <div class="item">
+            <img src="img/image_01.jpg" alt="" />
+          </div>
+          <div class="item">
+            <img src="img/image_03.jpg" alt="" />
+          </div>
+
+        </div><!-- end carousel-v3 -->
+
+      </div><!-- end col-md-7 -->
+      <div class="col-md-5 padd">
+        <h6><i class="fa fa-home margin-right-10"></i>Avg Votes</h6>
+        <p>{{score}}</p>
+        <h6><i class="fa fa-trophy margin-right-10"></i>Win Count</h6>
+        <p>{{win_total}}</p>
+      </div><!-- end col-md-7 -->
+
     </div><!-- end row -->
   </div><!-- end container -->
 </section>
+<!-- end portfolio section -->
 {% endblock %}
 
 {% block content %}
@@ -17,13 +51,14 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-12 padd">
-        <h3>Your Beers</h3>
+        <h3>{{user}}'s Beers</h3>
 
         <table class="table table-striped table-hover">
           <thead>
             <tr>
               <th>Beer</th>
               <th>Brewery</th>
+              <th>Style</th>
               <th>Votes</th>
               <th>Win</th>
             </tr>
@@ -33,6 +68,7 @@
             <tr>
               <td>{{ beer['beer_name'] }}</td>
               <td>{{ beer['brewery'] }}</td>
+              <td>{{ beer['style'] }}</td>
               <td>{{ beer['votes'] }}</td>
               <td>{{ beer['win'] }}</td>
             </tr>

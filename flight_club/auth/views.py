@@ -70,8 +70,10 @@ def load_logged_in_user():
 
     if user_id is None:
         g.user = None
+        g.username = None
     else:
         g.user = User.query.filter_by(id=user_id).first()
+        g.username = g.user.username
 
 
 @bp.route('/logout')

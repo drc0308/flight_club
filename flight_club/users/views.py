@@ -5,26 +5,26 @@ from flask import Blueprint, flash, g, redirect, render_template, request, sessi
 from flight_club import db
 from flight_club.models.models import User, Beer, Session
 from flight_club.auth.views import login_required
+from flight_club.users.fc_member import FCMember
 
 bp = Blueprint('users', __name__, url_prefix='/users')
 
 # TODO (dan) move this to a profile view
 @bp.route('/<user_id>', methods=['GET'])
 def user_page(user_id):
-    if type(user_id) is str:
-        user = User.query.filter_by(username=user_id).first()
-    else:
-        # TODO (dan) Why do I have this here? 
-        # I think this should be a real error check...
-        user = user_id
 
-    beers = user.beers
-    return render_template('users/profile.html', user=user, beers=beers)
+    user = FCMember(user_id)
+    return render_template('users/profile.html', 
+                            user=user.username,
+                            score=user.avg_score, 
+                            beers=user.beers,
+                            win_total=user._win_count,
+                            wins=user.wins)
 
 @bp.route('/profile', methods=['GET'])
 @login_required
 def profile():
-    return user_page(g.user)
+    return user_page(g.username)
 
 @bp.route('/list', methods=['GET'])
 @login_required
