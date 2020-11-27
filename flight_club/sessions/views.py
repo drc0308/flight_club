@@ -5,51 +5,11 @@ from flask import Blueprint, flash, g, redirect, render_template, request, sessi
 from flight_club import db
 from flight_club.models.models import Beer, Session
 from flight_club.auth.views import login_required
+from flight_club.sessions.fc_sessions import FCSession
 
 import flight_club.models.db_helper as db_helper
 
 bp = Blueprint('sessions', __name__, url_prefix='/sessions')
-
-
-@bp.route('/test_beer', methods=('GET', 'POST'))
-@login_required
-def test_beer():
-    """Function for a test add of a beer
-    """
-    if request.method == 'POST':
-        beer_name = request.form['beer_name']
-        brewery = request.form['brewery']
-        votes = request.form['votes']
-        win = request.form['win']
-        session_id = request.form['session']
-        username = g.user.username
-        error = None
-
-        if not beer_name:
-            error = 'Beer name is required'
-        elif not brewery:
-            error = 'Brewery is retired'
-        elif not votes:
-            votes = 0
-        elif not win:
-            win = 0
-        elif not username:
-            print(username)
-
-        if error is None:
-            db.session.add(Beer(beer_name=beer_name,
-                                brewery=brewery,
-                                votes=int(votes),
-                                win=int(win),
-                                username=username,
-                                session_id=int(session_id)))
-            db.session.commit()
-            return redirect(url_for('sessions.beer_list'))
-
-        flash(error)
-
-    return render_template('sessions/test_beer.html')
-
 
 @bp.route('/add_session', methods=['GET', 'POST'])
 @login_required
@@ -109,9 +69,12 @@ def add_session():
 @bp.route('/fc<id>', methods=['GET'])
 @login_required
 def view_session(id):
-    fc_session = Session.query.filter_by(id=int(id)).first()
-    return render_template('sessions/session_view.html', session_id=fc_session.id,
-                           date=fc_session.date, beers=fc_session.beers)
+    fc_session = FCSession(int(id))
+    return render_template('sessions/session_view.html', 
+                            session_id=fc_session.id,
+                            date=fc_session.date,
+                            winner=fc_session.winner, 
+                            beers=fc_session.beers)
 
 @bp.route('/list', methods=['GET'])
 @login_required
