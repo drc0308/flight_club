@@ -19,6 +19,7 @@ class FCMember:
         self._get_user_data_from_db()
         self._determine_wins()
         self._determine_scores()
+        self._determine_average_abv()
 
     def _get_user_data_from_db(self):
         self._user = User.query.filter_by(username=self._username).first()
