@@ -1,5 +1,7 @@
 # flight_club
 
+![](https://travis-ci.com/drc56/flight_club.svg?branch=master)
+
 # Running in container
 ## System dependencies
 1. `docker`
