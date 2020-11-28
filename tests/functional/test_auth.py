@@ -1,4 +1,3 @@
-
 import pytest
 
 from flight_club import db

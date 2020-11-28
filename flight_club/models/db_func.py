@@ -37,7 +37,6 @@ def add_session(session_id, date):
 
 
 def add_beer(row):
-
     # CSV Format
     # session, date, username, order, beer, brewery, score, win, specific type, type, abv
     db.session.add(Beer(
@@ -52,6 +51,8 @@ def add_beer(row):
     ))
     db.session.commit()
 
+def get_beer(beer_name):
+    return Beer.query.filter_by(beer_name=beer_name).all()
 
 def csv_add_request(file):
     # store the file contents as a string
