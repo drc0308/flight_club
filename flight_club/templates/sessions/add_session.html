@@ -1,7 +1,18 @@
 {% extends 'base.html' %}
 
 {% block header %}
-<h1>{% block title %}Add Session{% endblock %}</h1>
+<!-- header -->
+<section class="content">
+  <div class="container">
+    <div class="row">
+        <h1 class="text-center">{% block title %}Add Session{% endblock %}</h1>
+    </div><!-- end row -->
+</div><!-- end container -->
+</section>
+
+<section class="content">
+  <div class="container">
+    <div class="row">
 <script type='text/javascript'>
     // I basically stole this script from stackoverflow
     // What's front end development anyway..
@@ -61,22 +72,27 @@
 </script>
 {% endblock %}
 
-
 {% block content %}
-<form method="post">
-    <label for="session_id">FC Session #:</label>
-    <input type="Number" id="session_id" name="session_id" required><br />
+<section class="content">
+  <div class="container">
+    <div class="row">
+        <form method="post">
+            <label for="session_id">FC Session #:</label>
+            <input type="Number" id="session_id" name="session_id" required><br />
 
-    <label for="date">Date:</label>
-    <input type="Number" id="date" name="date" required><br />
+            <label for="date">Date:</label>
+            <input type="Number" id="date" name="date" required><br />
 
-    <label for="beers">Number of Beers:</label>
-    <input type="text" id="beers" name="beers" value=""><br />
+            <label for="beers">Number of Beers:</label>
+            <input type="text" id="beers" name="beers" value=""><br />
 
-    <a href="#" id="filldetails" onclick="addFields()">Fill Details</a>
-    <div id="container" />
-    </div>
+            <a href="#" id="filldetails" onclick="addFields()">Fill Details</a>
+            <div id="container" />
+            </div>
 
-    <input type="submit" value="submit">
-</form>
+            <input type="submit" value="submit">
+        </form>
+    </div><!-- end row -->
+  </div><!-- end container -->
+</section>
 {% endblock %}

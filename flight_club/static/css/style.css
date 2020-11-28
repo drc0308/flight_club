@@ -1452,7 +1452,19 @@ hr { border: 0; }
 .input-group-addon { background: #e7e9e9; border: 1px solid #e7e9e9; }
 .input-group-addon .fa { width: 20px; }
 input[type="checkbox"] { margin: 7px 10px 0 0; }
-label { font-size: 14px; font-weight: 300; }
+label { font-size: 16px; font-weight: 300; }
+
+input [type="submit"] {
+	margin: 15px 0;
+	background: #D17101;
+	color: #fff; 
+	border: none;
+	text-transform: capitalize;
+}
+
+input [type="submit"]:hover {
+	background: #552500;
+}
 
 textarea, textarea.form-control, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], select, select.form-control, .uneditable-input { 
 	border: 1px solid #e7e9e9;
@@ -1734,7 +1746,7 @@ ul.languages li a.active { text-decoration: underline; }
 .dark p { color: #b0bac2; }
 
 /*header*/
-header { position: relative; padding: 150px 0; }
+header { position: relative; padding: 0; }
 .layer { background: #21252b; width: 100%; height: 100%; position: absolute; top: 0; left: 0; opacity: 0.8; }
 header .no-slider { position: relative; color: #fff; }
 header .no-slider h1 { color: #fff; }
