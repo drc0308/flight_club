@@ -7,7 +7,7 @@ from flight_club.models.models import Beer, Session
 from flight_club.auth.views import login_required
 from flight_club.sessions.fc_sessions import FCSession
 
-import flight_club.models.db_helper as db_helper
+import flight_club.models.db_func as db_func
 
 bp = Blueprint('sessions', __name__, url_prefix='/sessions')
 
@@ -26,7 +26,7 @@ def add_session():
         else:
             # Check Session isn't duplicate
             session_id = request.form['session_id']
-            if db_helper.check_if_session_exists(session_id):
+            if db_func.check_if_session_exists(session_id):
                 error = 'This is a duplicate session'
             else:
                 # Add the session
@@ -71,7 +71,7 @@ def add_session():
 @login_required
 def view_session(id):
     # If this isn't a valid session, send a 404.
-    if not db_helper.check_if_session_exists(id):
+    if not db_func.check_if_session_exists(id):
         abort(404)
     fc_session = FCSession(int(id))
     return render_template('sessions/session_view.html', 

@@ -1,20 +1,9 @@
-
 import pytest
 
-from flight_club import create_app
 from flight_club import db
 from flight_club.models.models import User
 
 from flask import g, session
-
-@pytest.fixture(scope="module")
-def app():
-    app = create_app()
-    yield app
-
-@pytest.fixture(scope="module")
-def test_client(app):
-    return app.test_client()
 
 def test_register(test_client, app):
     # The registration page works

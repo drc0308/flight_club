@@ -19,8 +19,8 @@ def load_dev_db(app):
     with app.app_context():
         # TODO (dcuomo) load the test database on startup
         # Need to learn flask environment controls...
-        import flight_club.models.db_helper as db_helper
-        db_helper.csv_add_filename(TEST_CSV)
+        import flight_club.models.db_func as db_func
+        db_func.csv_add_filename(TEST_CSV)
 
 def create_app(test_config=None):
     """Create and configure the app
