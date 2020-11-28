@@ -15,10 +15,10 @@ def check_if_user_exists(username):
         return False
 
 
-def add_user(username):
+def add_user(username, password='password'):
     if check_if_user_exists(username):
         return
-    db.session.add(User(username=username, password=generate_password_hash('password')))
+    db.session.add(User(username=username, password=generate_password_hash(password)))
     db.session.commit()
 
 
