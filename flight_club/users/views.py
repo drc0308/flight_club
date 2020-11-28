@@ -17,13 +17,13 @@ def user_page(user_id):
     if not db_helper.check_if_user_exists(user_id):
         abort(404)
     user = FCMember(user_id)
-    return render_template('users/profile.html',
-                           user=user.username,
-                           score=user.avg_score,
-                           beers=user.beers,
-                           win_total=user._win_count,
-                           wins=user.wins)
-
+    return render_template('users/profile.html', 
+                            user=user.username,
+                            score=user.avg_score, 
+                            beers=user.beers,
+                            win_total=user._win_count,
+                            wins=user.wins,
+                            avg_abv=user.avg_abv)
 
 @bp.route('/profile', methods=['GET'])
 @login_required
