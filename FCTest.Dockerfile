@@ -22,4 +22,4 @@ RUN pip install -r requirements.txt
 
 EXPOSE 5000
 
-CMD ["pytest"]
+CMD ["pytest", "-v", "--junit-xml=results.xml"]

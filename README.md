@@ -15,3 +15,12 @@ docker-compose up dev
 0.0.0.0:5000
 ```
 Congrats you are now running the flight club app
+
+
+## Running Tests
+1. Run:
+```
+docker-compose build test
+docker-compose up test
+```
+2. Review results in `results.xml` file
