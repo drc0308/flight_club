@@ -30,6 +30,8 @@ def check_if_session_exists(session_id):
 
 
 def add_session(session_id, date):
+    if check_if_session_exists(session_id):
+        return False
     db.session.add(Session(id=session_id, date=date))
     db.session.commit()
 

@@ -5,6 +5,6 @@ install:
   - travis_retry pip install -r requirements.txt
   - travis_retry pip install coveralls
 script:
-  - pytest -v
+  - pytest -v --cov=flight_club/
 after_success:
   - coveralls
