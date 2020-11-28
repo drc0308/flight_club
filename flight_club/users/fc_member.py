@@ -1,7 +1,7 @@
 from flight_club import db
 from flight_club.models.models import User, Beer, Session
 
-import flight_club.models.db_helper as db_helper
+import flight_club.models.db_func as db_func
 from sqlalchemy.sql import func
 
 
@@ -14,7 +14,7 @@ class FCMember:
     def __init__(self, username: str):
         # TODO (dan) For now I think I'll check before making this
         # There should probably be so better "loader" system...
-        # if not db_helper.check_if_user_exists(username):
+        # if not db_func.check_if_user_exists(username):
         self._username = username
         self._get_user_data_from_db()
         self._determine_wins()

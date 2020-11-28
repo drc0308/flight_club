@@ -6,7 +6,7 @@ from flask import flash, g, redirect, render_template, request, session, url_for
 from werkzeug.security import generate_password_hash
 
 from flight_club.models.models import User, Beer, Session
-import flight_club.models.db_helper as db_helper
+import flight_club.models.db_func as db_func
 from flight_club import db
 
 class CsvView(BaseView):
@@ -15,7 +15,7 @@ class CsvView(BaseView):
         if request.method == 'POST':
             # Create variable for uploaded file
             f = request.files['fileupload']
-            db_helper.csv_add_request(f)
+            db_func.csv_add_request(f)
 
             return redirect(url_for('csvview.index'))
         return self.render('admin/csvview/upload.html')

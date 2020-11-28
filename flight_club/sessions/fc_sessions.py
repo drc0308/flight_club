@@ -1,7 +1,7 @@
 from flight_club import db
 from flight_club.models.models import User, Beer, Session
 
-import flight_club.models.db_helper as db_helper
+import flight_club.models.db_func as db_func
 from sqlalchemy.sql import func
 
 
