@@ -1,6 +1,6 @@
 # flight_club
 
-![](https://travis-ci.com/drc56/flight_club.svg?branch=master) [![Coverage Status](https://coveralls.io/repos/github/drc56/flight_club/badge.svg?branch=master)](https://coveralls.io/github/drc56/flight_club?branch=master)
+[![Build Status](https://travis-ci.com/drc56/flight_club.svg?branch=master)](https://travis-ci.com/drc56/flight_club) [![Coverage Status](https://coveralls.io/repos/github/drc56/flight_club/badge.svg?branch=master)](https://coveralls.io/github/drc56/flight_club?branch=master)
 
 # Running in container
 ## System dependencies
