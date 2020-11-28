@@ -10,23 +10,16 @@
 # 
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
+FROM python:3.9.0
 
-version: "3.8"
+WORKDIR /src
 
-services:
-  dev:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    volumes:
-      - ".:/src"
-    ports:
-      - "5000:5000"
-  test:
-    build:
-      context: .
-      dockerfile: FCTest.Dockerfile
-    volumes:
-      - ".:/src"
-    ports:
-      - "5000:5000"
+ENV FLASK_APP=flight_club
+ENV FLASK_RUN_HOST=0.0.0.0
+
+COPY requirements.txt requirements.txt
+RUN pip install -r requirements.txt
+
+EXPOSE 5000
+
+CMD ["pytest"]
