@@ -75,7 +75,6 @@ def csv_add_filename(filename):
         next(csv_input)
 
         for row in csv_input:
-            print(row)
             if not check_if_user_exists(row[2]):
                 add_user(row[2])
             if not check_if_session_exists(row[0]):
