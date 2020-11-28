@@ -15,6 +15,13 @@ db = SQLAlchemy()
 def page_not_found(e):
   return render_template('404.html'), 404
 
+def load_dev_db(app):
+    with app.app_context():
+        # TODO (dcuomo) load the test database on startup
+        # Need to learn flask environment controls...
+        import flight_club.models.db_helper as db_helper
+        db_helper.csv_add_filename(TEST_CSV)
+
 def create_app(test_config=None):
     """Create and configure the app
     """
@@ -23,20 +30,22 @@ def create_app(test_config=None):
 
     # (TODO) figure out how to like use flask config system
     import flight_club.fc_config as fc_config
-    config_object = fc_config.DevConfig()
-    app.config.from_object(config_object)
+    if os.getenv('FLASK_ENV') == 'development':
+        config_object = fc_config.DevConfig()
+        app.config.from_object(config_object)
+    else:
+        # TODO still don't have good config management
+        config_object = fc_config.Config()
+        app.config.from_object(config_object)
 
     @app.route('/')
     def hello():
         return render_template('index.html')
 
-    # initialize Flask-SQLAlchemy and the init-db command
-    db.init_app(app)
-    app.cli.add_command(init_db_command)
+    from flight_club.models.models import User, Beer, Session
 
     # Setup Flask Admin Panel
     admin = Admin(app, name='fightclub', template_mode='bootstrap3')
-    from flight_club.models.models import User, Beer, Session
     from flight_club.admin.views import CsvView
     admin.add_view(ModelView(User, db.session))
     admin.add_view(ModelView(Beer, db.session))
@@ -52,17 +61,21 @@ def create_app(test_config=None):
     app.register_blueprint(users.bp)
     app.add_url_rule('/', endpoint='index')
 
+    # initialize Flask-SQLAlchemy
+    db.init_app(app)
     # TODO (dcuomo) this starts the database up every time fresh
     # I'll need to make this better later.
     with app.app_context():
         db.drop_all()
         db.create_all()
+    
+    try:
+        if app.config['FLASK_ENV'] == 'development':
+            load_dev_db(app)
+    except KeyError:
+        pass
 
-        # TODO (dcuomo) load the test database on startup
-        # Need to learn flask environment controls...
-        import flight_club.models.db_helper as db_helper
-        db_helper.csv_add_filename(TEST_CSV)
-        return app
+    return app
 
 
 def init_db():

@@ -20,6 +20,8 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ".:/src"
+    env_file:
+      - dev_env.env
     ports:
       - "5000:5000"
   test:
