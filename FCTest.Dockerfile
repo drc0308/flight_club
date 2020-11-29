@@ -17,4 +17,4 @@ WORKDIR /src
 COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 
-CMD ["pytest", "-v", "--junit-xml=results.xml", "--cov=/src/flight_club/"]
+CMD ["pytest", "-v", "--junit-xml=results.xml", "--cov=/src/flight_club/", "--cov-report", "term-missing"]
