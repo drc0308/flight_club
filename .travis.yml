@@ -2,9 +2,9 @@ language: python
 services:
   - docker
 install:
-  - travis_retry pip install -r requirements.txt
   - travis_retry pip install coveralls
 script:
-  - pytest -v --cov=flight_club/
+  - docker-compose up test
 after_success:
   - coveralls
+
