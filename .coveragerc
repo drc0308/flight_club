@@ -1,5 +1,5 @@
 [run]
-source = ingredient_phrase_tagger
+source = flight_club
 
 ; Run in parallel mode so that coverage can canonicalize the source paths
 ; regardless of whether it runs locally or within a Docker container.
