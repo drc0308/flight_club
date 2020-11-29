@@ -8,29 +8,33 @@ from flask_admin.contrib.sqla import ModelView
 import click
 
 # TODO (dan) make a better system for loading in database csv contents on startup
-TEST_CSV = 'fc_test.csv'
+TEST_CSV = "fc_test.csv"
 
 db = SQLAlchemy()
 
+
 def page_not_found(e):
-  return render_template('404.html'), 404
+    return render_template("404.html"), 404
+
 
 def load_dev_db(app):
     with app.app_context():
         # TODO (dcuomo) load the test database on startup
         # Need to learn flask environment controls...
         import flight_club.models.db_func as db_func
+
         db_func.csv_add_filename(TEST_CSV)
 
+
 def create_app(test_config=None):
-    """Create and configure the app
-    """
+    """Create and configure the app"""
     app = Flask(__name__, instance_relative_config=True)
     app.register_error_handler(404, page_not_found)
 
     # (TODO) figure out how to like use flask config system
     import flight_club.fc_config as fc_config
-    if os.getenv('FLASK_ENV') == 'development':
+
+    if os.getenv("FLASK_ENV") == "development":
         config_object = fc_config.DevConfig()
         app.config.from_object(config_object)
     else:
@@ -38,28 +42,30 @@ def create_app(test_config=None):
         config_object = fc_config.Config()
         app.config.from_object(config_object)
 
-    @app.route('/')
+    @app.route("/")
     def hello():
-        return render_template('index.html')
+        return render_template("index.html")
 
     from flight_club.models.models import User, Beer, Session
 
     # Setup Flask Admin Panel
-    admin = Admin(app, name='fightclub', template_mode='bootstrap3')
+    admin = Admin(app, name="fightclub", template_mode="bootstrap3")
     from flight_club.admin.views import CsvView
+
     admin.add_view(ModelView(User, db.session))
     admin.add_view(ModelView(Beer, db.session))
     admin.add_view(ModelView(Session, db.session))
-    admin.add_view(CsvView(name='CsvView', endpoint='csvview'))
+    admin.add_view(CsvView(name="CsvView", endpoint="csvview"))
 
     # Import blueprints
     from flight_club import auth
     from flight_club import sessions
     from flight_club import users
+
     app.register_blueprint(auth.bp)
     app.register_blueprint(sessions.bp)
     app.register_blueprint(users.bp)
-    app.add_url_rule('/', endpoint='index')
+    app.add_url_rule("/", endpoint="index")
 
     # initialize Flask-SQLAlchemy
     db.init_app(app)
@@ -68,9 +74,9 @@ def create_app(test_config=None):
     with app.app_context():
         db.drop_all()
         db.create_all()
-    
+
     try:
-        if app.config['FLASK_ENV'] == 'development':
+        if app.config["FLASK_ENV"] == "development":
             load_dev_db(app)
     except KeyError:
         pass

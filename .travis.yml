@@ -16,6 +16,7 @@ services:
 install:
   - travis_retry pip install coveralls
 script:
+  - docker-compose up lint 
   - docker-compose up test
 after_success:
   # Upload coverage information to Coveralls.
