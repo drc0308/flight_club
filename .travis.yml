@@ -6,5 +6,7 @@ install:
 script:
   - docker-compose up test
 after_success:
+  # Use coverage combine to canonicalize the source paths.
+  - coverage combine
+  # Upload coverage information to Coveralls.
   - coveralls
-
