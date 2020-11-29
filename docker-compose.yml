@@ -30,5 +30,10 @@ services:
       dockerfile: FCTest.Dockerfile
     volumes:
       - ".:/src"
-    ports:
-      - "5000:5000"
+  lint:
+    build:
+      context: .
+      dockerfile: FCTest.Dockerfile
+    volumes:
+      - ".:/src"
+    command: black /src/flight_club --check
