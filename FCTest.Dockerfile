@@ -14,12 +14,7 @@ FROM python:3.9.0
 
 WORKDIR /src
 
-ENV FLASK_APP=flight_club
-ENV FLASK_RUN_HOST=0.0.0.0
-
 COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 
-EXPOSE 5000
-
-CMD ["pytest", "-v", "--junit-xml=results.xml"]
+CMD ["pytest", "-v", "--junit-xml=results.xml", "--cov=/src/flight_club/"]

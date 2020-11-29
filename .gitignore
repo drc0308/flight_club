@@ -6,3 +6,5 @@ instance/
 __pycache__/
 todo.txt
 results.xml
+
+.coverage
