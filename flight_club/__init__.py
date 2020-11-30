@@ -83,6 +83,8 @@ def create_app(test_config=None):
 
     return app
 
+def get_app():
+    return app
 
 def init_db():
     db.drop_all()
