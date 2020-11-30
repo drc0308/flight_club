@@ -84,7 +84,7 @@ def create_app(test_config=None):
     return app
 
 def get_app():
-    return app
+    return create_app()
 
 def init_db():
     db.drop_all()
