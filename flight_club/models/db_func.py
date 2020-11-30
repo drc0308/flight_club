@@ -15,7 +15,7 @@ def check_if_user_exists(username):
         return False
 
 
-def add_user(username, password='password'):
+def add_user(username, password="password"):
     if check_if_user_exists(username):
         return
     db.session.add(User(username=username, password=generate_password_hash(password)))
@@ -39,20 +39,24 @@ def add_session(session_id, date):
 def add_beer(row):
     # CSV Format
     # session, date, username, order, beer, brewery, score, win, specific type, type, abv
-    db.session.add(Beer(
-        beer_name=row[4],
-        beer_abv=float(row[10]),
-        brewery=row[5],
-        style=row[9],
-        votes=int(row[6]),
-        win=int(row[7]),
-        username=row[2],
-        session_id=int(row[0])
-    ))
+    db.session.add(
+        Beer(
+            beer_name=row[4],
+            beer_abv=float(row[10]),
+            brewery=row[5],
+            style=row[9],
+            votes=int(row[6]),
+            win=int(row[7]),
+            username=row[2],
+            session_id=int(row[0]),
+        )
+    )
     db.session.commit()
+
 
 def get_beer(beer_name):
     return Beer.query.filter_by(beer_name=beer_name).all()
+
 
 def csv_add_request(file):
     # store the file contents as a string

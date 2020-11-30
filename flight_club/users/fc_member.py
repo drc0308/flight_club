@@ -6,8 +6,8 @@ from sqlalchemy.sql import func
 
 
 class FCMember:
-    """ Class for creating an FCMember object.
-    This handles communication with the database 
+    """Class for creating an FCMember object.
+    This handles communication with the database
     and putting it into a easy to work with format.
     """
 
@@ -30,14 +30,19 @@ class FCMember:
         self._win_count = len(self._wins)
 
     def _determine_scores(self):
-        self._avg_score = Beer.query.with_entities(
-            func.avg(Beer.votes).label('avg')).filter_by(
-            username=self._username).all()[0][0]
+        self._avg_score = (
+            Beer.query.with_entities(func.avg(Beer.votes).label("avg"))
+            .filter_by(username=self._username)
+            .all()[0][0]
+        )
 
     def _determine_average_abv(self):
-        self._avg_abv = round(Beer.query.with_entities(
-            func.avg(Beer.beer_abv).label('avg')).filter_by(
-            username=self._username).all()[0][0], 2)
+        self._avg_abv = round(
+            Beer.query.with_entities(func.avg(Beer.beer_abv).label("avg"))
+            .filter_by(username=self._username)
+            .all()[0][0],
+            2,
+        )
 
     @property
     def username(self):
@@ -58,7 +63,7 @@ class FCMember:
     @property
     def avg_score(self):
         return self._avg_score
-    
+
     @property
     def avg_abv(self):
         return self._avg_abv

@@ -9,13 +9,14 @@ from flight_club.models.models import User, Beer, Session
 import flight_club.models.db_func as db_func
 from flight_club import db
 
+
 class CsvView(BaseView):
-    @expose('/', methods=('GET', 'POST'))
+    @expose("/", methods=("GET", "POST"))
     def index(self):
-        if request.method == 'POST':
+        if request.method == "POST":
             # Create variable for uploaded file
-            f = request.files['fileupload']
+            f = request.files["fileupload"]
             db_func.csv_add_request(f)
 
-            return redirect(url_for('csvview.index'))
-        return self.render('admin/csvview/upload.html')
+            return redirect(url_for("csvview.index"))
+        return self.render("admin/csvview/upload.html")
