@@ -32,6 +32,8 @@ services:
       dockerfile: FCTest.Dockerfile
     volumes:
       - ".:/src"
+    env_file:
+    - test_env.env
     depends_on:
       - db
   lint:

@@ -11,17 +11,11 @@ class Config:
     SECRET_KEY = "dev"
     STATIC_FOLDER = "static"
     TEMPLATES_FOLDER = "templates"
+    CSRF_ENABLED = True
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     @property
     def SQLALCHEMY_DATABASE_URI(self):
-        # instance_path = basedir + "/instance/"
-        # try:
-        #     print(basedir)
-        #     os.makedirs(instance_path, exist_ok=True)
-        # except OSError:
-        #     pass
-        # return "sqlite:///" + os.path.join(instance_path, "flight_club.sqlite")
         return os.getenv("DATABASE_URL", "sqlite://")
 
 class DevConfig(Config):
