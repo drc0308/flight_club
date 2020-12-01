@@ -47,7 +47,7 @@ services:
     ports:
       - "5000:5000"
     depends_on:
-      - proddb
+      - db
   lint:
     build:
       context: .
