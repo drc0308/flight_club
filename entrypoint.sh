@@ -13,4 +13,8 @@ then
     echo "PostgreSQL started"
 fi
 
+if [ "${FLASK_ENV}" = "production" ]
+then
+    exec gunicorn --bind 0.0.0.0:5000 "flight_club:create_app()"
+fi
 exec python app.py

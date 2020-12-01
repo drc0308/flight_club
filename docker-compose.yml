@@ -36,6 +36,18 @@ services:
     - test_env.env
     depends_on:
       - db
+  prod:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ".:/src"
+    env_file:
+      - prod.env
+    ports:
+      - "5000:5000"
+    depends_on:
+      - proddb
   lint:
     build:
       context: .
@@ -46,12 +58,21 @@ services:
   db:
     image: postgres:12-alpine
     volumes:
-      - postgres_data:/var/lib/postgresql/data/
+      - postgres_dev_data:/var/lib/postgresql/dev_data/
     environment:
       - POSTGRES_USER=flight_club
       - POSTGRES_PASSWORD=flight_club
       - POSTGRES_DB=flight_club_dev
+  proddb:
+    image: postgres:12-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=flight_club
+      - POSTGRES_PASSWORD=flight_club
+      - POSTGRES_DB=flight_club_prod
 
 volumes:
+  postgres_dev_data:
   postgres_data:
   
