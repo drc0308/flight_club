@@ -18,6 +18,7 @@ class Config:
     def SQLALCHEMY_DATABASE_URI(self):
         return os.getenv("DATABASE_URL", "sqlite://")
 
+
 class DevConfig(Config):
     FLASK_ENV = "development"
     DEBUG = True
