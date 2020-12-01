@@ -30,19 +30,26 @@ class FCMember:
         self._win_count = len(self._wins)
 
     def _determine_scores(self):
-        self._avg_score = (
+        query_result = (
             Beer.query.with_entities(func.avg(Beer.votes).label("avg"))
             .filter_by(username=self._username)
             .all()[0][0]
         )
+        if query_result is None:
+            self._avg_score = 0.0
+        else:
+            self._avg_score = query_result
 
     def _determine_average_abv(self):
-        self._avg_abv = round(
+        query_result = (
             Beer.query.with_entities(func.avg(Beer.beer_abv).label("avg"))
             .filter_by(username=self._username)
-            .all()[0][0],
-            2,
+            .all()[0][0]
         )
+        if query_result is None:
+            self._avg_abv = 0.0
+        else:
+            self._avg_abv = round(query_result, 2)
 
     @property
     def username(self):
