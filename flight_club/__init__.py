@@ -12,7 +12,6 @@ TEST_CSV = "fc_test.csv"
 
 db = SQLAlchemy()
 
-
 def page_not_found(e):
     return render_template("404.html"), 404
 
@@ -22,7 +21,6 @@ def load_dev_db(app):
         # TODO (dcuomo) load the test database on startup
         # Need to learn flask environment controls...
         import flight_club.models.db_func as db_func
-
         db_func.csv_add_filename(TEST_CSV)
 
 

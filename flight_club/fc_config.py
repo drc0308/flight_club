@@ -15,14 +15,14 @@ class Config:
 
     @property
     def SQLALCHEMY_DATABASE_URI(self):
-        instance_path = basedir + "/instance/"
-        try:
-            print(basedir)
-            os.makedirs(instance_path, exist_ok=True)
-        except OSError:
-            pass
-        return "sqlite:///" + os.path.join(instance_path, "flight_club.sqlite")
-
+        # instance_path = basedir + "/instance/"
+        # try:
+        #     print(basedir)
+        #     os.makedirs(instance_path, exist_ok=True)
+        # except OSError:
+        #     pass
+        # return "sqlite:///" + os.path.join(instance_path, "flight_club.sqlite")
+        return os.getenv("DATABASE_URL", "sqlite://")
 
 class DevConfig(Config):
     FLASK_ENV = "development"

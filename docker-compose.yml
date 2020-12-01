@@ -24,12 +24,16 @@ services:
       - dev_env.env
     ports:
       - "5000:5000"
+    depends_on:
+      - db
   test:
     build:
       context: .
       dockerfile: FCTest.Dockerfile
     volumes:
       - ".:/src"
+    depends_on:
+      - db
   lint:
     build:
       context: .
@@ -37,3 +41,15 @@ services:
     volumes:
       - ".:/src"
     command: black /src/flight_club --check
+  db:
+    image: postgres:12-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=flight_club
+      - POSTGRES_PASSWORD=flight_club
+      - POSTGRES_DB=flight_club_dev
+
+volumes:
+  postgres_data:
+  
