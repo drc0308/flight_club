@@ -27,38 +27,38 @@
         }
         for (i = 0; i < number; i++) {
             // Append a node with a random text
-            container.appendChild(document.createTextNode("Beer " + (i + 1) + ":"));
+            container.appendChild(document.createTextNode("Beer " + (i + 1)));
             // Create an <input> element, set its type and name attributes
             var input = document.createElement("input");
             input.type = "text";
             input.name = "beer_name" + i;
             container.appendChild(input);
 
-            container.appendChild(document.createTextNode("Brewery:"))
+            container.appendChild(document.createTextNode("Brewery"))
             var input = document.createElement("input");
             input.type = "text";
             input.name = "brewery" + i;
             container.appendChild(input);
 
-            container.appendChild(document.createTextNode("Style:"))
+            container.appendChild(document.createTextNode("Style"))
             var input = document.createElement("input");
             input.type = "text";
             input.name = "style" + i;
             container.appendChild(input);
 
-            container.appendChild(document.createTextNode("Votes:"))
+            container.appendChild(document.createTextNode("Votes"))
             var input = document.createElement("input");
             input.type = "number";
             input.name = "votes" + i;
             container.appendChild(input);
 
-            container.appendChild(document.createTextNode("Win:"))
+            container.appendChild(document.createTextNode("Win"))
             var input = document.createElement("input");
             input.type = "number";
             input.name = "win" + i;
             container.appendChild(input);
 
-            container.appendChild(document.createTextNode("Bringer:"))
+            container.appendChild(document.createTextNode("Bringer"))
             var input = document.createElement("input");
             input.type = "text";
             input.name = "username" + i;
@@ -77,20 +77,20 @@
   <div class="container">
     <div class="row">
         <form method="post">
-            <label for="session_id">FC Session #:</label>
+            <label for="session_id">FC Session #</label>
             <input type="Number" id="session_id" name="session_id" required><br />
 
-            <label for="date">Date:</label>
+            <label for="date">Date</label>
             <input type="Number" id="date" name="date" required><br />
 
-            <label for="beers">Number of Beers:</label>
+            <label for="beers">Number of Beers</label>
             <input type="text" id="beers" name="beers" value=""><br />
 
             <a href="#" id="filldetails" onclick="addFields()">Fill Details</a>
             <div id="container" />
             </div>
 
-            <input type="submit" value="submit">
+            <input type="Submit" value="submit" class="pi-btn-default">
         </form>
     </div><!-- end row -->
   </div><!-- end container -->
