@@ -8,6 +8,7 @@ class Config:
 
     # This should probably not be hardcoded?
     # What is this for again lol?
+    FLASK_ENV = "test"
     SECRET_KEY = "dev"
     STATIC_FOLDER = "static"
     TEMPLATES_FOLDER = "templates"

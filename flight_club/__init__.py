@@ -40,7 +40,7 @@ def create_app(test_config=None):
     elif os.getenv("FLASK_ENV") == "production":
         config_object = fc_config.ProdConfig()
         app.config.from_object(config_object)
-    elif os.getenv("FLASK_ENV") == "testing":
+    elif os.getenv("FLASK_ENV") == "test":
         config_object = fc_config.Config()
         app.config.from_object(config_object)
 
