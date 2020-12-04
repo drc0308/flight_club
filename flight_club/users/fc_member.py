@@ -38,7 +38,7 @@ class FCMember:
         if query_result is None:
             self._avg_score = 0.0
         else:
-            self._avg_score = query_result
+            self._avg_score = round(query_result, 2)
 
     def _determine_average_abv(self):
         query_result = (

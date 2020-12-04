@@ -16,12 +16,15 @@ WORKDIR /src
 
 ENV FLASK_APP=flight_club
 ENV FLASK_RUN_HOST=0.0.0.0
+ENV FLASK_ENV=production
 
 RUN apt-get update && apt-get install -y netcat
 
 COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 
-EXPOSE 5000
+EXPOSE 8000
+
+COPY . /src
 
 ENTRYPOINT ["/src/entrypoint.sh"]
