@@ -39,13 +39,13 @@ services:
   prod:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: FCProd.Dockerfile
     volumes:
       - ".:/src"
     env_file:
       - prod.env
     ports:
-      - "5000:5000"
+      - "8000:8000"
     depends_on:
       - proddb
   lint:

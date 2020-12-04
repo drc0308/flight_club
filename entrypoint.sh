@@ -17,4 +17,4 @@ if [ "${FLASK_ENV}" = "development" ]
 then
     exec python app.py
 fi
-exec gunicorn "flight_club:create_app()"
+exec gunicorn -b 0.0.0.0:8000 "flight_club:create_app()"

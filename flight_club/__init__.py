@@ -37,8 +37,10 @@ def create_app(test_config=None):
     if os.getenv("FLASK_ENV") == "development":
         config_object = fc_config.DevConfig()
         app.config.from_object(config_object)
-    else:
-        # TODO still don't have good config management
+    elif os.getenv("FLASK_ENV") == "production":
+        config_object = fc_config.ProdConfig()
+        app.config.from_object(config_object)
+    elif os.getenv("FLASK_ENV") == "testing":
         config_object = fc_config.Config()
         app.config.from_object(config_object)
 
@@ -69,17 +71,29 @@ def create_app(test_config=None):
 
     # initialize Flask-SQLAlchemy
     db.init_app(app)
+
     # TODO (dcuomo) this starts the database up every time fresh
     # I'll need to make this better later.
-    with app.app_context():
-        db.drop_all()
-        db.create_all()
 
-    try:
-        if app.config["FLASK_ENV"] == "development":
+    if app.config["FLASK_ENV"] == "development":
+        with app.app_context():
+            init_db()
             load_dev_db(app)
-    except KeyError:
-        pass
+    elif app.config["FLASK_ENV"] == "production":
+        with app.app_context():
+            table_names = db.engine.table_names()
+            all_tables = True
+            if "user" not in table_names:
+                all_tables = False
+            if "beer" not in table_names:
+                all_tables = False
+            if "session" not in table_names:
+                all_tables = False
+            if not all_tables:
+                init_db()
+    elif app.config["FLASK_ENV"] == "test":
+        with app.app_context():
+            init_db()
 
     return app
 
@@ -91,11 +105,3 @@ def get_app():
 def init_db():
     db.drop_all()
     db.create_all()
-
-
-@click.command("init-db")
-@with_appcontext
-def init_db_command():
-    """Clear existing data and create new tables."""
-    init_db()
-    click.echo("Initialized the database.")
