@@ -46,6 +46,12 @@
             input.name = "style" + i;
             container.appendChild(input);
 
+            container.appendChild(document.createTextNode("ABV:"))
+            var input = document.createElement("input");
+            input.type = "text";
+            input.name = "beer_abv" + i;
+            container.appendChild(input);
+
             container.appendChild(document.createTextNode("Votes:"))
             var input = document.createElement("input");
             input.type = "number";
@@ -81,7 +87,7 @@
             <input type="Number" id="session_id" name="session_id" required><br />
 
             <label for="date">Date:</label>
-            <input type="Number" id="date" name="date" required><br />
+            <input type="date" id="date" name="date" required><br />
 
             <label for="beers">Number of Beers:</label>
             <input type="text" id="beers" name="beers" value=""><br />

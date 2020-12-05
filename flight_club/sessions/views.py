@@ -55,6 +55,7 @@ def add_session():
                 # should probably fix the front end..
                 for i in range(num_beers):
                     beer_name = request.form["beer_name{}".format(i)]
+                    beer_abv = float(request.form["beer_abv{}".format(i)])
                     brewery = request.form["brewery{}".format(i)]
                     style = request.form["style{}".format(i)]
                     votes = request.form["votes{}".format(i)]
@@ -64,6 +65,7 @@ def add_session():
                     db.session.add(
                         Beer(
                             beer_name=beer_name,
+                            beer_abv=beer_abv,
                             brewery=brewery,
                             style=style,
                             votes=votes,
@@ -74,7 +76,7 @@ def add_session():
                     )
 
                     db.session.commit()
-                return render_template("sessions/fc{}".format(int(session_id)))
+                return redirect(url_for("sessions.view_session",id=session_id))
 
         flash(error)
         return render_template("sessions/add_session.html")
