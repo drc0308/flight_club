@@ -1,17 +1,383 @@
 Session,Date,Member,Order,Beer,Brewery,Score,Win,Specific Type,Type,ABV
-1,11/16/2015,Brigid,1,Old Howling Bastard,Blue Point,0,0,American Barleywine,Barleywine,10
+1,11/16/2015,Brigid,1,Old Howling Bastard,Blue Point Brewing Company,0,0,American Barleywine,Barleywine,10
 1,11/16/2015,Dan,2,Imperial Biscotti Break,Evil Twin,3,0,Imperial Stout,Stout,11.5
 1,11/16/2015,Goldfarb,3,Matilda,Goose Island,2,0,Belgian Strong Pale Ale,Pale Ale,7
-1,11/16/2015,Maria,4,Collette,Great Divide,3,0,Farmhouse,Saison/Farmhouse,7.3
+1,11/16/2015,Maria,4,Collette,Great Divide,3,0,Farmhouse,Fruit and Field Beer,7.3
 1,11/16/2015,Tyler,5,Four Horseman,Idle Hands,0,0,Belgian Quad,Belgian,11.8
 1,11/16/2015,Will,6,Kiwi Rising,Jack's Abby,0,0,Double IPL,Lager,8.5
-1,11/16/2015,Olive,7,Your Father Smelt of Elderberrys,Stone,0,0,Ancient Ale,Herbed Ale,10.3
-1,11/16/2015,Will,8,W3,Transmitter,6,1,American Wild Ale,Wild/Sour,7.8
+1,11/16/2015,Olive,7,Your Father Smelt of Elderberrys,Stone Brewing,0,0,Ancient Ale,Fruit and Field Beer,10.3
+1,11/16/2015,Will,8,W3,Transmitter,6,1,American Wild Ale,Fruit and Field Beer,7.8
 2,12/9/2015,Dan,6,Holidale,Berkshires,2,0,Barleywine,Barleywine,9.8
-2,12/9/2015,Maria,7,Oude Tart w/ Cherries,Bruery Terreux,3,0,Sour Red,Wild/Sour,8.8
-2,12/9/2015,Will,2,Kvasir,Dogfish Head,3,0,Gruit/Herbed Ale,Herbed Ale,10
+2,12/9/2015,Maria,7,Oude Tart w/ Cherries,Bruery Terreux,3,0,Sour Red,Fruit and Field Beer,8.8
+2,12/9/2015,Will,2,Kvasir,Dogfish Head,3,0,Gruit/Herbed Ale,Fruit and Field Beer,10
 2,12/9/2015,Goldfarb,5,Leaning Chimneys,Grey Sail,1,0,Smoked Porter,Porter,6
 2,12/9/2015,Tyler,3,Punkrauch,Le Trou Du Diable,3,0,Rauchbier,Rauchbier,6.5
-2,12/9/2015,Olive,4,Maracuya,Nightshift,4,1,American Wild Ale,Wild/Sour,7.4
+2,12/9/2015,Olive,4,Maracuya,Nightshift,4,1,American Wild Ale,Fruit and Field Beer,7.4
 2,12/9/2015,Kyle,1,"Voodoo Doughnut Pretzel, Raspberry & Chocolate Ale",Rogue,0,0,American Brown Ale,Brown Ale,5.4
-2,12/9/2015,Brigid,L,Blueberry Ale,Wachusett,0,0,Fruit Beer,Fruit Beer,4.5
+2,12/9/2015,Brigid,L,Blueberry Ale,Wachusett,0,0,Fruit Beer,Fruit and Field Beer,4.5
+3,1/20/2016,Brigid,L,Phantom Punch Winter Stout,Baxter,0,0,Stout,Stout,6.8
+3,1/20/2016,Will,1,Mosiac,Brewmaster Jack,2,0,Double IPL,Lager,8
+3,1/20/2016,Kyle,3,Delirium Tremens,Brouwerij Huyghe,5,1,Belgian Strong Pale Ale,Pale Ale,8.2
+3,1/20/2016,Maria,2,River Runners,Eddyline,5,0,American Pale Ale,Pale Ale,6
+3,1/20/2016,Tyler,5,Eclipse,Fifty Fifty,2,0,American Imperial Stout,Stout,11.9
+3,1/20/2016,Dan,6,Bianca,Omnipollo,0,0,Gose,Fruit and Field Beer,3.8
+3,1/20/2016,Goldfarb,4,Honeyspot Road,Two Roads,2,0,White IPA,IPA,6
+4,2/22/2016,Jay,4,St Klippenstein,Allagash,3,0,Belgian Strong Dark Ale,Dark Ale,11
+4,2/22/2016,Goldfarb,5,White Rascal,Avery Brewing,2,0,Belgian White,Belgian White,5.6
+4,2/22/2016,Tyler,6,Brainless on Peaches,Epic,0,0,Fruit Beer,Fruit and Field Beer,11
+4,2/22/2016,Maria,1,Luciernaga,Jolly Pumpkin,1,0,Belgian Pale Ale,Pale Ale,6.5
+4,2/22/2016,Brigid,2,Hennepin,Ommegang,4,0,Saison/Farmhouse Ale,Fruit and Field Beer,7.7
+4,2/22/2016,Olive,3,Jack D'Or,Pretty Things,2,0,Saison/Farmhouse Ale,Fruit and Field Beer,6.5
+4,2/22/2016,Dan,L,Double Shot,Treehouse,4,1,American Stout,Stout,7.6
+5,3/31/2016,Kyle,5,Blushing Monk,Founders,2,0,Fruit Beer,Fruit and Field Beer,9.2
+5,3/31/2016,Jay,6,Halia,Goose Island,0,0,Saison/Farmhouse Ale,Fruit and Field Beer,7.5
+5,3/31/2016,Goldfarb,2,Oro de Calabaza,Jolly Pumpkin,3,0,Biere de Garde,Brown Ale,8
+5,3/31/2016,Will,4,Far West Vlaming,Logson,1,0,Red Ale,Red Ale,6.5
+5,3/31/2016,Brigid,L,Mo,Maine Beer,3,0,American Pale Ale,Pale Ale,6
+5,3/31/2016,Olive,3,Hermit Kingdom,Mystic,3,0,American Pale Ale,Pale Ale,7.9
+5,3/31/2016,Tyler,1,Shadow Brewer,Ommegang,4,1,Russian Imperial Stout,Stout,9.7
+6,5/10/2016,Will,6,Hoppines is a Warm Pun,Brewmaster Jack,3,0,American Imperial DIPA,IPA,8.2
+6,5/10/2016,Maria,1,Half Hitch,Cruz,6,1,American Imperial DIPA,IPA,10
+6,5/10/2016,Kyle,4,Swamp Ape,Florida Beer,0,0,American Imperial DIPA,IPA,10
+6,5/10/2016,Brigid,2,London Porter,Fuller,0,0,English Porter,Porter,5.4
+6,5/10/2016,Jay,5,Fuzzy Logic,Portico,3,0,Kolsch,Pale Ale,5.4
+6,5/10/2016,Dan,L,Enigma Dry Hopped Fort Point,Trillium,4,0,American Pale Ale,Pale Ale,6.6
+6,5/10/2016,Goldfarb,3,Bergamonster,Two Roads,0,0,American Pale Wheat Ale,Wheat Ale,8.2
+7,6/20/2016,Goldfarb,4,Little Brett,Allagash,2,0,American Wild Ale,Fruit and Field Beer,4.8
+7,6/20/2016,Brigid,5,Saison Rue,Bruery Terreux,0,0,Saison/Farmhouse Ale,Fruit and Field Beer,8.5
+7,6/20/2016,Kyle,1,Undead Party Crasher,Clown Shoes,3,0,Imperial Stout,Stout,10
+7,6/20/2016,Olive,3,Midas Touch,Dogfish Head,4,0,Herb and Spice Beer,Fruit and Field Beer,9
+7,6/20/2016,Dan,2,Trillikini,Evil Twin/Trillium,1,0,American IPA,IPA,3.3
+7,6/20/2016,Jay,L,Saison Renaud,Mystic,4,1,Saison/Farmhouse Ale,Fruit and Field Beer,6.5
+8,7/20/2016,Goldfarb,7,Squall,Dogfish Head,2,0,American Imperial DIPA,IPA,9
+8,7/20/2016,Will,4,Dark Element,Element,3,0,American Black,Dark Ale,8.75
+8,7/20/2016,Tyler,3,Space Tiger,Off Color,2,0,Saison,Fruit and Field Beer,7.8
+8,7/20/2016,Olive,2,Shakespeare Oatmeal Stout,Rogue,0,0,Oatmeal Stout,Stout,5.8
+8,7/20/2016,Brigid,1,Mo Shuggie Soulbender,Singlecut,3,0,American IPA,IPA,7.4
+8,7/20/2016,Maria,5,Goldilox,SoMe,3,0,American Imperial DIPA,IPA,9
+8,7/20/2016,Kyle,6,St Bernardus Abt 12,St Bernardus,6,1,Belgian Quad,Belgian,10
+8,7/20/2016,Dan,L,Rockstar Farmer,Stillwater/Otherhalf,0,0,Farmhouse,Fruit and Field Beer,4.5
+9,8/22/2016,Brigid,1,Tank 7,Bouelvard,3,0,Farmhouse,Fruit and Field Beer,8.5
+9,8/22/2016,Olive,7,Tank 7,Bouelvard,3,0,Farmhouse,Fruit and Field Beer,8.5
+9,8/22/2016,Jay,L,Piraat Ale,Br. Van Steenberge,5,1,Belgian Strong Pale Ale,Pale Ale,10.5
+9,8/22/2016,Dan,2,Flower Power,Ithica,4,0,American IPA,IPA,7.5
+9,8/22/2016,Tyler,4,Porter,Partizan,0,0,English Porter,Porter,5.7
+9,8/22/2016,Maria,3,Mongo,Port Brewing,0,0,American DIPA,IPA,8.5
+9,8/22/2016,Goldfarb,5,Zephyr,Rising Tide,2,0,American IPA,IPA,7.2
+9,8/22/2016,Will,6,Blind Tiger,Speakeasy,4,0,American DIPA,IPA,9.5
+10,9/28/2016,Charlie,4,Marooned on Hog Island,21st Amendment,2,0,Oyster Stout,Stout,7.9
+10,9/28/2016,Tyler,L,Great Pumpkin Ale,CBC,0,0,Pumpkin,Pumpkin Beer,5.4
+10,9/28/2016,Olive,6,Bitches Brew,Dogfish Head,3,0,American Imperial Stout,Stout,9
+10,9/28/2016,Dan,1,Brewery Maker,Jack's Abby,1,0,Lager Wine,Barleywine,13.5
+10,9/28/2016,Will,5,A Tiny Beautiful Something,Maine Beer,5,1,American Pale Ale,Pale Ale,5.5
+10,9/28/2016,Kyle,3,Big Cranky Douple IPA,Stony Creek,1,0,DIPA,IPA,9.5
+10,9/28/2016,Goldfarb,2,La Fin Du Monde,Unibroue,4,0,Belgian Tripel,Belgian,9
+11,11/9/2016,Goldfarb,1,Ale to the Chief,Avery Brewing,5,0,American Pale Ale,Pale Ale,8.1
+11,11/9/2016,Tyler,4,Vanilla Bean Stout,Avery Brewing,2,0,Imperial Stout,Stout,10.8
+11,11/9/2016,Maria,6,Owyhee Canyonlands Wild Ale,Base Camp,2,0,Wild Ale,Fruit and Field Beer,5.6
+11,11/9/2016,Dan,5,Bozo Beer,Evil Twin,1,0,Imperial Stout,Stout,17.2
+11,11/9/2016,Jay,L,A-10 Warthog,Opa Opa,1,0,DIPA,IPA,10
+11,11/9/2016,Olive,3,Crum,Stony Creek,0,0,Red Ale,Red Ale,6.2
+11,11/9/2016,Kyle,2,La Resolution,Unibroue,5,1,Belgian Strong Dark Ale,Belgian Dark,10
+12,12/13/2016,Charlie,7,Lagunitas Sucks,Lagunitas,1,0,DIPA,IPA,7.85
+12,12/13/2016,Tyler,L,Rumpkin,Avery Brewing,0,0,Barrel Aged Pumpkin,Pumpkin Beer,17.5
+12,12/13/2016,Will,8,Rye on Rye,Bouelvard,2,0,Whiskey Rye Ale,Rye Ale,11.8
+12,12/13/2016,Goldfarb,5,Chimay Red,Chimay,3,0,Abbey Dubbel,Belgian,7
+12,12/13/2016,Jay,4,Big Bad Baptista,Epic,6,1,Imperial STout,Stout,11.7
+12,12/13/2016,Olive,6,Nadia Kali,Great Divide,5,0,Saison/Farmhouse Ale,Fruit and Field Beer,6.7
+12,12/13/2016,Kyle,3,Kriek Lambic Cherry,Lindemmans,1,0,Lambic,Fruit and Field Beer,4
+12,12/13/2016,Dan,2,Yellow Belly Sundae,Omnipollo,0,0,Imperial Stout,Stout,12
+12,12/13/2016,Maria,1,Conga,Revival,0,0,Imperial IPA,IPA,9
+13,1/17/2017,Charlie,4,Space Juice,Long Trail,2,0,DIPA,IPA,8.7
+13,1/17/2017,Will,6,Half Nelson,Bentley,1,0,American Pale Ale,Pale Ale,5.5
+13,1/17/2017,Tyler,1,So Happens It's Tuesday,Bruery Terreux,4,1,Imperial Stout,Stout,14
+13,1/17/2017,Olive,3,Lizard of Koz,Founders,2,0,Imperial Stout,Stout,10.5
+13,1/17/2017,Goldfarb,5,Hibernation Ale,Great Divide,0,0,Old Ale,Old Ale,8.7
+13,1/17/2017,Kyle,L,Private Rye,Jack's Abby,4,0,Rye Lager,Lager,6
+13,1/17/2017,Dan,2,Imperial Stout Tropper,New England,3,0,Imperial Stout,Stout,9.2
+14,2/23/2017,Maria,3,Hydra,Abandoned Building,2,0,Pale Ale,Pale Ale,5.9
+14,2/23/2017,Nat,4,Dogs and Boats,Beer'd,2,0,DIPA,IPA,9.1
+14,2/23/2017,Goldfarb,2,Chocolate Oaked Aged Yeti,Great Divide,3,0,American Imperial Stout,Stout,9.5
+14,2/23/2017,Olive,1,Blackberry Orange Pop,Grimm,3,1,Berliner Weisse,Fruit and Field Beer,4.8
+14,2/23/2017,Dan,L,Nugget Nectar,Troegs,2,0,Imperal Red Ale,Red Ale,7.5
+15,4/12/2017,Charlie,L,Houblin Chouffe,Brasserie d'Achouffe,3,0,IPA,IPA,9
+15,4/12/2017,Tyler,3,Ransack the Universe,Collective Arts,4,1,IPA,IPA,6.8
+15,4/12/2017,Kyle,7,Red & White,Dogfish Head,2,0,Witbier,Witbier,10
+15,4/12/2017,Goldfarb,6,Molotov Lite,Evil Twin,1,0,IPA,IPA,9.5
+15,4/12/2017,Jay,8,Red Rice Ale,Kiuchi,3,0,Pale Ale,Pale Ale,7
+15,4/12/2017,Nat,1,Anitoch,OEC,1,0,Sour,Fruit and Field Beer,8
+15,4/12/2017,Maria,4,Cervasa Provesional,Paradox,2,0,Saison/Farmhouse Ale,Fruit and Field Beer,8
+15,4/12/2017,Dan,2,Bitter Chocolate Oatmeal Stout '08,Stone Brewing,4,0,Imperial Oatmeal Stout,Stout,9.2
+15,4/12/2017,Will,5,MegaWheat DIPA,Stone Brewing,0,0,Wheat DIPA,IPA,8.4
+16,5/31/2017,Charlie,3,Cellar Door,Stillwater,2,0,Saison/Farmhouse Ale,Fruit and Field Beer,6.6
+16,5/31/2017,Jay,1,Shea Theater Rebellion,Berkshires,3,0,IPA,IPA,6.2
+16,5/31/2017,Goldfarb,2,Beavertown XXX,Evil Twin,0,0,Strong Bitter,Bitter,9.5
+16,5/31/2017,Olive,5,How soon is Meow?,Finback,6,1,Rice Pilsner,Pilsner,4.7
+16,5/31/2017,Maria,L,Pieces of Eight,Foley Borthers,0,0,Imperial IPA,IPA,8
+16,5/31/2017,Dan,4,Arthur,Hill Farmstead,3,0,Saison/Farmhouse Ale,Fruit and Field Beer,6
+17,7/5/2017,Charlie,6,Mission Gose,Evil Twin,4,0,Gose,Fruit and Field Beer,4
+17,7/5/2017,Nat,1,Nothing Gold,Bissel Brothers,6,1,DIPA,IPA,8.2
+17,7/5/2017,Goldfarb,5,Within Reach,Halffull,0,0,Fruit Beer,Fruit and Field Beer,5
+17,7/5/2017,Will,4,Crossfade,Oxbow Brewing,0,0,Saison/Farmhouse Ale,Fruit and Field Beer,5
+17,7/5/2017,Jay,L,Puff,Sixpoint,1,0,DIPA,IPA,9.8
+17,7/5/2017,Maria,2,G2,Transmitter,1,0,Golden Ale,Golden Ale,5.6
+17,7/5/2017,Dan,7,Stumpy Duck,Trillium,2,0,Pale Wheat Ale,Wheat Ale,5.6
+17,7/5/2017,Tyler,8,Death to Cereal,Urban Family,4,0,Milk Stout,Stout,7.4
+17,7/5/2017,Kyle,3,Ales for ALS,Wormtown,2,0,IPA,IPA,6.8
+18,8/8/2017,Charlie,5,On Fleek,Stillwater,2,0,Imperial Stout,Stout,13
+18,8/8/2017,Jay,1,Anadromous,Anchorage,0,0,Wild Ale,Fruit and Field Beer,8.5
+18,8/8/2017,Olive,L,Apricot Sour,Avery Brewing,4,0,Sour,Fruit and Field Beer,7.3
+18,8/8/2017,Kyle,3,Hazy Bastard,Blue Point Brewing Company,4,1,IPA,IPA,8
+18,8/8/2017,Tyler,2,Even More Jesus,Evil Twin,1,0,Imperial Stout,Stout,12
+18,8/8/2017,Goldfarb,4,Roarange,White Lion,3,0,IPA,IPA,4.7
+19,9/12/2017,Charlie,7,Copper Legend,Jack's Abby,2,0,Märzen,Oktoberfest,5.7
+19,9/12/2017,Maria,5,Joe,10 Barrel,2,0,IPA,IPA,6.9
+19,9/12/2017,Tyler,L,Sixteen Counties,Allagash,0,0,Belgian Strong,Belgian,7.3
+19,9/12/2017,Goldfarb,1,The Labyrinth,Crooked Tongue,3,0,Barleywine,Barleywine,14
+19,9/12/2017,Olive,6,Passion Fruit Kicker,Green Flash,4,0,Fruit Beer,Fruit and Field Beer,5.5
+19,9/12/2017,Brigid,2,Birds of a Feather,Lamplighter,5,1,IPA,IPA,6.7
+19,9/12/2017,Jay,4,Guave Weisse,Nightshift,1,0,Sour,Fruit and Field Beer,4.4
+19,9/12/2017,Nat,3,Eureka w/ Mosaic,Treehouse,1,0,Blonde Ale,Blonde Ale,4.1
+20,10/24/2017,Charlie,1,Merica,Prairie,0,0,Saison/Farmhouse Ale,Fruit and Field Beer,7.5
+20,10/24/2017,Maria,L,Farm to Barrel Hoppy Sour Mosaic,Almanac,1,0,Sour,Fruit and Field Beer,7
+20,10/24/2017,Maria,NC,Farm to Barrel Hoppy Sour Amarillo,Almanac,0,0,Sour,Fruit and Field Beer,7
+20,10/24/2017,Olive,2,Sumi Zest,Grimm,4,0,Imperial Stout,Stout,11.5
+20,10/24/2017,Dan,5,Barrel Aged B.O.R.I.S The Crusher Oatmeal Imperial Stout,Hoppin' Frog,1,0,Imperial Oatmeal Stout,Stout,9.4
+20,10/24/2017,Jay,6,34,Idle Hands,0,0,Porter,Porter,6.7
+20,10/24/2017,Tyler,3,Eric More Cowbell!,Singlecut,3,0,Milk Stout,Stout,6.6
+20,10/24/2017,Goldfarb,4,Cerberus,Thirsty Dog,7,1,Belgian Tripel,Belgian,10
+21,11/14/2017,Charlie,7,Super Shine,Grimm,1,0,Gose,Fruit and Field Beer,4.7
+21,11/14/2017,Kyle,2,Kentucky Breakfest Stout,Founders,3,0,Imperial Stout,Stout,12.4
+21,11/14/2017,Dan,8,Brother Soigne,Grassroots,3,0,Saison/Farmhouse Ale,Fruit and Field Beer,5
+21,11/14/2017,Brigid,1,The Upside Down,Lamplighter,5,1,Dark Saison,Fruit and Field Beer,7.4
+21,11/14/2017,Maria,5,When Monks Cry,Marz,2,0,Belgian IPA,IPA,5.3
+21,11/14/2017,Olive,4,It's Alive,Mikkeller,0,0,Belgian Wild,Fruit and Field Beer,8
+21,11/14/2017,Nat,L,Aged Red,Petrus,0,0,Fruit Beer,Fruit and Field Beer,8.5
+21,11/14/2017,Will,3,Hopsynth,Upland,3,0,Sour,Fruit and Field Beer,5.5
+21,11/14/2017,Tyler,6,Tripel,Westmalle,3,0,Belgian Tripel,Belgian,9.5
+22,12/13/2017,Charlie,9,Hair Raiser,Exhibit A,4,1,DIPA,IPA,8
+22,12/13/2017,Tyler,3,Night Shade,Abandoned Building,2,0,Stout,Stout,6.7
+22,12/13/2017,Maria,7,Hemel & Aarde,Brouwerij De Molen,1,0,Smoked Beer,Smoked,10
+22,12/13/2017,Bobby,5,Sticke Alt,Four Peaks,0,0,Altbier,Old Ale,6.5
+22,12/13/2017,Jay,L,Super Shine,Grimm,3,0,Gose,Fruit and Field Beer,4.7
+22,12/13/2017,Goldfarb,4,Autocrat,Naraggansett,2,0,Milk Stout,Stout,5.5
+22,12/13/2017,Olive,2,Praire Flare,Prairie,3,0,Sour,Fruit and Field Beer,5.4
+22,12/13/2017,Brigid,6,Spectral Beast,Relic,2,0,Batlic Porter,Porter,10
+22,12/13/2017,Nat,1,Day & Night,Trillium,2,0,Barleywine,Barleywine,10
+22,12/13/2017,Kyle,8,20 Ton Ale,Two Roads,1,0,Barleywine,Barleywine,12
+23,1/18/2018,Tyler,1,Kentucky Bourbon Barrel Stout,Alltech,1,0,Stout,Stout,8
+23,1/18/2018,Goldfarb,7,High West Barrel Aged Victory at Sea,Ballast Point,5,0,Imperial Porter,Porter,12
+23,1/18/2018,Brigid,3,Banded Souls,Banded Horn,0,0,DIPA,IPA,8
+23,1/18/2018,Jay,5,Hemel & Aarde,Brouwerij De Molen,0,0,Smoked Beer,Stout,10
+23,1/18/2018,Dan,L,Truth Can Set You Free (Cuvee Delphine 2012),De Struise Brouwers,5,1,Imperial Stout,Stout,11
+23,1/18/2018,Olive,2,Cosmic Vibrations,Finback,4,0,IPA,IPA,7.5
+23,1/18/2018,Maria,4,Special Holiday Ale,Nogne O,1,0,Winter Warmer,Dark Ale,8.5
+23,1/18/2018,Will,6,Abbey Ale Dubbel,Ommegang,2,0,Belgian Dubbel,Belgian,8.2
+24,2/15/2018,Charlie,6,Shploing,Omnipollo,4,1,IPA,IPA,7
+24,2/15/2018,Bobby,8,Life in the Clouds,Collective Arts,1,0,IPA,IPA,6.1
+24,2/15/2018,Brigid,1,Big Bad Baptista,Epic,3,0,Imperial Stout,Stout,12.1
+24,2/15/2018,Goldfarb,2,Backwoods Bastard,Founders,2,0,Scotch Ale,Scotch,11.2
+24,2/15/2018,Maria,3,Canadian Breakfast Stout (CBS),Founders,2,0,Imperial Stout,Stout,11.7
+24,2/15/2018,Olive,5,Gingerbread Stout,Hardywood,3,0,Milk Stout,Stout,9.2
+24,2/15/2018,Nat,7,Not McKinley,Lamplighter,0,0,IPA,IPA,6.8
+24,2/15/2018,Jay,L,Looking Glass,Lamplighter,2,0,ESB,Bitter,6
+24,2/15/2018,Kyle,4,Laser Cat,Medusa,3,0,DIPA,IPA,8
+25,3/14/2018,Kyle,7,Citra Ass Down,Against The Grain,3,0,DIPA,IPA,8
+25,3/14/2018,Maria,4,James Bean,Allagash,6,1,Belgian Tripel,Belgian,10.1
+25,3/14/2018,Jay,5,Wag the Wolf,Beaus Brewing Co,2,0,Hefeweizen,Hefeweizen,6.8
+25,3/14/2018,Brigid,3,In the Gold Dust Rush,Foreign Objects,2,0,IPA,IPA,6.7
+25,3/14/2018,Olive,6,Super Spruce,Grimm,2,0,Gose,Fruit and Field Beer,4.7
+25,3/14/2018,Tyler,L,Triple Bag,Long Trail,0,0,Strong Ale,Strong Ale,11
+25,3/14/2018,Nat,2,Take the Black Stout,Ommegang,2,0,Stout,Stout,7
+25,3/14/2018,Goldfarb,1,North Shore Session,True North,1,0,IPA,IPA,4.7
+26,4/4/2018,Charlie,6,Eclipse Honey,Fifty Fifty,3,0,Imperial Stout,Stout,11
+26,4/4/2018,Bobby,L,Scottish Stout,Belhaven Black,0,0,Irish Stout,Stout,4.2
+26,4/4/2018,Kyle,5,Bourbon Barrel Quad,Bouelvard,0,0,Belgian Quad,Belgian,11.2
+26,4/4/2018,Olive,3,BB Aged Salted Caramel Stout,Breakside Brewery,0,0,Imperial Stout,Stout,10.5
+26,4/4/2018,Goldfarb,4,Powder Dreams,Captain Lawrence,3,0,IPA,IPA,7.5
+26,4/4/2018,Tyler,2,Big Ass Money Stout 3,Evil Twin,1,0,Imperial Stout,Stout,17.4
+26,4/4/2018,Nat,8,Bloom,Hudson Valley,4,0,Sour,Fruit and Field Beer,8
+26,4/4/2018,Dan,7,Zone 6,Plan Bee,5,1,Wild Ale,Fruit and Field Beer,6
+26,4/4/2018,Brigid,1,Cold Fire,Singlecut,4,0,DIPA,IPA,8.2
+27,4/25/2018,Charlie,7,Double Toasted Marshmallow,Decadent,4,0,DIPA,IPA,9.1
+27,4/25/2018,Brigid,3,Resolution,Banded Horn,0,0,Belgian Strong,Belgian,10.5
+27,4/25/2018,Nat,5,Femme Fatlae Noir,Evil Twin,0,0,Black IPA,IPA,6
+27,4/25/2018,Olive,L,Last Snow,Funky Buddah,5,1,Porter,Porter,6.4
+27,4/25/2018,Goldfarb,2,Moose Juice IPA,Great North Aleworks,1,0,IPA,IPA,6.2
+27,4/25/2018,Kyle,1,Greylock IPA,Greater Good,4,0,DIPA,IPA,12
+27,4/25/2018,Tyler,4,Blackberry Fated Farmer,Trillium,3,0,Wild Ale,Fruit and Field Beer,7.4
+27,4/25/2018,Maria,6,Winter Sour,Trois Dames,1,0,Sour,Fruit and Field Beer,7.2
+28,5/24/2018,Goldfarb,7,Daikaiju,Banded Brewing Co,0,0,IPA,IPA,8.7
+28,5/24/2018,Maria,l,"Forgotten Tales of the Last Gypsy Blender, Series 2 Volume 1",Jolly Pumpkin,0,0,Sour,Fruit and Field Beer,7
+28,5/24/2018,Nat,1,Apple Brandy Barrel-Aged El Lechedor,Nightshift,2,0,Imperial Stout,Stout,9.5
+28,5/24/2018,Charlie,3,Fatamorgana,Omnipollo,4,0,IPA,IPA,8
+28,5/24/2018,Brigid,4,Blueberry Cichild,Pipeworks,0,0,IPA,IPA,9.5
+28,5/24/2018,Bobby,2,Amirite?!,Springdale,3,0,IPA,IPA,7
+28,5/24/2018,Dan,6,Golden Nugget w/ Mosaic,Toppling Goliath,6,1,IPA,IPA,6.8
+28,5/24/2018,Kyle,5,Maudite,Unibroue,3,0,Belgian Dubbel,Belgian,8
+29,6/12/2018,Maria,6,Black Camel Spider,Carakale,3,0,Porter,Porter,10.5
+29,6/12/2018,Tyler,3,Smooth Beats Miami,Finback,6,0,IPA,IPA,6.2
+29,6/12/2018,Olive,L,Smooth Beats Miami,Finback,6,1,IPA,IPA,6.2
+29,6/12/2018,Nat,4,Sore Loser,Nightshift,0,0,Sour,Fruit and Field Beer,11.9
+29,6/12/2018,Brigid,1,WunderKammer,Off Color,0,0,Sour,Fruit and Field Beer,5.8
+29,6/12/2018,Goldfarb,5,Fear Movie Lions,Stone Brewing,1,0,DIPA,IPA,8.5
+29,6/12/2018,Kyle,2,Single Shot,Treehouse,5,0,Stout,Stout,6.4
+29,6/12/2018,Charlie,7,Tropical Rumble,Tool,2,0,IPA,IPA,4.3
+30,7/24/2018,Dan,2,Reference Method,Common Roots,0,0,Pilsner,Pilsner,4.2
+30,7/24/2018,Tyler,1,FOC Less Monster,Fat Orange Cat,4,1,IPA,IPA,8
+30,7/24/2018,Goldfarb,L,Spectacle Island,Trillium,2,0,IPA,IPA,6.8
+30,7/24/2018,Charlie,3,Liquid Art Fest,Collective Arts,4,0,IPA,IPA,5.9
+31,8/29/2018,Goldfarb,4,Guayabera,Cigar City,2,0,Pale Ale,Pale Ale,5.5
+31,8/29/2018,Brigid,8,Fat Mango,Finback,4,0,IPA,IPA,7.6
+31,8/29/2018,Olive,5,Space Face,Four Quarters Brewing,3,0,IPA,IPA,7.7
+31,8/29/2018,Bobby,3,Pulp,Greater Good,5,1,DIPA,IPA,8
+31,8/29/2018,Nat,1,Juicer 3,Harpoon,0,0,IPA,IPA,6.6
+31,8/29/2018,Dan,7,Barrel-Age Framinghammer Mole,Jack's Abby,2,0,Batlic Porter,Porter,13
+31,8/29/2018,Kyle,6,Lunch,Maine Beer,3,0,IPA,IPA,7
+31,8/29/2018,Maria,L,NanoBoss: Hoppy Session Ale,Newburgh,0,0,Pale Ale,Pale Ale,4.2
+31,8/29/2018,Charlie,2,Permutation 55,Trillium,1,0,Gose,Fruit and Field Beer,5.7
+32,10/12/2018,Dan,6,James Bean,Allagash,0,0,Belgian Tripel,Belgian,10.1
+32,10/12/2018,Goldfarb,1,Good Night Moon,Greater Good,7,1,Porter,Porter,11
+32,10/12/2018,Kyle,3,Moose and Rocco,Harpoon,1,0,Strong Ale,Strong Ale,8
+32,10/12/2018,Jay,2,Oktoberfest,Lamplighter,1,0,Märzen,Marzen,6.2
+32,10/12/2018,Maria,5,Barn Boss,Newburgh,2,0,IPA,IPA,6
+32,10/12/2018,Brigid,4,Bennington,Nightshift,4,0,Stout,Stout,6.7
+32,10/12/2018,Olive,7,Whoopie Pie Stout,Some,3,0,Milk Stout,Stout,6.5
+32,10/12/2018,Charlie,L,Good Night Moon,Greater Good,7,0,Porter,Porter,11
+33,11/14/2018,Olive,7,Demo Tape 21 Milkshake IPA,Exhibit A,6,1,IPA,IPA,7.3
+33,11/14/2018,Kyle,6,Pulp Daddy,Greater Good,2,0,IPA,IPA,8
+33,11/14/2018,Tyler,L,Good Night Moon,Greater Good,0,0,Porter,Porter,11
+33,11/14/2018,Jay,5,2x4 DIPA,Melvin,3,0,IPA,IPA,9.9
+33,11/14/2018,Maria,1,Goliat Bourbon Oak Chips,Tool,2,0,Stout,Stout,10.1
+33,11/14/2018,Dan,2,Coconut Pecan Pie,Trillium,4,0,Stout,Stout,10.9
+33,11/14/2018,Dave,4,Hefe Weissbier,Weihnestephaner,0,0,Hefeweizen,Hefeweizen,5.4
+33,11/14/2018,Charlie,3,Bourbon Barrel-Aged Expedition Stout,Bell's Brewery,1,0,Stout,Stout,13.4
+34,12/12/2018,Kyle,10,Speedway Stout,Alesmith,1,0,American Imperial Stout,Stout,12
+34,12/12/2018,Dan,7,Coconut Victory at Sea,Ballast Point,0,0,Imperial Porter,Porter,10
+34,12/12/2018,Maria,9,Insane Rush,Bootstrap,0,0,American IPA,IPA,7.2
+34,12/12/2018,Tyler,5,Origin of Darkness,Collective Arts,2,0,American Imperial Stout,Stout,11.5
+34,12/12/2018,Olive,L,Chocolate Hazelnut Porter,Heretic,0,0,Porter,Porter,7
+34,12/12/2018,Brigid,1,Kieran,Lamplighter,0,0,Barleywine,Barleywine,11.1
+34,12/12/2018,Bobby,11,Mean Old Tom,Maine Beer,0,0,American Stout,Stout,6.5
+34,12/12/2018,Goldfarb,4,Narwhal,Sierra Nevada,1,0,American Imperial Stout,Stout,10.2
+34,12/12/2018,Nat,2,Alter Ego,Treehouse,2,0,American IPA,IPA,6.8
+34,12/12/2018,Jay,3,Coffee Cake,Trillium,7,1,American Imperial Stout,Stout,12.9
+34,12/12/2018,Dave,8,Cacao PM Dawn,Trillium,7,0,American Stout,Stout,9
+34,12/12/2018,Charlie,6,Pig Factory,Foreign Objects,4,0,Imperial IPA,IPA,8.4
+35,1/9/2019,Olive,1,Folk Tour,Down the Road,0,0,Porter,Porter,7
+35,1/9/2019,Brigid,2,Chocolate Cherry Icing on the Cake,Grimm,0,0,Imperial Milk Stout,Stout,11
+35,1/9/2019,Dan,5,Byrd Brain,Jackie O's,2,0,Sour,Fruit and Field Beer,6
+35,1/9/2019,Maria,3,Santa's Milk,Kettlehead Brewing,1,0,Stout,Stout,7
+35,1/9/2019,Nat,L,Marilyn,Nightshift,5,1,American Barleywine,Barleywine,11.9
+35,1/9/2019,Goldfarb,6,Derivative: Galaxy,Proclamation,2,0,American Pale Ale,Pale Ale,6
+35,1/9/2019,Kyle,8,King Sue,Toppling Goliath,3,0,Imperial IPA,IPA,7.8
+35,1/9/2019,Dave,4,Double Seesaw: Raspberry,Trillium,3,0,Gose,Fruit and Field Beer,4
+35,1/9/2019,Charlie,7,Omnipollo,Pleroma,4,0,Sour,Fruit and Field Beer,6
+36,2/28/2019,Dan,3,Folk Metal,Burlington Beer Co,2,0,Oatmeal Stout,Stout,6.5
+36,2/28/2019,Brigid,1,Eclipse Honey,Fifty Fifty,0,0,Stout,Stout,11
+36,2/28/2019,Olive,L,Connect the Dots,Finback,3,0,WIPA,IPA,8
+36,2/28/2019,Kyle,5,Barrel Aged Good Night Moon,Greater Good,3,0,Imperial Porter,Porter,11.1
+36,2/28/2019,Maria,2,Cloud Catcher,Odell Brewing,3,0,Milkshake IPA,IPA,6.8
+36,2/28/2019,Bobby,9,Sosus,Toppling Goliath,3,0,DIPA,IPA,7.8
+36,2/28/2019,Dave,6,Super Duper Soak Blackberry,Trillium,4,1,Sour,Fruit and Field Beer,6.6
+36,2/28/2019,Jay,8,Vincianne,True North,1,0,Blonde Ale,Blonde Ale,6.3
+36,2/28/2019,Goldfarb,7,Sweet Tats,Wormtown,0,0,Imperial Oatmeal Stout,Stout,9
+36,2/28/2019,Charlie,4,Pecan Pie IPA,Decadent,3,0,IPA,IPA,5.2
+37,4/4/2019,Dan,9,Strawberry Rhubarb Table Sour,Baere,1,0,Sour,Fruit and Field Beer,4.8
+37,4/4/2019,Kyle,8,Smoothie Dreams,Captain Lawrence,1,0,American IPA,IPA,7.2
+37,4/4/2019,Olive,L,Origin of Darkness,Collective Arts,3,0,American Imperial Stout,Stout,11.5
+37,4/4/2019,Bobby,6,Lygonia,Fore River Brewing Co,0,0,American IPA,IPA,6.5
+37,4/4/2019,Goldfarb,3,Quantum Cuddle Kitten,Lone Pine,0,0,New England IPA,IPA,8.2
+37,4/4/2019,Brigid,1,Softly Spoken Magic Spells,Singlecut,2,0,New England IPA,IPA,8.6
+37,4/4/2019,Maria,2,Unholy Water,Solemn Oath,4,0,New England IPA,IPA,6.5
+37,4/4/2019,Jay,7,Supa Sumo,Toppling Goliath,3,0,Imperial IPA,IPA,7.8
+37,4/4/2019,Nat,4,Chocolate Pistachio Bark,Trillium,2,0,American Imperial Stout,Stout,13
+37,4/4/2019,Charlie,5,Bianca blueberry maple pancake lassi gose,Omnipollo,6,1,Gose,Fruit and Field Beer,6
+38,5/4/2019,Brigid,2,Samoan Drop,Banded Brewing Co,1,0,Imperial Porter,Porter,8.4
+38,5/4/2019,Olive,5,Kyuri,Black Hog,1,0,Japanese Rice Lager,Lager,4.5
+38,5/4/2019,Maria,4,Fancy People,Finback,2,0,American Blonde Ale,Ale,5.5
+39,5/4/2019,Brigid,1,Ecosystem,Finback,7,0,Gose,Fruit and Field Beer,6
+38,5/4/2019,Dave,L,Ritual Colors,Foreign Objects,1,0,New England IPA,IPA,8
+38,5/4/2019,Goldfarb,3,Ain't Nothing Normal,Nightshift,4,0,Wild Ale,Fruit and Field Beer,4.6
+38,5/4/2019,Dan,7,Ellie,Off Color,3,0,Herb and Spice Beer,Ale,7.5
+38,5/4/2019,Kyle,1,Growin Up Absurd,Root and Branch,4,1,Imperial IPA,IPA,8
+38,5/4/2019,Nat,6,Chocolate Goodness,Trillium,2,0,American Imperial Stout,Stout,10.2
+39,6/7/2019,Goldfarb,5,Juicier Than Thou,Heretic,1,0,New England IPA,IPA,6.5
+39,6/7/2019,Maria,L,Offertory,Holy Mountain,7,0,Wild Ale,Fruit and Field Beer,6.4
+39,6/7/2019,Nat,8,Pilsner Urquell,Plzeňský Prazdroj,0,0,Pilsner,Pilsner,4.4
+39,6/7/2019,Jay,2,Comb Over,Resilience Brewing,2,0,New England IPA,IPA,7
+39,6/7/2019,Bobby,7,Pony Hawk,Resilience Brewing,1,0,Imperial IPA,IPA,8
+39,6/7/2019,Dave,6,Poppys Moonship,Shilling,5,0,Gose,Fruit and Field Beer,4.7
+39,6/7/2019,Dan,3,Ms Violet,Tool,3,0,Tripel,Belgian,9
+39,6/7/2019,Charlie,4,Ghosts in the Sky,Four Quarters Brewing,10,1,Imperial IPA,IPA,8
+40,7/31/2019,Kyle,7,Bubble Brain,Blue Point Brewing Company,1,0,American IPA,IPA,6.5
+40,7/31/2019,Nat,1,Photon,Equilibrium Brewery,4,1,American Pale Ale,Pale Ale,4.8
+40,7/31/2019,Jay,4,G is for Grapefruit,Evil Twin,3,0,Gose,Fruit and Field Beer,4.5
+40,7/31/2019,Brigid,6,Leitmotif - Opus 02,Exhibit A,2,0,Wild Ale,Fruit and Field Beer,4.2
+40,7/31/2019,Maria,5,Built to Spill,Foam,3,0,Imperial IPA,IPA,8
+40,7/31/2019,Dave,2,Citra,Greater Good,2,0,Belgian IPA,IPA,9
+40,7/31/2019,Dan,L,Double Galaxy,Hill Farmstead,3,0,New England IPA,IPA,8
+40,7/31/2019,Olive,8,Charlie's Good Tonight IPA,Singlecut,1,0,New England IPA,IPA,6
+40,7/31/2019,Goldfarb,3,Every Trillion Ever,Trillium,1,0,Imperial IPA,IPA,10.3
+41,8/21/2019,Jay,4,Improbability Drive,Aeronaut,1,0,American IPA,IPA,5.8
+41,8/21/2019,Kyle,7,Rhymes with Ukulele,CBC,1,0,New England IPA,IPA,6.25
+41,8/21/2019,Dave,3,Yellow Sub,Fogtown,1,0,Sour,Fruit and Field Beer,5.3
+41,8/21/2019,Bobby,L,Delirium Nocturnum,Brouwerij Huyghe,5,1,Belgian Dark Strong Ale,Strong Ale,8.5
+41,8/21/2019,Brigid,1,Fallon's Field,Lamplighter,3,0,American Barleywine,Barleywine,10.9
+41,8/21/2019,Olive,6,Dream Domiscile ,Melvin,1,0,Imperical IPA,IPA,8.4
+41,8/21/2019,Dan,2,Le Seul X,Une Annee,2,0,Wild Ale,Fruit and Field Beer,6.5
+41,8/21/2019,Charlie,5,Andreas,Omnipollo,4,0,New England IPA,IPA,7
+42,9/7/2019,Olive,5,8 Days a Week,Beer'd,1,0,American Pale Ale,Pale Ale,6.7
+42,9/7/2019,Kyle,2,Make America Juicy Again,Heretic,0,0,American IPA,IPA,6.5
+42,9/7/2019,Goldfarb,1,Unity of Action,Hudson Valley,10,1,Sour DIPA,IPA,8
+42,9/7/2019,Jay,6,Karate Chimp,Prairie,6,0,Sour,Fruit and Field Beer,5.4
+42,9/7/2019,Maria,3,Away Mission,Springdale,1,0,American IPA,IPA,6.5
+42,9/7/2019,Nat,7,Hecto,Suarez Family Brewing,5,0,American Pale Ale,Pale Ale,4.5
+42,9/7/2019,Dave,L,Broth,Winterhill,2,0,American DIPA,IPA,8.5
+42,9/7/2019,Charlie,4,2018 Bourbon County Brand Stout,Goose Island,1,0,American Imperial Stout,Stout,14.9
+43,10/23/2019,Bobby,9,Ellie's Brown,Avery Brewing,0,0,American Brown Ale,Brown Ale,5.5
+43,10/23/2019,Brigid,2,Boris,Bent Water,0,0,Porter,Porter,8
+43,10/23/2019,Kyle,10,Peanut Butter Raincloud,Foolproof Brewing,0,0,Porter,Porter,5.4
+43,10/23/2019,Maria,7,Oude Gueuze Tilquin Alancienne,Gueuzerie Tilquin,3,0,Lambic,Fruit and Field Beer,6.4
+43,10/23/2019,Dan,3,Momoko,Oxbow Brewing,3,0,Farmhouse,Fruit and Field Beer,7
+43,10/23/2019,Jay,8,Geppetto,Resilience Brewing,9,0,Sweet Milk Stout,Stout,6.3
+43,10/23/2019,Olive,1,Nanaimo,Trillium,2,0,American Imperial Stout,Stout,13.6
+43,10/23/2019,Nat,4,Coconut Cake,Trillium,0,0,Imperial Stout,Stout,13.5
+43,10/23/2019,Dave,6,UFO Big Squeeze Shandy,Harpoon,0,0,Shandy,Fruit and Field Beer,4.5
+43,10/23/2019,Charlie,5,Summer Jam,Barreled Souls,5,1,Sour - Berliner Weisse,Fruit and Field Beer,4.6
+44,11/18/2019,Brigid,7,Innuendo,Baxter,0,0,American Stout,Stout,9.5
+44,11/18/2019,Kyle,8,Fayston Maple,Lawson's,0,0,American Imperial Stout,Stout,10.1
+44,11/18/2019,Maria,6,Meat and Potatoes,Lord Hobo,1,0,American Stout,Stout,7.5
+44,11/18/2019,Olive,5,Velocity of Light,Pipeworks,0,0,New England IPA,IPA,7
+44,11/18/2019,Goldfarb,2,Black Hexes,Proclamation,6,1,American Imperial Stout,Stout,9
+44,11/18/2019,Bobby,9,Resin,Sixpoint,0,0,Imperial IPA,IPA,9.1
+44,11/18/2019,Dave,1,Begonia Skies,Trillium,4,0,Sour IPA,IPA,7
+44,11/18/2019,Nat,4,Plum Super Soak,Trillium,4,0,Wild Ale,Fruit and Field Beer,7.1
+44,11/18/2019,Dan,L,Haunted Fields,Trillium,4,0,American Imperial Stout,Stout,14
+44,11/18/2019,Charlie,3,Mornin' Latte,Toppling Goliath,3,0,Sweet Milk Stout,Stout,8.9
+45,12/14/2019,Brigid,1,Gift Horse,Aeronaut,1,0,Farmhouse,Fruit and Field Beer,7.4
+45,12/14/2019,Kyle,2,Intergalatic Warrior,Toppling Goliath,2,0,American IPA,IPA,6.2
+45,12/14/2019,Charlie,3,Vintage Spiced Ale,Trader Joe's,3,0,Belgian Dark Strong Ale,Strong Ale,9
+45,12/14/2019,Dave,4,Churro Sombrero,Clown Shoes,0,0,American Stout,Stout,7
+45,12/14/2019,Dan,5,OFYMD,Evil Twin,5,1,American Imperial Stout,Stout,12.8
+45,12/14/2019,Jay,6,Apple Pie,Finback,3,0,Wild Ale,Fruit and Field Beer,6
+45,12/14/2019,Olive,7,True New Englander,Trillium,4,0,New England IPA,IPA,8.1
+45,12/14/2019,Nat,8,Brunch,Lamplighter,4,0,American Imperial Stout,Stout,7.8
+45,12/14/2019,Goldfarb,9,Creme Brulle,Southern Tier,0,0,Sweet Milk Stout,Stout,10
+46,1/20/2020,Kyle,1,Focal Point,Exhibit A,2,0,Munich Dunkel Lager,Lager,5
+46,1/20/2020,Charlie,2,Agamemnon,Omnipollo,0,0,American Imperial Stout,Stout,12.5
+46,1/20/2020,Jay,3,Curiosity 88,Treehouse,6,1,Imperial IPA,IPA,8.1
+46,1/20/2020,Brigid,4,Midnight Sea,Finback,2,0,Imperial Stout,Stout,12
+46,1/20/2020,Maria,5,Cosmic Crypt,TRVE,5,0,Saison,Fruit and Field Beer,5.6
+46,1/20/2020,Olive,6,Coquito,Lamplighter,0,0,Stout,Stout,6.8
+46,1/20/2020,Goldfarb,7,KBS Espresso 2020,Founders,5,0,American Imperial Stout,Stout,12
+46,1/20/2020,Tony,8,Cherry Chocolate Drop,Four Quarters Brewing,0,0,Imperial Stout,Stout,9
+46,1/20/2020,Dave,9,Velvet Moon,Mighty Squirrel Brewing Co,0,0,Coffee Stout,Stout,7
+47,2/13/2020,Olive,1,Compartmentalized,Finback,4,0,Imperial IPA,IPA,8.5
+47,2/13/2020,Dave,2,BWX/OMG,Ommegang,1,0,American Wild Ale,Fruit and Field Beer,6.2
+47,2/13/2020,Maria,3,Barista,Burlington Beer Co,0,0,American Porter,Porter,7.3
+47,2/13/2020,Charlie,4,Liquid Tender,Exhibit A,0,0,New England IPA,IPA,6
+47,2/13/2020,Bobby,5,In the Darkness Bind Them,Mayflower ,3,0,Sweet Milk Stout,Stout,9
+47,2/13/2020,Kyle,6,Vibes,Greater Good,3,0,New England IPA,IPA,8.2
+47,2/13/2020,Dan,7,9th Anniversary Ale,Stone Brewing,2,0,American Strong Ale,Strong Ale,7.8
+47,2/13/2020,Brigid,8,Double Moa,Omnipollo,5,1,Fruit Sour,Fruit and Field Beer,6
