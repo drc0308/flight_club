@@ -38,6 +38,12 @@
             </div>
 
         </div><!-- end row -->
+    {% if prev_url %}
+    <a href="{{ prev_url }}">Older Sessions</a>
+    {% endif %}
+    {% if next_url %}
+    <a href="{{ next_url }}">Newer Sessions</a>
+    {% endif %}
     </div><!-- end container -->
 </section>
 <!-- end tables -->
