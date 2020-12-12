@@ -13,6 +13,7 @@ from flask import (
     url_for,
 )
 
+from flask_paginate import Pagination, get_page_parameter
 from flight_club import get_app
 from flight_club import db
 from flight_club.models.models import Beer, Session
@@ -101,16 +102,13 @@ def view_session(id):
 @bp.route("/list", methods=["GET"])
 @login_required
 def list_sessions():
-    page = request.args.get('page',1,type=int)
-    fc_sessions = Session.query.paginate(page, current_app.config['POSTS_PER_PAGE'], False)
-    if fc_sessions.has_next:
-        next_url = url_for('sessions.list_sessions',page=fc_sessions.next_num) 
-    else:
-        next_url = None
     
-    if fc_sessions.has_prev:
-        prev_url = url_for('sessions.list_sessions',page=fc_sessions.prev_num)
-    else:
-        prev_url = None 
+    page = request.args.get(get_page_parameter(), type=int, default=1)
+    per_page=current_app.config['POSTS_PER_PAGE']
+    offset = (page - 1) * per_page
+    
+    fc_sessions = Session.query.all()
+    pagination = Pagination(page=page, per_page=per_page, search=False, total=len(fc_sessions), record_name='sessions', css_framework='bootstrap3')
 
-    return render_template("sessions/session_list.html", sessions=fc_sessions.items, next_url=next_url, prev_url=prev_url)
+
+    return render_template("sessions/session_list.html", sessions=fc_sessions[offset: offset+per_page], pagination=pagination)
