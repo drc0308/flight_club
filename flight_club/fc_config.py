@@ -14,6 +14,7 @@ class Config:
     TEMPLATES_FOLDER = "templates"
     CSRF_ENABLED = True
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    POSTS_PER_PAGE = 20
 
     @property
     def SQLALCHEMY_DATABASE_URI(self):
