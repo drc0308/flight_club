@@ -52,27 +52,38 @@ def register():
     return render_template("auth/register.html")
 
 
+def _perform_login(username:str, password: str):
+    error = None
+
+    user = User.query.filter_by(username=username).first()
+
+    if user is None:
+        error = "Incorrect username."
+    elif not check_password_hash(user.password, password):
+        error = "Incorrect password."
+
+    if error is None:
+        session.clear()
+        session["user_id"] = user.id
+        return redirect(url_for("index"))
+
+    flash(error)
+    return render_template("auth/login.html")
+
+
+def _perform_password_reset():
+    flash("WOOT!")
+    return render_template("auth/login.html")
+
+
 @bp.route("/login", methods=("GET", "POST"))
 def login():
     """Function reponsible for logging in"""
     if request.method == "POST":
-        username = request.form["username"]
-        password = request.form["password"]
-        error = None
-
-        user = User.query.filter_by(username=username).first()
-
-        if user is None:
-            error = "Incorrect username."
-        elif not check_password_hash(user.password, password):
-            error = "Incorrect password."
-
-        if error is None:
-            session.clear()
-            session["user_id"] = user.id
-            return redirect(url_for("index"))
-
-        flash(error)
+        if request.form["action"] == "Log In":
+            return _perform_login(request.form["username"], request.form["password"])
+        elif request.form["action"] == "Forgot Password":
+            return _perform_password_reset()
 
     return render_template("auth/login.html")
 
