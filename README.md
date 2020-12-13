@@ -23,6 +23,18 @@ Congrats you are now running the flight club app
 1. Run:
 ```
 docker-compose build test
-docker-compose up test
+docker-compose run test
 ```
 2. Review results in `results.xml` file
+
+## Running linting 
+1. Run:
+```
+docker-compose build lint 
+docker-compose run lint
+```
+2. Note, this will actually edit the files that violate the black formatting rules.  If 
+you instead want to fail the build to see what files require linting run:
+```
+docker-compose run lint black /src/flight_club --check
+```
