@@ -10,7 +10,7 @@ import flight_club.models.db_func as db_func
 from flight_club import db
 
 
-class CsvView(BaseView):
+class CsvView(BaseView): # Clearly this is a violation of line length for PEP-8.  Black should flag this and the build should fail and a PR should not be mergable.
     @expose("/", methods=("GET", "POST"))
     def index(self):
         if request.method == "POST":
