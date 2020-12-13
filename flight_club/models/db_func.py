@@ -24,6 +24,21 @@ def check_if_user_exists(username: str) -> bool:
     else:
         return False
 
+def check_if_email_exists(email: str) -> bool:
+    """
+    Checks to see if an email already exists in the database
+    Args:
+        email: The email to check for
+
+    Returns:
+        True if the email exists in the DB, false otherwise
+
+    """
+    if db.session.query(User.query.filter_by(email=email).exists()).scalar():
+        return True
+    else:
+        return False
+
 
 def add_user(username, password="password", email="mozzie.fc.cat@gmail.com") -> None:
     """

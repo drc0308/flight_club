@@ -24,6 +24,7 @@ def register():
     """Function responsible for registration"""
     if request.method == "POST":
         username = request.form["username"]
+        email = request.form["email"]
         password = request.form["password"]
         error = None
 
@@ -31,13 +32,17 @@ def register():
             error = "Username is required."
         elif not password:
             error = "Password is required."
+        elif not email:
+            error = "Email is required."
         elif db_func.check_if_user_exists(username):
             error = f"User {username} is already registered."
+        elif db_func.check_if_email_exists(email):
+            error = f"Email {email} is already registered."
 
         if error is None:
             db.session.add(
                 User(username=username, password=generate_password_hash(password),
-                     email="mozzie.fc.cat@gmail.com")
+                     email=email)
             )
             db.session.commit()
             return redirect(url_for("auth.login"))
