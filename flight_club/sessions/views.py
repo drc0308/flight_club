@@ -102,13 +102,23 @@ def view_session(id):
 @bp.route("/list", methods=["GET"])
 @login_required
 def list_sessions():
-    
+
     page = request.args.get(get_page_parameter(), type=int, default=1)
-    per_page=current_app.config['POSTS_PER_PAGE']
+    per_page = current_app.config["POSTS_PER_PAGE"]
     offset = (page - 1) * per_page
-    
+
     fc_sessions = Session.query.all()
-    pagination = Pagination(page=page, per_page=per_page, search=False, total=len(fc_sessions), record_name='sessions', css_framework='bootstrap3')
+    pagination = Pagination(
+        page=page,
+        per_page=per_page,
+        search=False,
+        total=len(fc_sessions),
+        record_name="sessions",
+        css_framework="bootstrap3",
+    )
 
-
-    return render_template("sessions/session_list.html", sessions=fc_sessions[offset: offset+per_page], pagination=pagination)
+    return render_template(
+        "sessions/session_list.html",
+        sessions=fc_sessions[offset : offset + per_page],
+        pagination=pagination,
+    )
