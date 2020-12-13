@@ -16,8 +16,8 @@ services:
 install:
   - travis_retry pip install coveralls
 script:
-  - docker-compose up lint 
-  - docker-compose up test
+  - docker-compose run lint black /src/flight_club --check
+  - docker-compose run test
 after_success:
   # Upload coverage information to Coveralls.
   - coveralls

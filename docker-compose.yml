@@ -54,7 +54,7 @@ services:
       dockerfile: FCTest.Dockerfile
     volumes:
       - ".:/src"
-    command: black /src/flight_club --check
+    command: black /src/flight_club
   db:
     image: postgres:12-alpine
     volumes:
