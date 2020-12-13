@@ -36,7 +36,8 @@ def register():
 
         if error is None:
             db.session.add(
-                User(username=username, password=generate_password_hash(password))
+                User(username=username, password=generate_password_hash(password),
+                     email="mozzie.fc.cat@gmail.com")
             )
             db.session.commit()
             return redirect(url_for("auth.login"))

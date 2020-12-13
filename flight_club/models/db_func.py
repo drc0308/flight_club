@@ -25,10 +25,21 @@ def check_if_user_exists(username: str) -> bool:
         return False
 
 
-def add_user(username, password="password"):
+def add_user(username, password="password", email="mozzie.fc.cat@gmail.com") -> None:
+    """
+    Helper function to add a user to the current db session.  Note that this is used in
+    practice to generate users from the dev cvs
+    Args:
+        username:
+        password:
+
+    Returns:
+
+    """
     if check_if_user_exists(username):
         return
-    db.session.add(User(username=username, password=generate_password_hash(password)))
+    db.session.add(User(username=username, password=generate_password_hash(password),
+                        email=email))
     db.session.commit()
 
 
