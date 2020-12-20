@@ -16,64 +16,24 @@
 <script type='text/javascript'>
     // I basically stole this script from stackoverflow
     // What's front end development anyway..
-    function addFields() {
-        // Number of inputs to create
-        var number = document.getElementById("beers").value;
+    function addrow() {
         // Container <div> where dynamic content will be placed
-        var container = document.getElementById("container");
-        // Clear previous contents of the container
-        while (container.hasChildNodes()) {
-            container.removeChild(container.lastChild);
-        }
-        for (i = 0; i < number; i++) {
-            // Append a node with a random text
-            container.appendChild(document.createTextNode("Beer " + (i + 1) + ":"));
-            // Create an <input> element, set its type and name attributes
-            var input = document.createElement("input");
-            input.type = "text";
-            input.name = "beer_name" + i;
-            container.appendChild(input);
+        // var beer_form = document.getElementById("beer-form");
+        // var row_count = container.rows.length;
+        
+        // Dan learn how jquery works
+        var beer_form = $("#beer-form");
+        var rows = beer_form.find("tr").length;
+        console.log(rows);
 
-            container.appendChild(document.createTextNode("Brewery:"))
-            var input = document.createElement("input");
-            input.type = "text";
-            input.name = "brewery" + i;
-            container.appendChild(input);
+        var new_form_row = $("#beer-form-row").clone();
+        new_form_row.removeAttr("id");
+        console.log(beer_form,new_form_row);
+        
+        new_form_row.find(".beer input").attr("name","beer_" + rows)
+        new_form_row.find(".brewery input").attr("name","brewery_" + rows)
 
-            container.appendChild(document.createTextNode("Style:"))
-            var input = document.createElement("input");
-            input.type = "text";
-            input.name = "style" + i;
-            container.appendChild(input);
-
-            container.appendChild(document.createTextNode("ABV:"))
-            var input = document.createElement("input");
-            input.type = "text";
-            input.name = "beer_abv" + i;
-            container.appendChild(input);
-
-            container.appendChild(document.createTextNode("Votes:"))
-            var input = document.createElement("input");
-            input.type = "number";
-            input.name = "votes" + i;
-            container.appendChild(input);
-
-            container.appendChild(document.createTextNode("Win:"))
-            var input = document.createElement("input");
-            input.type = "number";
-            input.name = "win" + i;
-            container.appendChild(input);
-
-            container.appendChild(document.createTextNode("Bringer:"))
-            var input = document.createElement("input");
-            input.type = "text";
-            input.name = "username" + i;
-            container.appendChild(input);
-
-            // Append a line break 
-            container.appendChild(document.createElement("br"));
-        }
-        container.appendChild(document.create)
+        beer_form.append(new_form_row);
     }
 </script>
 {% endblock %}
@@ -89,16 +49,24 @@
             <label for="date">Date:</label>
             <input type="date" id="date" name="date" required><br />
 
-            <label for="beers">Number of Beers:</label>
-            <input type="text" id="beers" name="beers" value=""><br />
+            <label for="beers">Host:</label>
+            <input type="text" id="host" name="host" value=""><br />
 
-            <a href="#" id="filldetails" onclick="addFields()">Fill Details</a>
-            <div id="container" />
-            </div>
+            <a href="#" id="Add Row" onclick="addrow()">Add Row</a>
+            <table id="beer-form" />
+            </table>
 
             <input type="submit" value="submit">
         </form>
     </div><!-- end row -->
   </div><!-- end container -->
+<table class="hidden">
+  <tr id="beer-form-row"> 
+    <td class="beer"><label for="beer">Beer: </label><input type="text" name="beer"/></td>
+    <td class="brewery"><label for="brewery">Brewery: </label><input type="text" name="brewery"/></td>
+  </tr>
+</table>
 </section>
+
 {% endblock %}
+
