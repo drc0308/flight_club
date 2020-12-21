@@ -3,12 +3,10 @@ function addRow() {
     // Get the beer form
     var beer_form = $("#beer-form");
     var rows = beer_form.find("tr").length;
-    console.log(rows);
 
     // Get the elements
     var new_form_row = $("#beer-form-row").clone();
     new_form_row.attr("id", "beer-form-row-" + rows);
-    console.log(beer_form,new_form_row);
     
     // Edit all the rows
     new_form_row.find(".beer input").attr("name","beer_" + rows)
@@ -28,7 +26,6 @@ function removeRow()  {
   // Get the beer for
   var last_row = $("#beer-form").find("tr").length - 1;
   var row_id = "beer-form-row-" + last_row;
-  console.log(row_id);
   $('#'+row_id).remove();
 
 }
