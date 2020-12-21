@@ -9,33 +9,7 @@
     </div><!-- end row -->
 </div><!-- end container -->
 </section>
-
-<section class="content">
-  <div class="container">
-    <div class="row">
-<script type='text/javascript'>
-    // I basically stole this script from stackoverflow
-    // What's front end development anyway..
-    function addrow() {
-        // Container <div> where dynamic content will be placed
-        // var beer_form = document.getElementById("beer-form");
-        // var row_count = container.rows.length;
-        
-        // Dan learn how jquery works
-        var beer_form = $("#beer-form");
-        var rows = beer_form.find("tr").length;
-        console.log(rows);
-
-        var new_form_row = $("#beer-form-row").clone();
-        new_form_row.removeAttr("id");
-        console.log(beer_form,new_form_row);
-        
-        new_form_row.find(".beer input").attr("name","beer_" + rows)
-        new_form_row.find(".brewery input").attr("name","brewery_" + rows)
-
-        beer_form.append(new_form_row);
-    }
-</script>
+<script src="{{ url_for ('static', filename='js/add_sessions.js') }}"></script>
 {% endblock %}
 
 {% block content %}
@@ -52,10 +26,11 @@
             <label for="beers">Host:</label>
             <input type="text" id="host" name="host" value=""><br />
 
-            <a href="#" id="Add Row" onclick="addrow()">Add Row</a>
+            <a href="#" id="Add Row" onclick="addRow()">Add Row</a>
             <table id="beer-form" />
             </table>
-
+            <a href="#" id="Remove Row" onclick="removeRow()">Remove Row</a>
+            <br>
             <input type="submit" value="submit">
         </form>
     </div><!-- end row -->
@@ -64,6 +39,11 @@
   <tr id="beer-form-row"> 
     <td class="beer"><label for="beer">Beer: </label><input type="text" name="beer"/></td>
     <td class="brewery"><label for="brewery">Brewery: </label><input type="text" name="brewery"/></td>
+    <td class="style"><label for="style">Style: </label><input type="text" name="style"/></td>
+    <td class="beer_abv"><label for="beer_abv">Abv: </label><input type="text" name="beer_abv"/></td>
+    <td class="votes"><label for="votes">Votes: </label><input type="text" name="votes"/></td>
+    <td class="win"><label for="win">Win: </label><input type="text" name="win"/></td>
+    <td class="username"><label for="username">Username: </label><input type="text" name="username"/></td>
   </tr>
 </table>
 </section>
