@@ -48,7 +48,7 @@ def session_input_validator(session_id, date, host):
     except:
         return False, "Session_id needs to be a positive integer", None
 
-    if not db_func.check_if_session_exists(session_id):
+    if db_func.check_if_session_exists(session_id):
         return False, "Session already exists", None
 
     if session_id <= 0:
@@ -170,67 +170,102 @@ def beer_input_validator(
     )
 
 
+def check_for_winner(beer_list):
+    """Checks there is one winner in a list of beers for a session.
+
+    Args:
+        beer_list (list[Beer]): list of all beers to be added.
+
+    Returns:
+        boolean: True if only one winner, false if no or multiple winners:
+    """
+    win_count = 0
+
+    for beer in beer_list:
+        if beer.win == 1:
+            win_count += 1
+
+    if win_count == 1:
+        return True
+    else:
+        return False
+
+
 @bp.route("/add_session", methods=["GET", "POST"])
 @login_required
 def add_session():
     if request.method == "POST":
         if not request.form["session_id"]:
             error = "There needs to be a session id"
+            flash(error)
+            return render_template("sessions/add_session.html")
         if not request.form["date"]:
             error = "There needs to be a date"
+            flash(error)
+            return render_template("sessions/add_session.html")
         # TODO (dan) I need to actually tie the hosts in.
         if not request.form["host"]:
             error = "There needs to be a host"
+            flash(error)
+            return render_template("sessions/add_session.html")
+
+        # Check Session isn't duplicate
+        session_valid, error, new_session = session_input_validator(
+            request.form["session_id"], request.form["date"], request.form["host"]
+        )
+
+        if not session_valid:
+            flash(error)
+            return render_template("sessions/add_session.html")
         else:
-            # Check Session isn't duplicate
-            session_valid, error, new_session = session_input_validator(
-                request.form["session_id"], request.form["date"], request.form["host"]
-            )
-            if not session_valid:
-                flash(error)
-                return render_template("sessions/add_session.html")
+            session_id = request.form["session_id"]
+            # Construct and add the session
+            db.session.add(new_session)
+
+            # Helper variables for beer loop
+            still_beers = True
+            beer_list = []
+            i = 0
+
+            while still_beers:
+                try:
+                    beer_name = request.form["beer_{}".format(i)]
+                    beer_abv = float(request.form["beer_abv_{}".format(i)])
+                    brewery = request.form["brewery_{}".format(i)]
+                    style = request.form["style_{}".format(i)]
+                    votes = request.form["votes_{}".format(i)]
+                    win = request.form["win_{}".format(i)]
+                    username = request.form["username_{}".format(i)]
+
+                    beer_valid, error, new_beer = beer_input_validator(
+                        beer_name,
+                        beer_abv,
+                        brewery,
+                        style,
+                        votes,
+                        win,
+                        username,
+                        session_id,
+                    )
+                    if beer_valid:
+                        beer_list.append(new_beer)
+                        i += 1
+                    else:
+                        flash(error)
+                        return render_template("sessions/add_session.html")
+                except BadRequestKeyError:
+                    still_beers = False
+
+            if check_for_winner(beer_list):
+                for beer in beer_list:
+                    db.session.add(beer)
             else:
-                # Construct and add the session
-                db.session.add(new_session)
+                flash("There needs to be exactly one winner.")
+                return render_template("sessions/add_session.html")
 
-                # Loop Through Form to get Beers
-                still_beers = True
-                i = 0
-                while still_beers:
-                    try:
-                        beer_name = request.form["beer_{}".format(i)]
-                        beer_abv = float(request.form["beer_abv_{}".format(i)])
-                        brewery = request.form["brewery_{}".format(i)]
-                        style = request.form["style_{}".format(i)]
-                        votes = request.form["votes_{}".format(i)]
-                        win = request.form["win_{}".format(i)]
-                        username = request.form["username_{}".format(i)]
-
-                        beer_valid, error, new_beer = beer_input_validator(
-                            beer_name,
-                            beer_abv,
-                            brewery,
-                            style,
-                            votes,
-                            win,
-                            username,
-                            session_id,
-                        )
-                        if beer_valid:
-                            db.session.add(new_beer)
-                            i += 1
-                        else:
-                            flash(error)
-                            return render_template("sessions/add_session.html")
-                    except BadRequestKeyError:
-                        still_beers = False
-
-                # Commit at the end, dont' want to commit half things.
-                db.session.commit()
-                return redirect(url_for("sessions.view_session", id=session_id))
-
-        flash(error)
-        return render_template("sessions/add_session.html")
+            # Commit at the end, don't want to commit half things.
+            db.session.commit()
+            return redirect(url_for("sessions.view_session", id=session_id))
 
     return render_template("sessions/add_session.html")
 
