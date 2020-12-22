@@ -1,5 +1,7 @@
 import functools
 
+from dataclasses import dataclass
+
 from flask import (
     abort,
     Blueprint,
@@ -27,245 +29,252 @@ import flight_club.models.db_func as db_func
 bp = Blueprint("sessions", __name__, url_prefix="/sessions")
 
 
-def session_input_validator(session_id, date, host):
-    """This function is for validation the inputs for the session portion
-    of add session. It will type check and value check.
+@dataclass
+class ValidatorResults:
+    error: str = ""
+    success: bool = False
 
-    Args:
-        session_id : the id of the session
-        date : the date of the session
-        host : the host of the
 
-    Returns:
-        boolean indicating if checks failed
-        error string, either error or None
-        session object or None if errors
-
+class AddSessionFormValidator:
     """
-    # Session id checks
-    try:
-        session_id = int(session_id)
-    except:
-        return False, "Session_id needs to be a positive integer", None
-
-    if db_func.check_if_session_exists(session_id):
-        return False, "Session already exists", None
-
-    if session_id <= 0:
-        return False, "Session id should be a positive number, greater than 0", None
-
-    # Date checks
-    # Note date is passed as YYYY-MM-DD we want to store and display MM/DD/YYYY.
-    # Mostly because we are dumb Americans.
-    try:
-        date_object = datetime.datetime.strptime(date, "%Y-%m-%d")
-    except ValueError:
-        # This should never happen, since we use a date input selector.
-        # Maybe on day someone will attempt to hack us via the date field?
-        return False, "Date was not inputted in YYYY-MM-DD format", None
-
-    date = datetime.date.strftime(date_object, "%m/%d/%Y")
-
-    # Host checks
-    if not db_func.check_if_user_exists(host):
-        return False, "Username {} does not exist".format(host), None
-
-    return True, None, Session(id=session_id, date=date)
-
-
-def beer_input_validator(
-    beer_name, beer_abv, brewery, style, votes, win, username, session_id
-):
-    """This function is for validating the input from the beer add session form.
-    It checks that a few database constraints are met prior to adding,
-    as well as values are in the correct format.
-
-    Args:
-        beer_name : The string for the beer name.
-        beer_abv : A string that will be converted to abv.
-        brewery : A string that is the name of the brewery.
-        style : A string that is the style of the beer.
-        votes : The number of votes this beer got.
-        win : An integer that represents if the beer won the session.
-        username : The user who brought the beer
-        session_id : The session the beer is in
-
-    Returns:
-        boolean indicating if checks failed
-        error string, either error or None
-        beer object or None if errors
+    docstring
     """
 
-    # Checks for beer name.
-    if beer_name == "":
-        return False, "Beer name should not be an empty string", None
+    def __init__(self, form: dict):
+        self._form = form
+        self._error = ""
+        self._validated = False
+        self._session_model = None
+        self._beer_model_list = []
 
-    # Checks for brewery
-    if brewery == "":
-        return (
-            False,
-            "Brewery for {} should not be an empty string".format(beer_name),
-            None,
-        )
+    @staticmethod
+    def _validate_session_id(session_id):
+        try:
+            session_id = int(session_id)
+        except:
+            return ValidatorResults("Session_id needs to be a positive integer", False)
 
-    # Checks for abv
-    try:
-        beer_abv = float(beer_abv)
-    except:
-        return (
-            False,
-            "Beer Abv for {} needs to be a valid decimal number".format(beer_abv),
-            None,
-        )
+        if db_func.check_if_session_exists(session_id):
+            return ValidatorResults("Session already exists", False)
 
-    if beer_abv < 0:
-        return False, "Beer Abv for {} should not be negative".format(beer_abv), None
+        if session_id <= 0:
+            return ValidatorResults(
+                "Session id should be positve and greater than 0", False
+            )
 
-    # Checks for style
-    if style == "":
-        return False, "Style for {} should not be an empty string".format(style), None
+        return ValidatorResults("", True)
 
-    # Checks for vote
-    try:
-        votes = int(votes)
-    except:
-        return (
-            False,
-            "Votes for {} should be a valid positive integer".format(votes),
-            None,
-        )
+    @staticmethod
+    def _validate_date(date: str):
+        try:
+            datetime.datetime.strptime(date, "%Y-%m-%d")
+        except ValueError:
+            # This should never happen, since we use a date input selector.
+            # Maybe on day someone will attempt to hack us via the date field?
+            return ValidatorResults("Date was not inputted in YYYY-MM-DD format", False)
 
-    if votes < 0:
-        return False, "Votes for {} should not be a negative number".format(votes), None
+        return ValidatorResults("", True)
 
-    # Checks for win
-    try:
-        win = int(win)
-    except:
-        return False, "Win should be either 1 or 0".format(win), None
+    @staticmethod
+    def _validate_user(user: str, beer_name=None):
+        if not db_func.check_if_user_exists(user):
+            if not beer_name:
+                return ValidatorResults("User does not exist", False)
+            else:
+                return ValidatorResults(
+                    "User does not exist for {}".format(beer_name), False
+                )
+        return ValidatorResults("", True)
 
-    if win < 0 or win > 1:
-        return False, "Win should be either 1 or 0".format(win), None
+    @staticmethod
+    def _empty_string_validator(value: str, beer_name: str):
+        if value == "":
+            return ValidatorResults(
+                "{} should not be an empty string".format(beer_name), False
+            )
+        return ValidatorResults("", True)
 
-    # Check for username
-    if not db_func.check_if_user_exists(username):
-        return False, "Username {} does not exist".format(username), None
+    @staticmethod
+    def _abv_validator(beer_abv: str, beer_name: str):
 
-    # Not validating session here, as it's validated in a different part of the form.
-    # Maybe will change this later
+        try:
+            beer_abv = float(beer_abv)
+        except:
+            return ValidatorResults(
+                "ABV for {} should be a floating point num".format(beer_name), False
+            )
 
-    return (
-        True,
-        None,
-        Beer(
-            beer_name=beer_name,
-            beer_abv=beer_abv,
-            brewery=brewery,
-            style=style,
-            votes=votes,
-            win=win,
-            username=username,
-            session_id=session_id,
-        ),
-    )
+        if beer_abv < 0:
+            return ValidatorResults(
+                "ABV for {} should be positive".format(beer_name), False
+            )
 
+        return ValidatorResults("", True)
 
-def check_for_winner(beer_list):
-    """Checks there is one winner in a list of beers for a session.
+    @staticmethod
+    def _votes_validator(votes: str, beer_name: str):
+        try:
+            votes = int(votes)
+        except:
+            return ValidatorResults(
+                "Votes for {} should be an integer".format(beer_name), False
+            )
 
-    Args:
-        beer_list (list[Beer]): list of all beers to be added.
+        if votes < 0:
+            return ValidatorResults(
+                "Votes for {} should be greater than 0".format(beer_name), False
+            )
 
-    Returns:
-        boolean: True if only one winner, false if no or multiple winners:
-    """
-    win_count = 0
+        return ValidatorResults("", True)
 
-    for beer in beer_list:
-        if beer.win == 1:
-            win_count += 1
+    @staticmethod
+    def _win_validator(win: str, beer_name: str):
+        try:
+            win = int(win)
+        except:
+            return ValidatorResults(
+                "Win for {} should be an integer".format(beer_name), False
+            )
 
-    if win_count == 1:
-        return True
-    else:
-        return False
+        if win < 0 or win > 1:
+            return ValidatorResults(
+                "Win should be either 0 or 1 for {}".format(beer_name), False
+            )
+
+        return ValidatorResults("", True)
+
+    @staticmethod
+    def _validate_winner(beer_list):
+        win_count = 0
+
+        for beer in beer_list:
+            if beer.win == 1:
+                win_count += 1
+
+        if win_count == 1:
+            return ValidatorResults("", True)
+        else:
+            return ValidatorResults("There should be exactly 1 winning beer", False)
+
+    def validate_session(self):
+        # Confirm all Inputs exist
+        if not self._form["session_id"]:
+            return ValidatorResults("There needs to be a session id", False)
+
+        if not self._form["date"]:
+            return ValidatorResults("There needs to be a date", False)
+
+        # TODO (dan) I need to actually tie the hosts in.
+        if not self._form["host"]:
+            return ValidatorResults("There needs to be a host", False)
+
+        # Prep for validation
+        validator_res = ValidatorResults()
+        validator_list = [
+            (self._validate_session_id, self._form["session_id"]),
+            (self._validate_date, self._form["date"]),
+            (self._validate_user, self._form["host"]),
+        ]
+
+        # Run validation routines
+        for val_func, val_arg in validator_list:
+            validator_res = val_func(val_arg)
+            if not validator_res.success:
+                return validator_res
+
+        # Build the session model
+        session_id = int(self._form["session_id"])
+        date_object = datetime.datetime.strptime(self._form["date"], "%Y-%m-%d")
+        date = datetime.date.strftime(date_object, "%m/%d/%Y")
+        self._session_model = Session(id=session_id, date=date)
+
+        return ValidatorResults("", True)
+
+    def validate_beers(self):
+
+        still_beers = True
+        while still_beers:
+            try:
+                i = len(self._beer_model_list)
+                beer_name = request.form["beer_{}".format(i)]
+                beer_abv = request.form["beer_abv_{}".format(i)]
+                brewery = request.form["brewery_{}".format(i)]
+                style = request.form["style_{}".format(i)]
+                votes = request.form["votes_{}".format(i)]
+                win = request.form["win_{}".format(i)]
+                username = request.form["username_{}".format(i)]
+
+                val_res = ValidatorResults()
+                validator_list = [
+                    (self._empty_string_validator, (beer_name, beer_name)),
+                    (self._empty_string_validator, (brewery, beer_name)),
+                    (self._abv_validator, (beer_abv, beer_name)),
+                    (self._empty_string_validator, (style, beer_name)),
+                    (self._votes_validator, (votes, beer_name)),
+                    (self._win_validator, (win, beer_name)),
+                    (self._validate_user, (username, beer_name)),
+                ]
+
+                for func, args in validator_list:
+                    val_res = func(args[0], args[1])
+                    if not val_res.success:
+                        return val_res
+
+                self._beer_model_list.append(
+                    Beer(
+                        beer_name=beer_name,
+                        beer_abv=float(beer_abv),
+                        brewery=brewery,
+                        style=style,
+                        votes=int(votes),
+                        win=int(win),
+                        username=username,
+                        session_id=self._session_model.id,
+                    )
+                )
+            except BadRequestKeyError:
+                still_beers = False
+
+        val_res = self._validate_winner(self._beer_model_list)
+        if not val_res.success:
+            return val_res
+
+        return ValidatorResults("", True)
+
+    @property
+    def session_model(self):
+        return self._session_model
+
+    @property
+    def beer_model_list(self):
+        return self._beer_model_list
 
 
 @bp.route("/add_session", methods=["GET", "POST"])
 @login_required
 def add_session():
     if request.method == "POST":
-        if not request.form["session_id"]:
-            error = "There needs to be a session id"
-            flash(error)
-            return render_template("sessions/add_session.html")
-        if not request.form["date"]:
-            error = "There needs to be a date"
-            flash(error)
-            return render_template("sessions/add_session.html")
-        # TODO (dan) I need to actually tie the hosts in.
-        if not request.form["host"]:
-            error = "There needs to be a host"
-            flash(error)
+        validator = AddSessionFormValidator(request.form)
+        session_val_res = validator.validate_session()
+        if not session_val_res.success:
+            flash(session_val_res.error)
             return render_template("sessions/add_session.html")
 
-        # Check Session isn't duplicate
-        session_valid, error, new_session = session_input_validator(
-            request.form["session_id"], request.form["date"], request.form["host"]
-        )
-
-        if not session_valid:
-            flash(error)
-            return render_template("sessions/add_session.html")
         else:
-            session_id = request.form["session_id"]
-            # Construct and add the session
-            db.session.add(new_session)
+            db.session.add(validator.session_model)
+            beer_val_res = validator.validate_beers()
 
-            # Helper variables for beer loop
-            still_beers = True
-            beer_list = []
-            i = 0
-
-            while still_beers:
-                try:
-                    beer_name = request.form["beer_{}".format(i)]
-                    beer_abv = float(request.form["beer_abv_{}".format(i)])
-                    brewery = request.form["brewery_{}".format(i)]
-                    style = request.form["style_{}".format(i)]
-                    votes = request.form["votes_{}".format(i)]
-                    win = request.form["win_{}".format(i)]
-                    username = request.form["username_{}".format(i)]
-
-                    beer_valid, error, new_beer = beer_input_validator(
-                        beer_name,
-                        beer_abv,
-                        brewery,
-                        style,
-                        votes,
-                        win,
-                        username,
-                        session_id,
-                    )
-                    if beer_valid:
-                        beer_list.append(new_beer)
-                        i += 1
-                    else:
-                        flash(error)
-                        return render_template("sessions/add_session.html")
-                except BadRequestKeyError:
-                    still_beers = False
-
-            if check_for_winner(beer_list):
-                for beer in beer_list:
-                    db.session.add(beer)
-            else:
-                flash("There needs to be exactly one winner.")
+            if not beer_val_res.success:
+                flash(beer_val_res.error)
                 return render_template("sessions/add_session.html")
 
-            # Commit at the end, don't want to commit half things.
+            for beer in validator.beer_model_list:
+                db.session.add(beer)
+
             db.session.commit()
-            return redirect(url_for("sessions.view_session", id=session_id))
+            return redirect(
+                url_for("sessions.view_session", id=validator.session_model.id)
+            )
 
     return render_template("sessions/add_session.html")
 
