@@ -47,6 +47,8 @@ class AddSessionFormValidator:
         self._session_model = None
         self._beer_model_list = []
 
+    # TODO (dan) if there start to be more forms, consider pullingt these validation
+    # functions into a generic validator module.
     @staticmethod
     def _validate_session_id(session_id):
         try:
@@ -196,13 +198,13 @@ class AddSessionFormValidator:
         while still_beers:
             try:
                 i = len(self._beer_model_list)
-                beer_name = request.form["beer_{}".format(i)]
-                beer_abv = request.form["beer_abv_{}".format(i)]
-                brewery = request.form["brewery_{}".format(i)]
-                style = request.form["style_{}".format(i)]
-                votes = request.form["votes_{}".format(i)]
-                win = request.form["win_{}".format(i)]
-                username = request.form["username_{}".format(i)]
+                beer_name = self._form["beer_{}".format(i)]
+                beer_abv = self._form["beer_abv_{}".format(i)]
+                brewery = self._form["brewery_{}".format(i)]
+                style = self._form["style_{}".format(i)]
+                votes = self._form["votes_{}".format(i)]
+                win = self._form["win_{}".format(i)]
+                username = self._form["username_{}".format(i)]
 
                 val_res = ValidatorResults()
                 validator_list = [
@@ -232,7 +234,7 @@ class AddSessionFormValidator:
                         session_id=self._session_model.id,
                     )
                 )
-            except BadRequestKeyError:
+            except KeyError:
                 still_beers = False
 
         val_res = self._validate_winner(self._beer_model_list)

@@ -2,15 +2,15 @@ import pytest
 
 from flight_club import db
 from flight_club.models.models import User, Beer
-from flight_club.sessions.views import (
-    session_input_validator,
-    beer_input_validator,
-    check_for_winner,
-)
+from flight_club.sessions.views import AddSessionFormValidator, ValidatorResults
 import flight_club.models.db_func as db_func
 import datetime
 
 from flask import g, session
+
+
+def build_session_request_dict(session_id, date, host):
+    return {"session_id": session_id, "date": date, "host": host}
 
 
 @pytest.mark.parametrize(
@@ -35,15 +35,32 @@ def test_session_input_validator(app, session_id, date, host, result):
         # TODO (dan) Later this can probably be a fixture of it's own
         db_func.add_session(1, "1/1/2020")
         db_func.add_user("test", "test")
-        val_result, error, session_object = session_input_validator(
-            session_id, date, host
-        )
-        assert val_result == result
-        if val_result:
-            assert session_object.id == int(session_id)
+
+        request = build_session_request_dict(session_id, date, host)
+        validator = AddSessionFormValidator(request)
+
+        val_result = validator.validate_session()
+
+        assert val_result.success == result
+        if val_result.success:
+            assert validator.session_model.id == int(session_id)
             assert datetime.datetime.strptime(
-                session_object.date, "%m/%d/%Y"
+                validator.session_model.date, "%m/%d/%Y"
             ) == datetime.datetime.strptime(date, "%Y-%m-%d")
+
+
+def build_beer_request_dict(
+    beer_name, beer_abv, brewery, style, votes, win, username, id
+):
+    return {
+        "beer_{}".format(id): beer_name,
+        "beer_abv_{}".format(id): beer_abv,
+        "brewery_{}".format(id): brewery,
+        "style_{}".format(id): style,
+        "votes_{}".format(id): votes,
+        "win_{}".format(id): win,
+        "username_{}".format(id): username,
+    }
 
 
 @pytest.mark.parametrize(
@@ -120,7 +137,7 @@ def test_session_input_validator(app, session_id, date, host, result):
             "0",
             "test",
             "1",
-            True,
+            False,
         ),  # Win Cases
         ("Good Beer", "2.1", "Good Brewery", "IPA", "1", "-1", "test", "1", False),
         ("Good Beer", "2.1", "Good Brewery", "IPA", "1", "2", "test", "1", False),
@@ -143,14 +160,24 @@ def test_beer_input_validator(
     with app.app_context():
         # The test user and session are added in test_session_input_validator
         # Need to make that a "module fixture"?
-        val_result, error, session_object = beer_input_validator(
-            beer_name, beer_abv, brewery, style, votes, win, username, session_id
+        request = dict()
+        request.update(build_session_request_dict("3", "2020-01-01", "test"))
+        request.update(
+            build_beer_request_dict(
+                beer_name, beer_abv, brewery, style, votes, win, username, 0
+            )
         )
-        assert val_result == result
+
+        validator = AddSessionFormValidator(request)
+        val_result = validator.validate_session()
+        assert val_result.success == True
+        val_result = validator.validate_beers()
+
+        assert val_result.success == result
 
 
-def test_win_checker():
-    win_beer = Beer(
+def build_win_beer(id):
+    return build_beer_request_dict(
         beer_name="Good",
         beer_abv=2.1,
         brewery="Good",
@@ -158,10 +185,12 @@ def test_win_checker():
         votes=2,
         win=1,
         username="test",
-        session_id=1,
+        id=id,
     )
 
-    lose_beer = Beer(
+
+def build_lose_beer(id):
+    return build_beer_request_dict(
         beer_name="Bad",
         beer_abv=2.1,
         brewery="Good",
@@ -169,18 +198,43 @@ def test_win_checker():
         votes=0,
         win=0,
         username="test",
-        session_id=1,
+        id=id,
     )
 
-    beer_list_1 = [win_beer, lose_beer]
-    beer_list_2 = [lose_beer, lose_beer]
-    beer_list_3 = [win_beer, win_beer]
-    beer_list_4 = []
 
-    assert check_for_winner(beer_list_1) == True
-    assert check_for_winner(beer_list_2) == False
-    assert check_for_winner(beer_list_3) == False
-    assert check_for_winner(beer_list_4) == False
+def test_win_checker(app):
+
+    with app.app_context():
+        # Valid case
+        request_1 = dict()
+        request_1.update(build_session_request_dict("3", "2020-01-01", "test"))
+        request_1.update(build_win_beer(0))
+        request_1.update(build_lose_beer(1))
+
+        # Multiple Win Beers
+        request_2 = dict()
+        request_2.update(build_session_request_dict("3", "2020-01-01", "test"))
+        request_2.update(build_win_beer(0))
+        request_2.update(build_win_beer(1))
+
+        # No Win Beers
+        request_3 = dict()
+        request_3.update(build_session_request_dict("3", "2020-01-01", "test"))
+        request_3.update(build_lose_beer(0))
+        request_3.update(build_lose_beer(1))
+
+        # No Beers
+        request_4 = dict()
+        request_4.update(build_session_request_dict("3", "2020-01-01", "test"))
+
+        for request, result in zip(
+            [request_1, request_2, request_3, request_4], [True, False, False, False]
+        ):
+            validator = AddSessionFormValidator(request)
+            val_result = validator.validate_session()
+            assert val_result.success == True
+            val_result = validator.validate_beers()
+            assert val_result.success == result
 
 
 # (TODO) The parameter length is varying so needs some more thought
@@ -252,4 +306,4 @@ def test_add_session(app, test_client):
     # Check repeated the playoad does not work
     response = test_client.post("/sessions/add_session", data=test_empty_payload_beer)
     assert response.status_code == 200
-    assert b"There needs to be exactly one winner." in response.data
+    assert b"There should be exactly 1 winning beer" in response.data
