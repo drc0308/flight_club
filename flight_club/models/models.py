@@ -2,9 +2,15 @@ from flight_club import db
 
 
 class User(db.Model):
+    """
+    Represents a flight-club user and all the data associated with a user
+    """
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String, unique=True, nullable=False)
     password = db.Column("password", db.String, nullable=False)
+    # TODO: (escott) user emails should be unique but that breaks the loading of
+    # the dev csv
+    email = db.Column("email", db.String, nullable=False)
     beers = db.relationship("Beer", backref="User", lazy=True)
 
 

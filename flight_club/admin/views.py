@@ -11,6 +11,12 @@ from flight_club import db
 
 
 class CsvView(BaseView):
+    """
+    Class that allows viewing and editing the underlying csv file that generates the
+    database.  Note that this view is only accessible from the admin pages and is
+    useful for development but not production.
+    """
+
     @expose("/", methods=("GET", "POST"))
     def index(self):
         if request.method == "POST":

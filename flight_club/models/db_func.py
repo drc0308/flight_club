@@ -3,22 +3,58 @@ import io
 
 from flask import flash, g, redirect, render_template, request, session, url_for
 from werkzeug.security import generate_password_hash
+from werkzeug.datastructures import FileStorage
 
 from flight_club.models.models import User, Beer, Session
 from flight_club import db
 
 
-def check_if_user_exists(username):
+def check_if_user_exists(username: str) -> bool:
+    """
+    Checks to see if a user already exists in the database
+    Args:
+        username: The user to check for
+
+    Returns:
+        True if the user exists in the DB, false otherwise
+
+    """
     if db.session.query(User.query.filter_by(username=username).exists()).scalar():
         return True
     else:
         return False
 
+def check_if_email_exists(email: str) -> bool:
+    """
+    Checks to see if an email already exists in the database
+    Args:
+        email: The email to check for
 
-def add_user(username, password="password"):
+    Returns:
+        True if the email exists in the DB, false otherwise
+
+    """
+    if db.session.query(User.query.filter_by(email=email).exists()).scalar():
+        return True
+    else:
+        return False
+
+
+def add_user(username, password="password", email="mozzie.fc.cat@gmail.com") -> None:
+    """
+    Helper function to add a user to the current db session.  Note that this is used in
+    practice to generate users from the dev cvs
+    Args:
+        username:
+        password:
+
+    Returns:
+
+    """
     if check_if_user_exists(username):
         return
-    db.session.add(User(username=username, password=generate_password_hash(password)))
+    db.session.add(User(username=username, password=generate_password_hash(password),
+                        email=email))
     db.session.commit()
 
 
@@ -58,7 +94,15 @@ def get_beer(beer_name):
     return Beer.query.filter_by(beer_name=beer_name).all()
 
 
-def csv_add_request(file):
+def csv_add_request(file: FileStorage) -> None:
+    """
+    Method to edit the underlying CSV that composes the DB from an admin view.
+    This reads in a file stream and then updates the database from the streamed
+    csv file
+    Args:
+        file: The stream-able file data coming from Flask
+
+    """
     # store the file contents as a string
     stream = io.StringIO(file.stream.read().decode("UTF8"), newline=None)
     csv_input = csv.reader(stream)
@@ -74,7 +118,13 @@ def csv_add_request(file):
         add_beer(row)
 
 
-def csv_add_filename(filename):
+def csv_add_filename(filename: str) -> None:
+    """
+    Reads in a local csv file and generates a DB from the columns
+    Args:
+        filename: Path to local csv to generate DB from
+    """
+
     with open(filename) as stream:
         csv_input = csv.reader(stream)
 
