@@ -63,10 +63,12 @@ def create_app(test_config=None):
     from flight_club import auth
     from flight_club import sessions
     from flight_club import users
+    from flight_club import beers
 
     app.register_blueprint(auth.bp)
     app.register_blueprint(sessions.bp)
     app.register_blueprint(users.bp)
+    app.register_blueprint(beers.bp)
     app.add_url_rule("/", endpoint="index")
 
     # initialize Flask-SQLAlchemy
