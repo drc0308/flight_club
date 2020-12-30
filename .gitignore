@@ -8,3 +8,7 @@ todo.txt
 results.xml
 
 .coverage
+
+# pycharm files
+.idea/
+env/

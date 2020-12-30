@@ -80,6 +80,9 @@ def load_logged_in_user():
         g.user = None
         g.username = None
     else:
+        user = User.query.filter_by(id=user_id).first()
+        if user is None:
+            return
         g.user = User.query.filter_by(id=user_id).first()
         g.username = g.user.username
 

@@ -2,6 +2,7 @@ import functools
 
 from flask import (
     Blueprint,
+    current_app,
     flash,
     g,
     redirect,
@@ -11,7 +12,7 @@ from flask import (
     url_for,
     abort,
 )
-
+from flask_paginate import Pagination, get_page_parameter
 from flight_club import db
 from flight_club.models.models import User, Beer, Session
 from flight_club.auth.views import login_required
@@ -27,14 +28,30 @@ def user_page(user_id):
     if not db_func.check_if_user_exists(user_id):
         abort(404)
     user = FCMember(user_id)
+
+    page = request.args.get(get_page_parameter(), type=int, default=1)
+    per_page = current_app.config["POSTS_PER_PAGE"]
+    offset = (page - 1) * per_page
+    pagination = Pagination(
+        page=page,
+        per_page=per_page,
+        search=False,
+        total=len(user.beers),
+        record_name="beers",
+        css_framework="bootstrap3",
+    )
+
     return render_template(
         "users/profile.html",
         user=user.username,
         score=user.avg_score,
-        beers=user.beers,
+        beers=user.beers[offset : offset + per_page],
         win_total=user._win_count,
         wins=user.wins,
         avg_abv=user.avg_abv,
+        pagination=pagination,
+        page=page,
+        per_page=per_page,
     )
 
 

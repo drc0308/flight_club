@@ -10,14 +10,21 @@
 # 
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
-language: python
-services:
-  - docker
-install:
-  - travis_retry pip install coveralls
-script:
-  - docker-compose run lint black /src/flight_club --check
-  - docker-compose run test
-after_success:
-  # Upload coverage information to Coveralls.
-  - coveralls
+FROM python:3.9.0
+
+WORKDIR /src
+
+ENV FLASK_APP=flight_club
+ENV FLASK_RUN_HOST=0.0.0.0
+ENV FLASK_ENV=production
+
+RUN apt-get update && apt-get install -y netcat
+
+COPY requirements.txt requirements.txt
+RUN pip install -r requirements.txt
+
+EXPOSE 8000
+
+COPY . /src
+
+ENTRYPOINT ["/src/entrypoint.sh"]
