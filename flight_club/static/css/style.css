@@ -75,7 +75,7 @@ a {
 	transition: all 0.2s ease-out;
 }
 a:hover { color: #D17101; text-decoration: underline; }
-a:focus { outline: none; }
+a:focus { color: #D17101; outline: none; }
 button {
 	-webkit-transition: all 0.2s ease-out;
 	-moz-transition: all 0.2s ease-out;
@@ -203,57 +203,18 @@ ul.list-dashed li:last-child { border-bottom: 0px; }
 
 /*BUTTON STYLES*/
 /*default*/
-.pi-btn-default { 
+.btn-default { 
 	background: #D17101; 
 	color: #f4f6f6; 
 	border: none; 
 	padding: 0 15px;
 	height: 29px;
 	text-transform: capitalize; }
-.pi-btn-default:hover { 
+.btn-default:hover { 
 	background: #552500; 
 	color: #fff; 
 	border: none; }
 
-/*pink*/
-.pi-btn-pink { background: #dc2d78; border: 1px solid #cc286e; color: #f4f6f6; box-shadow: inset 0 1px 0px rgba(255,255,255, 0.2); }
-.pi-btn-pink:hover { background: #cc286e; color: #fff; border: 1px solid #be1f63; }
-
-/*red*/
-.pi-btn-red { background: #ef4a44; border: 1px solid #d63530; color: #f4f6f6; box-shadow: inset 0 1px 0px rgba(255,255,255, 0.2); }
-.pi-btn-red:hover { background: #d63530; color: #fff; border: 1px solid #c4201b; }
-
-/*purple*/
-.pi-btn-purple { background: #8d55a0; border: 1px solid #814894; color: #f4f6f6; box-shadow: inset 0 1px 0px rgba(255,255,255, 0.2); }
-.pi-btn-purple:hover { background: #814894; color: #fff; border: 1px solid #773b8b; }
-
-/*orange*/
-.pi-btn-orange { background: #ee7933; border: 1px solid #e26a23; color: #f4f6f6; box-shadow: inset 0 1px 0px rgba(255,255,255, 0.2); }
-.pi-btn-orange:hover { background: #e26a23; color: #fff; border: 1px solid #d86019; }
-
-/*blue*/
-.pi-btn-blue { background: #279fba; border: 1px solid #1d93ae; color: #f4f6f6; box-shadow: inset 0 1px 0px rgba(255,255,255, 0.2); }
-.pi-btn-blue:hover { background: #1d93ae; color: #fff; border: 1px solid #1688a2; }
-
-/*green*/
-.pi-btn-green { background: #84bd38; border: 1px solid #7ab32e; color: #f4f6f6; box-shadow: inset 0 1px 0px rgba(255,255,255, 0.2); }
-.pi-btn-green:hover { background: #7ab32e; color: #fff; border: 1px solid #71aa26; }
-
-/*brown*/
-.pi-btn-brown { background: #8b4c38; border: 1px solid #824430; color: #f4f6f6; box-shadow: inset 0 1px 0px rgba(255,255,255, 0.2); }
-.pi-btn-brown:hover { background: #824430; color: #fff; border: 1px solid #7b3d29; }
-
-/*dark*/
-.pi-btn-dark { background: #2d323a; border: 1px solid #24282e; color: #f4f6f6; box-shadow: inset 0 1px 0px rgba(255,255,255, 0.2); }
-.pi-btn-dark:hover { background: #384147; color: #fff; border: 1px solid #32383f; }
-
-/*grey*/
-.pi-btn-grey { background: #a5b3b4; border: 1px solid #9eadae; color: #f4f6f6; box-shadow: inset 0 1px 0px rgba(255,255,255, 0.2); }
-.pi-btn-grey:hover { background: #889899; color: #fff; border: 1px solid #809192; }
-
-/*light-grey*/
-.pi-btn-light-grey { background: #f4f6f6; border: 1px solid #e3e9e9; color: #2d323a; box-shadow: inset 0 1px 0px rgba(255,255,255, 0.2); }
-.pi-btn-light-grey:hover { background: #a5b3b4; color: #fff; border: 1px solid #9eadae; }
 /*border buttons*/
 .btn-border { background: transparent; color: #21252b; }
 /*button icon*/
@@ -1458,6 +1419,16 @@ hr { border: 0; }
 
 .table>thead>tr>td.info, .table>tbody>tr>td.info, .table>tfoot>tr>td.info, .table>thead>tr>th.info, .table>tbody>tr>th.info, .table>tfoot>tr>th.info, .table>thead>tr.info>td, .table>tbody>tr.info>td, .table>tfoot>tr.info>td, .table>thead>tr.info>th, .table>tbody>tr.info>th, .table>tfoot>tr.info>th { background-color: #daecff; }
 
+#beer-form {
+	background-color: #eee;
+	border: solid #eee 10px;
+	width: 100%;
+}
+
+#beer-form td {
+	padding-bottom: 10px;
+}
+
 @-moz-document url-prefix() {
     fieldset {
         display: table-cell;
@@ -1470,7 +1441,7 @@ hr { border: 0; }
 .input-group-addon { background: #e7e9e9; border: 1px solid #e7e9e9; }
 .input-group-addon .fa { width: 20px; }
 input[type="checkbox"] { margin: 7px 10px 0 0; }
-label { font-size: 16px; font-weight: 300; }
+label { font-size: 16px; font-weight: 400; margin-right: 5px; }
 
 input {
 	margin-right: 10px;
@@ -2056,12 +2027,6 @@ ul.recent-post li .fa { margin-right: 10px; font-size: 13px; }
 	transition: all 0.2s ease-out;
 }
 #footer .gallery-item a img:hover { opacity: 0.8; }
-
-.footer-v2 { text-align: center; padding-bottom: 30px; }
-.footer-v2 .icon { font-size: 38px; color: #d17101; margin-bottom: 25px; }
-.footer-v2 h5 { margin-bottom: 25px; }
-.footer-v2 p { margin-bottom: 0px; }
-.footer-v2 .social li { margin-right: 5px; }
 
 @media (max-width: 1200px) {
 	
