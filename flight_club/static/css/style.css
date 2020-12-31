@@ -6,6 +6,14 @@
 	display: none;
 }
 
+.fa-arrow-up, .fa-arrow-down{
+	color: #666;
+}
+
+.fa-arrow-up:active, .fa-arrow-up:hover, .fa-arrow-down:active, .fa-arrow-down:hover{
+	color: #FFF;
+}
+
 /*
  * Template Name: Piksell - Responsive Bootstrap Template
  * Description: Business, Corporate, Portfolio and Blog Theme.

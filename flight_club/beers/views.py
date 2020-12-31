@@ -15,8 +15,23 @@ from flask_paginate import Pagination, get_page_parameter
 from flight_club import db
 from flight_club.models.models import Beer
 from flight_club.auth.views import login_required
+from werkzeug.exceptions import BadRequestKeyError
 
 bp = Blueprint("beers", __name__, url_prefix="/beers")
+
+
+def return_sorted_beers(key=None, sort=None):
+
+    if key is None or sort is None:
+        return Beer.query.all()
+    else:
+        if sort == "asc":
+            return Beer.query.order_by(getattr(Beer, key)).all()
+        elif sort == "desc":
+            return Beer.query.order_by(getattr(Beer, key).desc()).all()
+
+    # This should never happen, but just in case
+    return Beer.query.all()
 
 
 @bp.route("/list", methods=["GET"])
@@ -27,7 +42,16 @@ def list_beers():
     per_page = current_app.config["POSTS_PER_PAGE"]
     offset = (page - 1) * per_page
 
-    fc_beers = Beer.query.all()
+    try:
+        sort_key = request.args.get("key")
+        sort_order = request.args.get("sort")
+    except BadRequestKeyError:
+        # We don't have any keys to sort on
+        sort_key = None
+        sort_order = None
+
+    fc_beers = return_sorted_beers(sort_key, sort_order)
+
     pagination = Pagination(
         page=page,
         per_page=per_page,
