@@ -1377,7 +1377,9 @@ hr { border: 0; }
 .panel-danger .panel-heading { background: #fde9e6; color: #d2220a; border-color: #fedbd4; }
 
 /*TABLE*/
-.table { color: #555; }
+.table { 
+	color: #555; 
+}
 
 .table > thead > tr > th,
 .table > tbody > tr > th,
@@ -1419,15 +1421,7 @@ hr { border: 0; }
 
 .table>thead>tr>td.info, .table>tbody>tr>td.info, .table>tfoot>tr>td.info, .table>thead>tr>th.info, .table>tbody>tr>th.info, .table>tfoot>tr>th.info, .table>thead>tr.info>td, .table>tbody>tr.info>td, .table>tfoot>tr.info>td, .table>thead>tr.info>th, .table>tbody>tr.info>th, .table>tfoot>tr.info>th { background-color: #daecff; }
 
-#beer-form {
-	background-color: #eee;
-	border: solid #eee 10px;
-	width: 100%;
-}
-
-#beer-form td {
-	padding-bottom: 10px;
-}
+#beer-form td {	padding-bottom: 10px; }
 
 @-moz-document url-prefix() {
     fieldset {
@@ -1440,12 +1434,15 @@ hr { border: 0; }
 .input-group { margin-bottom: 20px; }
 .input-group-addon { background: #e7e9e9; border: 1px solid #e7e9e9; }
 .input-group-addon .fa { width: 20px; }
-input[type="checkbox"] { margin: 7px 10px 0 0; }
 label { font-size: 16px; font-weight: 400; margin-right: 5px; }
 
-input {
-	margin-right: 10px;
-}
+input {	margin-right: 10px; }
+
+input[type="checkbox"] { margin: 7px 10px 0 0; }
+
+input[type="number"] { width: 80px; }
+
+input[type=date], input[type=time], input[type=datetime-local], input[type=month] { line-height: 25px; }
 
 textarea, textarea.form-control, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], select, select.form-control, .uneditable-input { 
 	border: 1px solid #e7e9e9;
