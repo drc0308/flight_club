@@ -23,21 +23,43 @@
                 <table class="table table-striped table-hover">
                     <thead>
                         <tr>
-                            <th>Beer Number</th>
-                            <th>Session</th>
-                            <th>Beer Name</th>
-                            <th>Brewery</th>
-                            <th>Style</th>
-                            <th>ABV</th>
-                            <th>Votes</th>
-                            <th>Win</th>
-                            <th>Member</th>
+                            <th>Session
+                                <a href="/beers/list?key=session_id&sort=asc"><i class="fa fa-arrow-up"></i></a>
+                                <a href="/beers/list?key=session_id&sort=desc"><i class="fa fa-arrow-down"></i></a>
+                            </th>
+                            <th>Beer Name 
+                                <a href="/beers/list?key=beer_name&sort=asc"><i class="fa fa-arrow-up"></i></a>
+                                <a href="/beers/list?key=beer_name&sort=desc"><i class="fa fa-arrow-down"></i></a>
+                            </th>
+                            <th>Brewery
+                                <a href="/beers/list?key=brewery&sort=asc"><i class="fa fa-arrow-up"></i></a>
+                                <a href="/beers/list?key=brewery&sort=desc"><i class="fa fa-arrow-down"></i></a>
+                            </th>
+                            <th>Style
+                                <a href="/beers/list?key=style&sort=asc"><i class="fa fa-arrow-up"></i></a>
+                                <a href="/beers/list?key=style&sort=desc"><i class="fa fa-arrow-down"></i></a>
+                            </th>
+                            <th>ABV
+                                <a href="/beers/list?key=beer_abv&sort=asc"><i class="fa fa-arrow-up"></i></a>
+                                <a href="/beers/list?key=beer_abv&sort=desc"><i class="fa fa-arrow-down"></i></a>
+                            </th>
+                            <th>Votes
+                                <a href="/beers/list?key=votes&sort=asc"><i class="fa fa-arrow-up"></i></a>
+                                <a href="/beers/list?key=votes&sort=desc"><i class="fa fa-arrow-down"></i></a>
+                            </th>
+                            <th>Win
+                                <a href="/beers/list?key=win&sort=asc"><i class="fa fa-arrow-up"></i></a>
+                                <a href="/beers/list?key=win&sort=desc"><i class="fa fa-arrow-down"></i></a>
+                            </th>
+                            <th>Member
+                                <a href="/beers/list?key=username&sort=asc"><i class="fa fa-arrow-up"></i></a>
+                                <a href="/beers/list?key=username&sort=desc"><i class="fa fa-arrow-down"></i></a>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for beer in beers %}
                         <tr>
-                            <td>{{ beer.id }}</td>
                             <td>{{ beer.session_id }}</td>
                             <td>{{ beer.beer_name }}</td>
                             <td>{{ beer.brewery }}</td>
