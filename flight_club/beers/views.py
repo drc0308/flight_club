@@ -20,8 +20,16 @@ from werkzeug.exceptions import BadRequestKeyError
 bp = Blueprint("beers", __name__, url_prefix="/beers")
 
 
-def return_sorted_beers(key=None, sort=None):
+def return_sorted_beers(key: str = None, sort: str = None):
+    """Returns the beers sorted based on the key and sort value.
 
+    Args:
+        key (str, optional): attribute to sort on
+        sort (str, optional): sort ascending or descending
+
+    Returns:
+        List of Beers.
+    """
     if key is None or sort is None:
         return Beer.query.all()
     else:
@@ -29,9 +37,6 @@ def return_sorted_beers(key=None, sort=None):
             return Beer.query.order_by(getattr(Beer, key)).all()
         elif sort == "desc":
             return Beer.query.order_by(getattr(Beer, key).desc()).all()
-
-    # This should never happen, but just in case
-    return Beer.query.all()
 
 
 @bp.route("/list", methods=["GET"])
