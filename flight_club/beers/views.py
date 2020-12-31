@@ -46,14 +46,8 @@ def list_beers():
     page = request.args.get(get_page_parameter(), type=int, default=1)
     per_page = current_app.config["POSTS_PER_PAGE"]
     offset = (page - 1) * per_page
-
-    try:
-        sort_key = request.args.get("key")
-        sort_order = request.args.get("sort")
-    except BadRequestKeyError:
-        # We don't have any keys to sort on
-        sort_key = None
-        sort_order = None
+    sort_key = request.args.get("key")
+    sort_order = request.args.get("sort")
 
     fc_beers = return_sorted_beers(sort_key, sort_order)
 
