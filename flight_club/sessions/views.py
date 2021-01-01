@@ -21,6 +21,7 @@ from flight_club import db
 from flight_club.models.models import Beer, Session
 from flight_club.auth.views import login_required
 from flight_club.sessions.fc_sessions import FCSession
+from sqlalchemy.orm import load_only
 from werkzeug.exceptions import BadRequestKeyError
 
 import datetime
@@ -37,7 +38,7 @@ class ValidatorResults:
 
 class AddSessionFormValidator:
     """
-    docstring
+    Responsible for taking in the request form and performing necessary input validation.
     """
 
     def __init__(self, form: dict):
@@ -298,6 +299,14 @@ def view_session(id):
     )
 
 
+def get_sessions():
+    # TODO There has to be a better way to do this conversion...
+    fc_sessions = Session.query.options(load_only('id')).all()
+    session_list = []
+    for session in fc_sessions:
+        session_list.append(FCSession(session.id))
+    return session_list
+
 @bp.route("/list", methods=["GET"])
 @login_required
 def list_sessions():
@@ -306,7 +315,7 @@ def list_sessions():
     per_page = current_app.config["POSTS_PER_PAGE"]
     offset = (page - 1) * per_page
 
-    fc_sessions = Session.query.all()
+    fc_sessions = get_sessions()
     pagination = Pagination(
         page=page,
         per_page=per_page,

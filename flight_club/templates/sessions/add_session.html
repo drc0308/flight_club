@@ -42,10 +42,11 @@
             <td class="beer"><label for="beer">Beer</label><input type="text" name="beer"/></td>
             <td class="brewery"><label for="brewery">Brewery</label><input type="text" name="brewery"/></td>
             <td class="style"><label for="style">Style</label><input type="text" name="style"/></td>
-            <td class="beer_abv"><label for="beer_abv">Abv</label><input type="number" name="beer_abv" step=".01"/></td>
+            <td class="beer_abv"><label for="beer_abv">Abv</label><input type="number" name="beer_abv" step=".1"/></td>
             <td class="username"><label for="username">Member</label><input type="text" name="username"/></td>
             <td class="votes"><label for="votes"># of Votes</label><input type="number" name="votes"/></td>
-            <td class="win"><label for="win">Winner</label><input type="checkbox" id="win" name="win" value="1"></td>
+            <td class="win_hidden"><input type="number" name="win" id="win_hidden" value="0"></td>
+            <td class="win"><label for="win">Winner</label><input type="checkbox" class="checkbox" name="win" id="win" value="1" onchange="winOnChange(this)"></td>
           </tr>
         </table>
 
