@@ -18,6 +18,7 @@ from flight_club.models.models import User, Beer, Session
 from flight_club.auth.views import login_required
 from flight_club.users.fc_member import FCMember
 import flight_club.models.db_func as db_func
+from sqlalchemy.orm import load_only
 
 bp = Blueprint("users", __name__, url_prefix="/users")
 
@@ -60,9 +61,15 @@ def user_page(user_id):
 def profile():
     return user_page(g.username)
 
+def get_users():
+    fc_users = User.query.options(load_only('username')).all()
+    user_list = []
+    for user in fc_users:
+        user_list.append(FCMember(user.username))
+    return user_list
 
 @bp.route("/list", methods=["GET"])
 @login_required
-def list_sessions():
-    users = User.query.all()
+def list_users():
+    users = get_users()
     return render_template("users/users_list.html", users=users)
