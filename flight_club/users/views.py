@@ -61,12 +61,14 @@ def user_page(user_id):
 def profile():
     return user_page(g.username)
 
+
 def get_users():
-    fc_users = User.query.options(load_only('username')).all()
+    fc_users = User.query.options(load_only("username")).all()
     user_list = []
     for user in fc_users:
         user_list.append(FCMember(user.username))
     return user_list
+
 
 @bp.route("/list", methods=["GET"])
 @login_required

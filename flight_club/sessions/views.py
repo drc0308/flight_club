@@ -301,11 +301,12 @@ def view_session(id):
 
 def get_sessions():
     # TODO There has to be a better way to do this conversion...
-    fc_sessions = Session.query.options(load_only('id')).all()
+    fc_sessions = Session.query.options(load_only("id")).all()
     session_list = []
     for session in fc_sessions:
         session_list.append(FCSession(session.id))
     return session_list
+
 
 @bp.route("/list", methods=["GET"])
 @login_required

@@ -55,7 +55,7 @@ class FCSession:
     @property
     def winner(self):
         return self._winner
-    
+
     @property
     def winning_beer(self):
         return self._winning_beer
