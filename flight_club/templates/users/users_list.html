@@ -22,15 +22,19 @@
                 <table class="table table-striped table-hover">
                     <thead>
                         <tr>
-                            <th>User Number</th>
                             <th>User Name</th>
+                            <th>Win Total</th>
+                            <th>Avg Score</th>
+                            <th>Avg ABV</th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for user in users %}
                         <tr>
-                            <td>{{user['id']}}</td>
                             <td><a href="/users/{{user['username']}}">{{user['username'] }}</a></td>
+                            <td>{{user['win_count']}}</td>
+                            <td>{{user['avg_score']}}</td>
+                            <td>{{user['avg_abv']}}</td>
                         </tr>
                         {% endfor %}
                     </tbody>

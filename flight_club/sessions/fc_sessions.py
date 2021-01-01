@@ -23,7 +23,10 @@ class FCSession:
 
     def _get_session_winner(self):
         # This might not need to be it's own query :shrug:
-        self._winner = Beer.query.filter_by(session_id=self._id, win=1).first().username
+        win_beer = Beer.query.filter_by(session_id=self._id, win=1).first()
+        self._winning_beer = win_beer.beer_name
+        self._winning_brewery = win_beer.brewery
+        self._winner = win_beer.username
 
     def _determine_avg_session_abv(self):
         self._session_avg_abv = round(
@@ -52,6 +55,14 @@ class FCSession:
     @property
     def winner(self):
         return self._winner
+
+    @property
+    def winning_beer(self):
+        return self._winning_beer
+
+    @property
+    def winning_brewery(self):
+        return self._winning_brewery
 
     @property
     def session_avg_abv(self):

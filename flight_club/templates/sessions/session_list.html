@@ -25,6 +25,9 @@
                         <tr>
                             <th>Session Number</th>
                             <th>Session Date</th>
+                            <th>Winning Beer</th>
+                            <th>Winning Brewery</th>
+                            <th>Winning Member</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -32,6 +35,9 @@
                         <tr>
                             <td><a href="/sessions/fc{{session['id']}}">{{session['id']}}</a></td>
                             <td>{{session['date'] }}</td>
+                            <td>{{session['winning_beer'] }}</td>
+                            <td>{{session['winning_brewery'] }}</td>
+                            <td><a href="/users/{{session['winner'] }}">{{session['winner'] }}</a></td>
                         </tr>
                         {% endfor %}
                     </tbody>

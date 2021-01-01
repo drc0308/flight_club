@@ -2,7 +2,7 @@
 * Dan's magical custom shit
 */
 
-.hidden {
+.hidden, .win_hidden {
 	display: none;
 }
 
