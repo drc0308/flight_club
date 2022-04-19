@@ -1,6 +1,6 @@
 # Flight Club
 
-This is a client-side implementation of the Flight Club app, the original version is here: https://github.com/drc56/flight_club
+This is a client-side implementation of the Flight Club app. The original Flask site code is archived under `/old`.
 
 The site is built using [Svelte](https://svelte.dev) and [SvelteKit](https://kit.svelte.dev)
 
@@ -13,6 +13,10 @@ The site is built using [Svelte](https://svelte.dev) and [SvelteKit](https://kit
 3. `npm run dev` to launch the site locally
 
 Ready for local development from here. Saving files will cause a hot-reload, though a full browser refresh or re-starting step 3 sometimes fixes insidious bugs. 
+
+In the `functions` folder:
+
+4. `npm install` to install required dependencies for firebase functions
 
 # Build and deploy
 - `npm run build` to compile the Svelte files to plain javascript
@@ -36,6 +40,7 @@ The Firestore data structure prioritizes read efficiency, so there is some redun
 - Session aggregate data (ie. average ABV)
 
 # What's here
+`/old` the archived original Flask site\
 `/src` most of the site lives here\
 `/src/routes` files and folders names here translate to URLs on the site\
 `/src/lib` components and modules that aren't full pages\
