@@ -4,7 +4,7 @@ This is a client-side implementation of the Flight Club app. The original Flask 
 
 The site is built using [Svelte](https://svelte.dev) and [SvelteKit](https://kit.svelte.dev)
 
-[Firebase](https://firebase.google.com) provides auth, hosting, database, storage, and cloud functions. 
+[Firebase](https://firebase.google.com) provides auth, hosting, database, storage, and cloud functions. The [Console](https://console.firebase.google.com) can be used to access the backend with correct user permissions.
 
 # Setup
 
