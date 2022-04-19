@@ -1,0 +1,33 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "beers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "club",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "session",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "beers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "club",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "user",
+          "order": "ASCENDING"
+        }
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}
